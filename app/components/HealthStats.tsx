@@ -107,9 +107,9 @@ export default function HealthStats() {
           </div>
 
           <h2 style={{
-            fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 900,
+            fontSize: 'clamp(20px, 2.4vw, 30px)', fontWeight: 600,
             color: '#fff', fontFamily: 'Poppins, sans-serif',
-            letterSpacing: '-0.025em', lineHeight: 1.12, marginBottom: 20,
+            letterSpacing: '-0.01em', lineHeight: 1.2, marginBottom: 20,
           }}>
             Your Health Is Our{' '}
             <span style={{

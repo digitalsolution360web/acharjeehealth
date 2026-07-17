@@ -11,10 +11,11 @@ export default function DoctorVideo() {
     <section
       id="doctor-video"
       style={{
-        background: 'linear-gradient(160deg, #f8fcff 0%, #ffffff 50%, #f5fdf5 100%)',
+        background: '#ffffff',
         padding: '72px 0',
         overflow: 'hidden',
         position: 'relative',
+        borderTop: '1px solid #f0f2f8',
       }}
     >
       {/* Decorative background elements */}
@@ -43,14 +44,14 @@ export default function DoctorVideo() {
             <div style={{ width: 28, height: 2, background: `linear-gradient(90deg, ${TEAL}, transparent)`, borderRadius: 2 }} />
           </div>
           <h2 style={{
-            fontSize: 'clamp(26px, 3.2vw, 42px)', fontWeight: 800,
-            color: '#0d2433', fontFamily: 'Poppins, sans-serif',
-            letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: 12,
+            fontSize: 'clamp(20px, 2.4vw, 30px)', fontWeight: 600,
+            color: '#000000', fontFamily: 'Poppins, sans-serif',
+            letterSpacing: '-0.01em', lineHeight: 1.15, marginBottom: 12,
           }}>
             Expert Doctor Consultation at{' '}
             <span style={{ color: TEAL }}>Acharjee Health Clinic</span>
           </h2>
-          <p style={{ fontSize: 15.5, color: '#6b8a9a', maxWidth: 580, margin: '0 auto', lineHeight: 1.65 }}>
+          <p style={{ fontSize: 15.5, color: '#334155', maxWidth: 580, margin: '0 auto', lineHeight: 1.65 }}>
             Watch our experienced doctors share valuable insights on common health concerns, symptoms, and treatment options.
           </p>
         </div>
@@ -108,7 +109,7 @@ export default function DoctorVideo() {
 
             {/* Text block */}
             <div>
-              <p style={{ fontSize: 15, color: '#5a7280', lineHeight: 1.8, marginBottom: 0, paddingLeft: 16, borderLeft: `3px solid ${TEAL}` }}>
+              <p style={{ fontSize: 15, color: '#334155', lineHeight: 1.8, marginBottom: 0, paddingLeft: 16, borderLeft: `3px solid ${TEAL}` }}>
                 At Acharjee Health Clinic &amp; Pharmacy, we focus on accurate diagnosis and patient-focused care across ENT, skin, neurology, urology, and general health. If you are looking for an ENT doctor in Asansol or need expert guidance for your health concerns, our specialists are here to help.
               </p>
             </div>
@@ -150,7 +151,7 @@ export default function DoctorVideo() {
                 </div>
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 800, color: '#0d2433', fontFamily: 'Poppins, sans-serif', marginBottom: 4 }}>{item.title}</div>
-                  <div style={{ fontSize: 13, color: '#6b8a9a', lineHeight: 1.6 }}>{item.desc}</div>
+                  <div style={{ fontSize: 13, color: '#475569', lineHeight: 1.6 }}>{item.desc}</div>
                 </div>
               </div>
             ))}

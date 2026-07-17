@@ -7,32 +7,54 @@ export default function AnimateObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Add tiny delay to ensure page elements are fully rendered/hydrated
-    const timer = setTimeout(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('active');
-            }
-          });
-        },
-        {
-          threshold: 0.08,
-          rootMargin: '0px 0px -40px 0px',
-        }
-      );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            // Unobserve once animation is triggered to prevent re-runs
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
 
+    // Set to avoid observing the same element multiple times
+    const observedElements = new Set<Element>();
+
+    const observeNewElements = () => {
       const items = document.querySelectorAll('[data-animate]');
-      items.forEach((item) => observer.observe(item));
+      items.forEach((item) => {
+        if (!observedElements.has(item)) {
+          observer.observe(item);
+          observedElements.add(item);
+        }
+      });
+    };
 
-      return () => {
-        observer.disconnect();
-      };
-    }, 150);
+    // Initial check
+    observeNewElements();
 
-    return () => clearTimeout(timer);
-  }, [pathname]); // Re-observe when navigation path changes
+    // Use MutationObserver to watch for elements added via client-side rendering/hydration
+    const mutationObserver = new MutationObserver(() => {
+      observeNewElements();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [pathname]);
 
   return null;
 }
+

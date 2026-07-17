@@ -1,0 +1,2268 @@
+﻿diff --git a/app/components/AboutSection.tsx b/app/components/AboutSection.tsx
+index 1753e43..96d618b 100644
+--- a/app/components/AboutSection.tsx
++++ b/app/components/AboutSection.tsx
+@@ -7,10 +7,42 @@ const TEAL = '#0e9ab5';
+ const RED = '#e0142a';
+ 
+ const whyItems = [
+-  { text: 'Seamless Care Experience', icon: 'Γ¥ñ∩╕Å' },
+-  { text: 'Warm and Welcoming Environment', icon: '≡ƒÅÑ' },
+-  { text: 'Comprehensive Healthcare Services', icon: '≡ƒ⌐║' },
+-  { text: 'Experienced and Expert Doctors', icon: '≡ƒæ¿ΓÇìΓÜò∩╕Å' },
++  {
++    title: 'Seamless Care Experience',
++    desc: 'Hassle-free appointments, quick check-ins, and step-by-step guidance.',
++    icon: (
++      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
++        <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
++      </svg>
++    ),
++  },
++  {
++    title: 'Warm & Welcoming Environment',
++    desc: 'A clinical space designed for maximum patient comfort and tranquility.',
++    icon: (
++      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
++        <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
++      </svg>
++    ),
++  },
++  {
++    title: 'Comprehensive Healthcare',
++    desc: 'From general consultation to specialized treatment, all under one roof.',
++    icon: (
++      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
++        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
++      </svg>
++    ),
++  },
++  {
++    title: 'Experienced Medical Team',
++    desc: 'Dedicated clinicians committing to the highest standards of diagnostic accuracy.',
++    icon: (
++      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
++        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
++      </svg>
++    ),
++  },
+ ];
+ 
+ const stats = [
+@@ -21,217 +53,239 @@ const stats = [
+ 
+ export default function AboutSection() {
+   return (
+-    <section
+-      id="about-section"
+-      style={{ background: '#fff', padding: '72px 0', overflow: 'hidden', position: 'relative' }}
+-    >
+-      {/* Subtle BG pattern */}
+-      <div style={{
+-        position: 'absolute', top: 0, right: 0, bottom: 0,
+-        width: '45%', opacity: 0.035,
+-        backgroundImage: 'radial-gradient(circle, #0e9ab5 1.5px, transparent 1.5px)',
+-        backgroundSize: '26px 26px',
+-        pointerEvents: 'none',
+-      }} />
+-
+-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
+-        <div
+-          id="about-grid"
+-          style={{ display: 'grid', gridTemplateColumns: '1fr 1.05fr', gap: '64px', alignItems: 'center' }}
+-        >
+-
+-          {/* ΓöÇΓöÇ COL 1: Featured Image (LEFT) ΓöÇΓöÇ */}
+-          <div style={{ position: 'relative' }} data-animate="fade-left">
+-
+-            {/* Main image card */}
+-            <div style={{
+-              position: 'relative', borderRadius: 28, overflow: 'hidden',
+-              height: 480,
+-              boxShadow: '0 24px 64px rgba(13,36,60,0.20)',
+-            }}>
++    <section id="about-section" style={{ background: '#ffffff', padding: '72px 0 84px 0', overflow: 'hidden', position: 'relative' }}>
++      {/* Grid Pattern Background */}
++      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '45%', opacity: 0.03, backgroundImage: 'radial-gradient(#0e9ab5 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', pointerEvents: 'none' }} />
++
++      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 10 }}>
++        <div id="about-grid" className="about-grid-container">
++          
++          {/* COLUMN 1: Visual Trust Assets (Left) */}
++          <div className="about-left-col" data-animate="fade-left" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
++            
++            {/* Main Award Image Card */}
++            <div style={{ position: 'relative', borderRadius: 24, overflow: 'hidden', height: 460, border: '1px solid #eaeef2', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
+               <Image
+                 src="/3.jpg"
+                 alt="Acharjee Health Clinic ΓÇô Asansol Trusted Clinic"
+                 fill
+-                className="object-cover object-center"
+-                sizes="(max-width: 768px) 100vw, 50vw"
++                style={{ objectFit: 'cover', objectPosition: 'center' }}
++                sizes="(max-width: 768px) 100vw, 40vw"
+                 priority
+               />
+-              {/* Overlay */}
+-              <div style={{
+-                position: 'absolute', inset: 0,
+-                background: 'linear-gradient(to top, rgba(5,18,32,0.75) 0%, rgba(5,18,32,0.1) 55%, transparent 100%)',
+-              }} />
+-              {/* Badge */}
+-              {/* <div style={{
+-                position: 'absolute', top: 18, left: 18,
+-                background: 'rgba(14,154,181,0.90)',
+-                backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+-                border: '1px solid rgba(255,255,255,0.25)',
+-                borderRadius: 12, padding: '8px 14px',
+-              }}>
+-                <p style={{ fontSize: 9, fontWeight: 800, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.12em', textTransform: 'uppercase', margin: 0 }}>Business Excellence</p>
+-                <p style={{ fontSize: 13, fontWeight: 900, color: '#fff', margin: 0, fontFamily: 'Poppins, sans-serif' }}>≡ƒÅå Award Winner</p>
+-              </div> */}
+-              {/* Bottom text */}
+-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 22px' }}>
+-                <p style={{ fontSize: 9.5, fontWeight: 800, color: TEAL, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 4 }}>Asansol&apos;s Trusted</p>
+-                <h3 style={{ fontSize: 18, fontWeight: 900, color: '#fff', fontFamily: 'Poppins, sans-serif', lineHeight: 1.2, textTransform: 'uppercase' }}>Name in Health and Wellness</h3>
++              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,23,42,0.45) 0%, transparent 60%, transparent 100%)', pointerEvents: 'none' }} />
++              <div style={{ position: 'absolute', bottom: 20, left: 24, color: '#fff', fontSize: 13, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}>
++                Asansol's Trusted Clinic
+               </div>
+             </div>
+ 
+-            {/* License card + Stats row */}
+-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 14, marginTop: 16 }}>
+-              {/* Ashok / License image ΓÇö shown fully */}
+-              <div style={{
+-                position: 'relative', borderRadius: 18, overflow: 'hidden',
+-                background: 'linear-gradient(135deg, #f0f8fb, #e8f4f8)',
+-                border: '2px solid rgba(14,154,181,0.2)',
+-                boxShadow: '0 6px 20px rgba(14,154,181,0.12)',
+-                display: 'flex', alignItems: 'center', justifyContent: 'center',
+-                minHeight: 130, padding: 10,
+-              }}>
+-                <Image
+-                  src="/ashok.jpg"
+-                  alt="Statutory CE FORM VII License ΓÇô Acharjee Health Clinic"
+-                  width={100} height={110}
+-                  style={{ objectFit: 'contain', width: '100%', height: '110px' }}
+-                />
++            {/* License & Stats Row */}
++            <div className="license-stats-row">
++              
++              {/* License Card (Government Emblem / Official) */}
++              <div style={{ background: '#ffffff', border: '1.5px solid #eaeef2', borderRadius: 20, padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', minHeight: 148, boxShadow: '0 4px 16px rgba(0,0,0,0.02)' }}>
++                <span style={{ position: 'absolute', top: 12, fontSize: 9.5, fontWeight: 800, color: '#94a3b8', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
++                  Govt Regd.
++                </span>
++                <div style={{ marginTop: 12, position: 'relative', width: '100%', height: 76, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
++                  <Image
++                    src="/ashok.jpg"
++                    alt="Statutory CE FORM VII License"
++                    fill
++                    style={{ objectFit: 'contain' }}
++                  />
++                </div>
+               </div>
+-              {/* Stats */}
+-              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 10 }}>
++
++              {/* Stats Cards Row */}
++              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, flexGrow: 1 }}>
+                 {stats.map((s, i) => (
+-                  <div key={i} style={{
+-                    background: 'linear-gradient(135deg, #f8fcff 0%, #eef6f9 100%)',
+-                    borderRadius: 14, padding: '12px 16px',
+-                    border: '1.5px solid rgba(14,154,181,0.15)',
+-                    boxShadow: '0 3px 12px rgba(14,154,181,0.07)',
+-                    display: 'flex', alignItems: 'center', gap: 12,
+-                  }}>
+-                    <div style={{ fontSize: 22, fontWeight: 900, color: TEAL, fontFamily: 'Poppins, sans-serif', lineHeight: 1, minWidth: 52 }}>{s.value}</div>
+-                    <div style={{ fontSize: 12, fontWeight: 600, color: '#6b8a9a', lineHeight: 1.3 }}>{s.label}</div>
++                  <div
++                    key={i}
++                    className="stat-micro-card"
++                    style={{
++                      background: '#ffffff',
++                      border: '1.5px solid #eaeef2',
++                      borderRadius: 16,
++                      padding: '12px 20px',
++                      display: 'flex',
++                      alignItems: 'center',
++                      gap: 16,
++                      boxShadow: '0 4px 16px rgba(0,0,0,0.02)',
++                    }}
++                  >
++                    <div style={{ fontSize: 24, fontWeight: 900, color: TEAL, fontFamily: 'Poppins, sans-serif', minWidth: 55, lineHeight: 1 }}>
++                      {s.value}
++                    </div>
++                    <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', lineHeight: 1.2, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
++                      {s.label}
++                    </div>
+                   </div>
+                 ))}
+               </div>
++
+             </div>
++
+           </div>
+ 
+-          {/* ΓöÇΓöÇ COL 2: About Text + Why Choose Us ΓöÇΓöÇ */}
+-          <div data-animate="fade-right">
+-            <span style={{
+-              fontSize: 11.5, fontWeight: 800, color: TEAL,
+-              letterSpacing: '0.2em', textTransform: 'uppercase',
+-              display: 'block', marginBottom: 14,
+-            }}>
+-              About Acharjee Health Clinic
+-            </span>
+-            <h2 style={{
+-              fontSize: 'clamp(28px, 3.2vw, 42px)', fontWeight: 800,
+-              color: '#0d2433', fontFamily: 'Poppins, sans-serif',
+-              lineHeight: 1.16, marginBottom: 20, letterSpacing: '-0.025em',
+-            }}>
+-              We Provide Exceptional{' '}
+-              <span style={{ color: TEAL }}>Patient Care</span>{' '}
+-              &amp; Comfort
+-            </h2>
+-
+-            <p style={{
+-              fontSize: 15, color: '#5a7280', lineHeight: 1.8,
+-              marginBottom: 36, paddingLeft: 18,
+-              borderLeft: `3px solid ${TEAL}`,
+-            }}>
+-              At Acharjee Health Clinic, we offer a comprehensive range of healthcare services, placing your well-being at the center of everything we do. Our team is dedicated to providing personalized, compassionate medical care to each and every patient.
+-            </p>
+-
+-            {/* Why Choose Us */}
+-            <div style={{
+-              background: 'linear-gradient(135deg, #f8fcff 0%, #f0f8fb 100%)',
+-              borderRadius: 20, padding: '28px 28px',
+-              border: '1.5px solid rgba(14,154,181,0.15)',
+-              boxShadow: '0 4px 20px rgba(14,154,181,0.08)',
+-              marginBottom: 36,
+-            }}>
+-              <h4 style={{
+-                fontSize: 15.5, fontWeight: 800, color: '#0d2433',
+-                fontFamily: 'Poppins, sans-serif', marginBottom: 20,
+-                display: 'flex', alignItems: 'center', gap: 10,
+-              }}>
+-                <span style={{
+-                  width: 24, height: 24, borderRadius: '50%',
+-                  background: TEAL, display: 'inline-flex',
+-                  alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+-                }}>
+-                  <svg width="12" height="12" fill="none" stroke="white" viewBox="0 0 24 24">
+-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
++          {/* COLUMN 2: About Text & Benefits Grid (Right) */}
++          <div className="about-right-col" data-animate="fade-right" style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
++            
++            <div>
++              <span style={{ display: 'block', fontSize: 11.5, fontWeight: 800, color: TEAL, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>
++                About Acharjee Health Clinic
++              </span>
++              <h2 style={{ fontSize: 'clamp(26px, 3.2vw, 42px)', fontWeight: 800, color: '#0d2433', fontFamily: 'Poppins, sans-serif', lineHeight: 1.2, marginBottom: 20, letterSpacing: '-0.02em' }}>
++                We Provide Exceptional <span style={{ color: TEAL }}>Patient Care</span> &amp; Comfort
++              </h2>
++              <p style={{ fontSize: 15, color: '#475569', lineHeight: 1.75, borderLeft: `4px solid ${TEAL}`, paddingLeft: 20, fontWeight: 600, margin: 0, textAlign: 'justify' }}>
++                At Acharjee Health Clinic, we offer a comprehensive range of healthcare services, placing your well-being at the center of everything we do. Our team is dedicated to providing personalized, compassionate medical care to each and every patient.
++              </p>
++            </div>
++
++            {/* Why Choose Us Benefits Matrix */}
++            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
++              <h4 style={{ fontSize: 11, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.12em', display: 'flex', alignItems: 'center', gap: 8, margin: 0 }}>
++                <span style={{ width: 20, height: 20, borderRadius: '50%', backgroundColor: TEAL, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
++                  <svg width="11" height="11" fill="none" stroke="#ffffff" viewBox="0 0 24 24" strokeWidth="3">
++                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                   </svg>
+                 </span>
+-                Why Choose Us?
++                Why Patients Trust Us
+               </h4>
+-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
++
++              <div className="benefits-subgrid">
+                 {whyItems.map((item, i) => (
+-                  <div key={i} style={{
+-                    display: 'flex', alignItems: 'center', gap: 10,
+-                    background: '#fff', borderRadius: 12, padding: '12px 14px',
+-                    border: '1px solid rgba(14,154,181,0.12)',
+-                    boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+-                    transition: 'transform 0.2s, box-shadow 0.2s',
+-                  }}
+-                    onMouseEnter={(e) => {
+-                      const el = e.currentTarget as HTMLElement;
+-                      el.style.transform = 'translateY(-2px)';
+-                      el.style.boxShadow = '0 6px 16px rgba(14,154,181,0.12)';
+-                    }}
+-                    onMouseLeave={(e) => {
+-                      const el = e.currentTarget as HTMLElement;
+-                      el.style.transform = 'translateY(0)';
+-                      el.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
++                  <div
++                    key={i}
++                    className="benefit-card"
++                    style={{
++                      display: 'flex',
++                      flexDirection: 'column',
++                      gap: 12,
++                      padding: 20,
++                      backgroundColor: 'rgba(248, 250, 252, 0.55)',
++                      border: '1.5px solid #eaeef2',
++                      borderRadius: 20,
+                     }}
+                   >
+-                    <span style={{ fontSize: 18 }}>{item.icon}</span>
+-                    <span style={{ fontSize: 12.5, color: '#2d4a5a', fontWeight: 700, lineHeight: 1.35 }}>{item.text}</span>
++                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
++                      <div style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(14, 154, 181, 0.1)', color: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
++                        {item.icon}
++                      </div>
++                      <h5 style={{ fontSize: 14.5, fontWeight: 800, color: '#0d2433', fontFamily: 'Poppins, sans-serif', lineHeight: 1.3, margin: 0 }}>
++                        {item.title}
++                      </h5>
++                    </div>
++                    <p style={{ fontSize: 12.5, color: '#64748b', lineHeight: 1.6, margin: 0, paddingLeft: 0, fontWeight: 500 }}>
++                      {item.desc}
++                    </p>
+                   </div>
+                 ))}
+               </div>
+             </div>
+ 
+-            <Link
+-              href="/about"
+-              style={{
+-                display: 'inline-flex', alignItems: 'center', gap: 12,
+-                background: RED, color: '#fff',
+-                fontWeight: 700, fontSize: 14,
+-                padding: '14px 28px', borderRadius: 50,
+-                textDecoration: 'none',
+-                boxShadow: `0 6px 24px rgba(224,20,42,0.35)`,
+-                transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+-              }}
+-              onMouseEnter={(e) => {
+-                const el = e.currentTarget as HTMLElement;
+-                el.style.transform = 'translateY(-3px)';
+-                el.style.boxShadow = '0 12px 32px rgba(224,20,42,0.45)';
+-              }}
+-              onMouseLeave={(e) => {
+-                const el = e.currentTarget as HTMLElement;
+-                el.style.transform = 'translateY(0)';
+-                el.style.boxShadow = '0 6px 24px rgba(224,20,42,0.35)';
+-              }}
+-            >
+-              <span style={{
+-                width: 26, height: 26, borderRadius: '50%',
+-                background: 'rgba(255,255,255,0.22)',
+-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+-                fontSize: 13, fontWeight: 900,
+-              }}>ΓåÆ</span>
+-              More About Us
+-            </Link>
++            {/* CTA Button */}
++            <div style={{ marginTop: 8 }}>
++              <Link
++                href="/about"
++                className="about-cta-btn"
++                style={{
++                  display: 'inline-flex',
++                  alignItems: 'center',
++                  gap: 10,
++                  backgroundColor: RED,
++                  color: '#ffffff',
++                  fontWeight: 800,
++                  fontSize: 13.5,
++                  letterSpacing: '0.04em',
++                  textTransform: 'uppercase',
++                  padding: '14px 34px',
++                  borderRadius: 50,
++                  textDecoration: 'none',
++                  boxShadow: '0 6px 18px rgba(224,20,42,0.22)',
++                }}
++              >
++                More About Us
++                <span style={{ width: 18, height: 18, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.2)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 12 }}>
++                  Γ₧ö
++                </span>
++              </Link>
++            </div>
++
+           </div>
+ 
+         </div>
+       </div>
+ 
++      {/* Styled Grid Responsive Breakpoints */}
+       <style>{`
++        .about-grid-container {
++          display: grid;
++          grid-template-columns: 1fr 1.35fr;
++          gap: 60px;
++          align-items: center;
++        }
++        
++        .license-stats-row {
++          display: grid;
++          grid-template-columns: 1.1fr 1.3fr;
++          gap: 20px;
++        }
++
++        .benefits-subgrid {
++          display: grid;
++          grid-template-columns: 1fr 1fr;
++          gap: 16px;
++        }
++
++        .benefit-card {
++          transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
++        }
++        .benefit-card:hover {
++          background-color: #ffffff !important;
++          border-color: rgba(14, 154, 181, 0.3) !important;
++          box-shadow: 0 10px 24px rgba(13,36,60,0.05) !important;
++          transform: translateY(-2px);
++        }
++
++        .about-cta-btn {
++          transition: all 0.22s ease-in-out;
++        }
++        .about-cta-btn:hover {
++          background-color: #c90f23 !important;
++          transform: translateY(-2px);
++          box-shadow: 0 10px 24px rgba(224,20,42,0.35) !important;
++        }
++
++        .stat-micro-card {
++          transition: all 0.25s ease;
++        }
++        .stat-micro-card:hover {
++          border-color: rgba(14, 154, 181, 0.25) !important;
++          transform: translateY(-1px);
++        }
++
+         @media (max-width: 1100px) {
+-          #about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
++          .about-grid-container {
++            grid-template-columns: 1fr !important;
++            gap: 40px !important;
++          }
++          .about-left-col {
++            max-width: 650px;
++            margin: 0 auto;
++            width: 100%;
++          }
++        }
++
++        @media (max-width: 640px) {
++          .license-stats-row {
++            grid-template-columns: 1fr !important;
++          }
++          .benefits-subgrid {
++            grid-template-columns: 1fr !important;
++            gap: 12px !important;
++          }
+         }
+       `}</style>
+     </section>
+diff --git a/app/components/AnimateObserver.tsx b/app/components/AnimateObserver.tsx
+index 5a14f7b..cc809e2 100644
+--- a/app/components/AnimateObserver.tsx
++++ b/app/components/AnimateObserver.tsx
+@@ -7,32 +7,54 @@ export default function AnimateObserver() {
+   const pathname = usePathname();
+ 
+   useEffect(() => {
+-    // Add tiny delay to ensure page elements are fully rendered/hydrated
+-    const timer = setTimeout(() => {
+-      const observer = new IntersectionObserver(
+-        (entries) => {
+-          entries.forEach((entry) => {
+-            if (entry.isIntersecting) {
+-              entry.target.classList.add('active');
+-            }
+-          });
+-        },
+-        {
+-          threshold: 0.08,
+-          rootMargin: '0px 0px -40px 0px',
+-        }
+-      );
++    const observer = new IntersectionObserver(
++      (entries) => {
++        entries.forEach((entry) => {
++          if (entry.isIntersecting) {
++            entry.target.classList.add('active');
++            // Unobserve once animation is triggered to prevent re-runs
++            observer.unobserve(entry.target);
++          }
++        });
++      },
++      {
++        threshold: 0.05,
++        rootMargin: '0px 0px -40px 0px',
++      }
++    );
++
++    // Set to avoid observing the same element multiple times
++    const observedElements = new Set<Element>();
+ 
++    const observeNewElements = () => {
+       const items = document.querySelectorAll('[data-animate]');
+-      items.forEach((item) => observer.observe(item));
++      items.forEach((item) => {
++        if (!observedElements.has(item)) {
++          observer.observe(item);
++          observedElements.add(item);
++        }
++      });
++    };
+ 
+-      return () => {
+-        observer.disconnect();
+-      };
+-    }, 150);
++    // Initial check
++    observeNewElements();
+ 
+-    return () => clearTimeout(timer);
+-  }, [pathname]); // Re-observe when navigation path changes
++    // Use MutationObserver to watch for elements added via client-side rendering/hydration
++    const mutationObserver = new MutationObserver(() => {
++      observeNewElements();
++    });
++
++    mutationObserver.observe(document.body, {
++      childList: true,
++      subtree: true,
++    });
++
++    return () => {
++      observer.disconnect();
++      mutationObserver.disconnect();
++    };
++  }, [pathname]);
+ 
+   return null;
+ }
++
+diff --git a/app/components/DoctorVideo.tsx b/app/components/DoctorVideo.tsx
+index 5540740..77bc6f1 100644
+--- a/app/components/DoctorVideo.tsx
++++ b/app/components/DoctorVideo.tsx
+@@ -11,10 +11,11 @@ export default function DoctorVideo() {
+     <section
+       id="doctor-video"
+       style={{
+-        background: 'linear-gradient(160deg, #f8fcff 0%, #ffffff 50%, #f5fdf5 100%)',
++        background: '#ffffff',
+         padding: '72px 0',
+         overflow: 'hidden',
+         position: 'relative',
++        borderTop: '1px solid #f0f2f8',
+       }}
+     >
+       {/* Decorative background elements */}
+@@ -50,7 +51,7 @@ export default function DoctorVideo() {
+             Expert Doctor Consultation at{' '}
+             <span style={{ color: TEAL }}>Acharjee Health Clinic</span>
+           </h2>
+-          <p style={{ fontSize: 15.5, color: '#6b8a9a', maxWidth: 580, margin: '0 auto', lineHeight: 1.65 }}>
++          <p style={{ fontSize: 15.5, color: '#334155', maxWidth: 580, margin: '0 auto', lineHeight: 1.65 }}>
+             Watch our experienced doctors share valuable insights on common health concerns, symptoms, and treatment options.
+           </p>
+         </div>
+@@ -108,7 +109,7 @@ export default function DoctorVideo() {
+ 
+             {/* Text block */}
+             <div>
+-              <p style={{ fontSize: 15, color: '#5a7280', lineHeight: 1.8, marginBottom: 0, paddingLeft: 16, borderLeft: `3px solid ${TEAL}` }}>
++              <p style={{ fontSize: 15, color: '#334155', lineHeight: 1.8, marginBottom: 0, paddingLeft: 16, borderLeft: `3px solid ${TEAL}` }}>
+                 At Acharjee Health Clinic &amp; Pharmacy, we focus on accurate diagnosis and patient-focused care across ENT, skin, neurology, urology, and general health. If you are looking for an ENT doctor in Asansol or need expert guidance for your health concerns, our specialists are here to help.
+               </p>
+             </div>
+@@ -150,7 +151,7 @@ export default function DoctorVideo() {
+                 </div>
+                 <div>
+                   <div style={{ fontSize: 14, fontWeight: 800, color: '#0d2433', fontFamily: 'Poppins, sans-serif', marginBottom: 4 }}>{item.title}</div>
+-                  <div style={{ fontSize: 13, color: '#6b8a9a', lineHeight: 1.6 }}>{item.desc}</div>
++                  <div style={{ fontSize: 13, color: '#475569', lineHeight: 1.6 }}>{item.desc}</div>
+                 </div>
+               </div>
+             ))}
+diff --git a/app/components/InfoBanner.tsx b/app/components/InfoBanner.tsx
+index 42c87a6..3805b0e 100644
+--- a/app/components/InfoBanner.tsx
++++ b/app/components/InfoBanner.tsx
+@@ -9,347 +9,149 @@ const RED = '#e0142a';
+ 
+ export default function InfoBanner() {
+   return (
+-    <section
+-      id="info-banner"
+-      style={{
+-        background: '#f8fafc',
+-        padding: '72px 0 36px 0',
+-        position: 'relative',
+-        overflow: 'hidden',
+-      }}
+-    >
+-      {/* ΓöÇΓöÇ Background Decorative Blobs & Shapes ΓöÇΓöÇ */}
+-      <div style={{
+-        position: 'absolute', top: '10%', left: '-10%',
+-        width: '450px', height: '450px', borderRadius: '50%',
+-        background: 'radial-gradient(circle, rgba(14,154,181,0.15) 0%, transparent 70%)',
+-        filter: 'blur(40px)', pointerEvents: 'none', zIndex: 0
+-      }} />
+-      <div style={{
+-        position: 'absolute', bottom: '10%', right: '-5%',
+-        width: '350px', height: '350px', borderRadius: '50%',
+-        background: 'radial-gradient(circle, rgba(58,170,53,0.12) 0%, transparent 70%)',
+-        filter: 'blur(30px)', pointerEvents: 'none', zIndex: 0
+-      }} />
+-
+-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
+-        <div style={{
+-          display: 'grid',
+-          gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.8fr)',
+-          gap: '36px',
+-          alignItems: 'stretch',
+-        }} id="info-banner-layout">
+-
+-          {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+-              LEFT PANEL: Brand Hero Glass Box (Pure CSS glowing background - no image)
+-          ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
++    <section id="info-banner" style={{ background: '#ffffff', padding: '72px 0', overflow: 'hidden', position: 'relative' }}>
++      {/* Decorative Blur Backgrounds */}
++      <div style={{ position: 'absolute', top: '10%', left: '-10%', width: 450, height: 450, borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,154,181,0.06) 0%, transparent 70%)', filter: 'blur(40px)', pointerEvents: 'none', zIndex: 0 }} />
++      <div style={{ position: 'absolute', bottom: '10%', right: '-5%', width: 350, height: 350, borderRadius: '50%', background: 'radial-gradient(circle, rgba(58,170,53,0.04) 0%, transparent 70%)', filter: 'blur(30px)', pointerEvents: 'none', zIndex: 0 }} />
++
++      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 10 }}>
++        <div id="info-banner-layout" className="info-grid-container">
++          
++          {/* LEFT PANEL: Commitment to Care (Light themed card) */}
+           <div
+             id="info-hero-card"
+             data-animate="fade-left"
+             style={{
++              background: 'linear-gradient(135deg, #f0f9fb 0%, #f7fcfd 50%, #edf7f9 100%)',
++              border: '1.5px solid #d2ebef',
++              borderRadius: 24,
++              padding: '48px',
+               position: 'relative',
+-              borderRadius: '24px',
+               overflow: 'hidden',
+-              minHeight: '440px',
+               display: 'flex',
+               flexDirection: 'column',
+               justifyContent: 'center',
+-              boxShadow: '0 20px 48px rgba(13,36,60,0.16)',
+-              border: '1px solid rgba(255, 255, 255, 0.8)',
+-              // Premium gradient background (Teal to Deep Slate)
+-              background: `linear-gradient(135deg, #094756 0%, #0d2838 50%, #061824 100%)`,
+-              transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s, transform 0.85s',
+-            }}
+-            onMouseEnter={(e) => {
+-              e.currentTarget.style.transform = 'translateY(-4px)';
+-            }}
+-            onMouseLeave={(e) => {
+-              e.currentTarget.style.transform = 'translateY(0)';
++              minHeight: 440,
++              boxShadow: '0 8px 30px rgba(14, 154, 181, 0.03)',
+             }}
+           >
+-            {/* Glowing Abstract CSS Shapes for depth */}
+-            <div style={{
+-              position: 'absolute', top: '-10%', right: '-10%',
+-              width: '260px', height: '260px', borderRadius: '50%',
+-              background: 'radial-gradient(circle, rgba(14,154,181,0.25) 0%, transparent 70%)',
+-              filter: 'blur(30px)', pointerEvents: 'none', zIndex: 1
+-            }} />
+-            <div style={{
+-              position: 'absolute', bottom: '-20%', left: '10%',
+-              width: '320px', height: '320px', borderRadius: '50%',
+-              background: 'radial-gradient(circle, rgba(58,170,53,0.18) 0%, transparent 70%)',
+-              filter: 'blur(35px)', pointerEvents: 'none', zIndex: 1
+-            }} />
+-
+-            {/* Glowing Grid Overlay Pattern */}
+-            <div style={{
+-              position: 'absolute', inset: 0,
+-              opacity: 0.08,
+-              backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+-              backgroundSize: '20px 20px',
+-              zIndex: 1,
+-              pointerEvents: 'none'
+-            }} />
++            {/* Glowing Accent Top Line */}
++            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, background: `linear-gradient(90deg, ${TEAL}, ${GREEN}, ${TEAL})`, pointerEvents: 'none' }} />
+ 
+-            {/* Glowing Accent Lines (Aesthetic top boundary) */}
+-            <div style={{
+-              position: 'absolute', top: 0, left: 0, right: 0, height: '4px',
+-              background: `linear-gradient(90deg, ${TEAL}, ${GREEN}, ${TEAL})`,
+-              zIndex: 2,
+-            }} />
+-
+-            {/* Content container */}
+-            <div style={{
+-              position: 'relative',
+-              zIndex: 3,
+-              padding: '48px 44px',
+-              display: 'flex',
+-              flexDirection: 'column',
+-              alignItems: 'flex-start',
+-            }}>
++            <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+               {/* Accent Tag */}
+-              <div style={{
+-                display: 'inline-flex', alignItems: 'center', gap: '8px',
+-                background: 'rgba(255,255,255,0.08)',
+-                backdropFilter: 'blur(8px)',
+-                WebkitBackdropFilter: 'blur(8px)',
+-                border: '1px solid rgba(255,255,255,0.18)',
+-                padding: '6px 14px', borderRadius: '40px',
+-                marginBottom: '22px',
+-              }}>
+-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: GREEN, display: 'inline-block' }} />
+-                <span style={{ fontSize: '11px', color: '#e2f4f7', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+-                  OUR COMMITMENT TO CARE
++              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#ffffff', border: '1px solid rgba(14,154,181,0.2)', padding: '6px 14px', borderRadius: 50, marginBottom: 24, boxShadow: '0 2px 6px rgba(0,0,0,0.02)' }}>
++                <span style={{ width: 7, height: 7, borderRadius: '50%', backgroundColor: GREEN }} />
++                <span style={{ fontSize: 10.5, fontWeight: 800, color: TEAL, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
++                  Our Commitment to Care
+                 </span>
+               </div>
+ 
+               {/* Title */}
+-              <h2 style={{
+-                fontSize: 'clamp(24px, 3.2vw, 36px)',
+-                fontWeight: 800,
+-                color: '#fff',
+-                fontFamily: 'Poppins, sans-serif',
+-                lineHeight: 1.25,
+-                marginBottom: '18px',
+-                letterSpacing: '-0.02em',
+-              }}>
++              <h2 style={{ fontSize: 'clamp(26px, 3.2vw, 42px)', fontWeight: 800, color: '#0f2735', fontFamily: 'Poppins, sans-serif', lineHeight: 1.25, marginBottom: 20, letterSpacing: '-0.02em' }}>
+                 Safeguarding Your Health,<br />
+-                <span style={{
+-                  background: `linear-gradient(to right, #6ef2d5, #5ce2a5)`,
+-                  WebkitBackgroundClip: 'text',
+-                  WebkitTextFillColor: 'transparent',
+-                  fontWeight: 900
+-                }}>Today and Tomorrow</span>
++                <span style={{ color: TEAL }}>Today and Tomorrow</span>
+               </h2>
+ 
+-              <p style={{
+-                fontSize: '15px',
+-                color: 'rgba(230, 242, 248, 0.85)',
+-                lineHeight: 1.7,
+-                marginBottom: '32px',
+-                maxWidth: '520px',
+-              }}>
++              <p style={{ fontSize: 15, color: '#475569', lineHeight: 1.75, marginBottom: 32, maxWidth: 540, fontWeight: 500 }}>
+                 Step into a world of comprehensive healthcare where your well-being is our top priority. At Acharjee Health Clinic, we are dedicated to delivering personalized medical care with compassion and expertise.
+               </p>
+ 
+-              {/* Ultra Premium CTA Button */}
++              {/* CTA Button */}
+               <Link
+                 href="/about"
+                 style={{
+                   display: 'inline-flex',
+                   alignItems: 'center',
+-                  gap: '14px',
+-                  background: 'rgba(255, 255, 255, 0.1)',
+-                  backdropFilter: 'blur(12px)',
+-                  WebkitBackdropFilter: 'blur(12px)',
+-                  border: '1px solid rgba(255, 255, 255, 0.3)',
+-                  color: '#fff',
++                  gap: 8,
++                  background: TEAL,
++                  color: '#ffffff',
+                   fontWeight: 700,
+-                  fontSize: '14px',
+-                  padding: '12px 28px',
+-                  borderRadius: '50px',
++                  fontSize: 13.5,
++                  padding: '14px 32px',
++                  borderRadius: 50,
+                   textDecoration: 'none',
+-                  letterSpacing: '0.04em',
+-                  textTransform: 'uppercase',
+-                  boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
+-                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+-                  cursor: 'pointer'
++                  transition: 'all 0.22s ease-in-out',
++                  boxShadow: '0 6px 20px rgba(14,154,181,0.25)',
+                 }}
+                 onMouseEnter={(e) => {
+                   const el = e.currentTarget as HTMLElement;
+-                  el.style.background = '#fff';
+-                  el.style.color = '#0d2131';
+-                  el.style.borderColor = '#fff';
+-                  el.style.boxShadow = '0 16px 36px rgba(255,255,255,0.22)';
+-                  const arr = el.querySelector('.arrow-c') as HTMLElement;
+-                  if (arr) {
+-                    arr.style.background = '#0e9ab5';
+-                    arr.style.color = '#fff';
+-                  }
++                  el.style.background = '#0c869d';
++                  el.style.transform = 'translateY(-2px)';
++                  el.style.boxShadow = '0 8px 24px rgba(12,134,157,0.35)';
+                 }}
+                 onMouseLeave={(e) => {
+                   const el = e.currentTarget as HTMLElement;
+-                  el.style.background = 'rgba(255, 255, 255, 0.1)';
+-                  el.style.color = '#fff';
+-                  el.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+-                  el.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+-                  const arr = el.querySelector('.arrow-c') as HTMLElement;
+-                  if (arr) {
+-                    arr.style.background = 'rgba(255, 255, 255, 0.2)';
+-                    arr.style.color = '#fff';
+-                  }
++                  el.style.background = TEAL;
++                  el.style.transform = 'translateY(0)';
++                  el.style.boxShadow = '0 6px 20px rgba(14,154,181,0.25)';
+                 }}
+               >
+                 Learn More
+-                <span className="arrow-c" style={{
+-                  width: '24px', height: '24px', borderRadius: '50%',
+-                  background: 'rgba(255, 255, 255, 0.2)',
+-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+-                  fontWeight: 'bold', fontSize: '10px', transition: 'all 0.25s',
+-                  color: '#fff'
+-                }}>
+-                  Γ₧ö
+-                </span>
++                <span>Γ₧ö</span>
+               </Link>
+             </div>
+           </div>
+ 
+-          {/* ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+-              RIGHT PANEL: Two interactive cards stacked
+-          ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ */}
+-          <div 
+-            data-animate="fade-right"
+-            style={{
+-              display: 'flex',
+-              flexDirection: 'column',
+-              gap: '24px',
+-              height: '100%',
+-              transition: 'opacity 0.85s, transform 0.85s',
+-            }} 
++          {/* RIGHT PANEL: Stacked Cards Column */}
++          <div
+             id="info-stacked-panels"
++            data-animate="fade-right"
++            style={{ display: 'flex', flexDirection: 'column', gap: 24 }}
+           >
+-
+-            {/* ΓöÇΓöÇ Card 1: Storefront Photo Card (Enhanced depth & style) ΓöÇΓöÇ */}
+-            <div style={{
+-              position: 'relative',
+-              borderRadius: '20px',
+-              overflow: 'hidden',
+-              flex: 1,
+-              minHeight: '210px',
+-              boxShadow: '0 14px 36px rgba(13,36,60,0.12)',
+-              border: '1px solid #fff',
+-              transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+-            }}
+-              onMouseEnter={(e) => {
+-                e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+-              }}
+-              onMouseLeave={(e) => {
+-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+-              }}
+-            >
++            {/* Card 1: Pharmacy Storefront */}
++            <div style={{ position: 'relative', borderRadius: 24, overflow: 'hidden', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', border: '1px solid #eaeef2', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
+               <Image
+                 src="/2.jpg"
+-                alt="Acharjee Storefront Clinic"
++                alt="Acharjee Storefront Pharmacy & Clinic"
+                 fill
+-                className="object-cover object-center"
+-                sizes="(max-width: 768px) 100vw, 40vw"
++                style={{ objectFit: 'cover', objectPosition: 'center' }}
++                sizes="(max-width: 768px) 100vw, 35vw"
+               />
+-              {/* Rich Teal Gradient overlay */}
+-              <div style={{
+-                position: 'absolute', inset: 0,
+-                background: 'linear-gradient(135deg, rgba(14,154,181,0.92) 0%, rgba(13,33,49,0.3) 100%)',
+-                zIndex: 1,
+-              }} />
++              {/* Overlay gradient */}
++              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,39,53,0.92) 0%, rgba(15,39,53,0.4) 60%, transparent 100%)', zIndex: 1 }} />
+ 
+               {/* Text overlay */}
+-              <div style={{
+-                position: 'absolute', bottom: 0, left: 0, right: 0,
+-                padding: '24px 28px',
+-                zIndex: 2,
+-                display: 'flex',
+-                flexDirection: 'column',
+-                gap: '4px',
+-              }}>
+-                <span style={{
+-                  fontSize: '11px', fontWeight: 800, color: '#bbf2fd',
+-                  letterSpacing: '0.12em', textTransform: 'uppercase',
+-                }}>
++              <div style={{ position: 'relative', zIndex: 2, padding: 24, pointerEvents: 'none' }}>
++                <span style={{ display: 'block', fontSize: 10, fontWeight: 800, color: '#cbd5e1', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 5 }}>
+                   Pharmacy &amp; Clinic
+                 </span>
+-                <h3 style={{
+-                  fontSize: '24px',
+-                  fontWeight: 900,
+-                  color: '#fff',
+-                  fontFamily: 'Poppins, sans-serif',
+-                  lineHeight: 1.15,
+-                  letterSpacing: '-0.02em',
+-                  textShadow: '0 2px 8px rgba(0,0,0,0.1)'
+-                }}>
+-                  One Stop Solution<br />
+-                  <span style={{ color: '#88f9a2' }}>For Medical Essentials</span>
++                <h3 style={{ fontSize: 21, fontWeight: 800, color: '#ffffff', fontFamily: 'Poppins, sans-serif', lineHeight: 1.3, margin: 0 }}>
++                  One Stop Solution <br />
++                  <span style={{ color: '#6ef2d5' }}>For Medical Essentials</span>
+                 </h3>
+               </div>
+             </div>
+ 
+-            {/* ΓöÇΓöÇ Card 2: Interactive Welcome Widget ΓöÇΓöÇ */}
+-            <div style={{
+-              background: '#fff',
+-              borderRadius: '20px',
+-              padding: '36px 32px',
+-              boxShadow: '0 14px 36px rgba(13,36,60,0.08)',
+-              border: '1.5px solid #edf4f8',
+-              display: 'flex',
+-              flexDirection: 'column',
+-              justifyContent: 'space-between',
+-              gap: '20px',
+-              flex: 1,
+-              position: 'relative',
+-            }}>
+-              {/* Subtle watermark medical cross in bg */}
+-              <div style={{
+-                position: 'absolute', right: '15px', top: '15px', opacity: 0.05,
+-                color: TEAL, pointerEvents: 'none', zIndex: 0
+-              }}>
+-                <svg width="86" height="86" fill="currentColor" viewBox="0 0 24 24">
+-                  <path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/>
+-                </svg>
+-              </div>
+-
+-              {/* Status Header */}
+-              <div style={{ position: 'relative', zIndex: 1 }}>
+-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+-                  {/* Glowing Pulse Dot */}
+-                  <span style={{ display: 'flex', position: 'relative', width: '10px', height: '10px' }}>
+-                    <span style={{
+-                      animation: 'pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+-                      position: 'absolute', inlineSize: '100%', blockSize: '100%', borderRadius: '9999px',
+-                      backgroundColor: '#3aaa35', opacity: 0.75
+-                    }} />
+-                    <span style={{
+-                      position: 'relative', display: 'inline-flex', borderRadius: '9999px',
+-                      width: '10px', height: '10px', backgroundColor: '#3aaa35'
+-                    }} />
++            {/* Card 2: Interactive Welcome Widget */}
++            <div style={{ background: '#ffffff', border: '1px solid #eaeef2', borderRadius: 24, padding: 32, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20, boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
++              
++              <div>
++                {/* Status Header */}
++                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
++                  <span style={{ position: 'relative', display: 'flex', width: 9, height: 9 }}>
++                    <span style={{ position: 'absolute', display: 'inline-flex', height: '100%', width: '100%', borderRadius: '50%', backgroundColor: GREEN, opacity: 0.75, animation: 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite' }}></span>
++                    <span style={{ position: 'relative', display: 'inline-flex', borderRadius: '50%', width: 9, height: 9, backgroundColor: GREEN }}></span>
+                   </span>
+-                  <span style={{ fontSize: '13px', fontWeight: 800, color: GREEN, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+-                    WE ARE OPEN &amp; ACTIVE
++                  <span style={{ fontSize: 11, fontWeight: 800, color: GREEN, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
++                    We are Open &amp; Active
+                   </span>
+                 </div>
+ 
+-                <h4 style={{
+-                  fontSize: '18px', fontWeight: 800, color: '#0f2735',
+-                  fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.01em',
+-                  marginBottom: '8px', lineHeight: 1.3
+-                }}>
++                <h4 style={{ fontSize: 18, fontWeight: 800, color: '#0f2735', fontFamily: 'Poppins, sans-serif', marginBottom: 8, lineHeight: 1.3 }}>
+                   Welcome to Acharjee Clinic
+                 </h4>
+-                <p style={{ fontSize: '13.5px', color: '#5b7381', lineHeight: 1.6, margin: 0 }}>
+-                  Book an {' '}
+-                  <Link href="/appointment" style={{
+-                    color: TEAL, fontWeight: 700, textDecoration: 'none',
+-                    borderBottom: `2.5px solid ${TEAL}25`, transition: 'border-color 0.2s'
+-                  }}
+-                    onMouseEnter={(e) => e.currentTarget.style.borderBottomColor = TEAL}
+-                    onMouseLeave={(e) => e.currentTarget.style.borderBottomColor = `${TEAL}25`}
++                <p style={{ fontSize: 13.5, color: '#475569', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
++                  Book an{' '}
++                  <Link
++                    href="/appointment"
++                    style={{
++                      color: TEAL,
++                      fontWeight: 800,
++                      textDecoration: 'underline',
++                      textDecorationThickness: '2px',
++                      textDecorationColor: 'rgba(14, 154, 181, 0.3)',
++                    }}
+                   >
+                     online appointment
+                   </Link>{' '}
+@@ -357,98 +159,70 @@ export default function InfoBanner() {
+                 </p>
+               </div>
+ 
+-              {/* Call Widget Action Button */}
++              {/* Telephone Contact Widget */}
+               <a
+                 href="tel:07364921002"
+                 style={{
+                   display: 'flex',
+                   alignItems: 'center',
+-                  gap: '16px',
+-                  background: `linear-gradient(135deg, ${TEAL} 0%, #0c88a0 100%)`,
+-                  padding: '12px 20px',
+-                  borderRadius: '16px',
++                  gap: 16,
++                  background: '#f0f9fb',
++                  border: '1.5px solid rgba(14,154,181,0.1)',
++                  borderRadius: 18,
++                  padding: '16px 20px',
+                   textDecoration: 'none',
+-                  boxShadow: `0 8px 24px rgba(14,154,181,0.25)`,
+-                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+-                  position: 'relative',
+-                  zIndex: 1,
++                  transition: 'all 0.22s ease-in-out',
+                 }}
+                 onMouseEnter={(e) => {
+                   const el = e.currentTarget as HTMLElement;
+-                  el.style.transform = 'translateY(-2px)';
+-                  el.style.boxShadow = `0 12px 32px rgba(14,154,181,0.38)`;
+-                  const iconB = el.querySelector('.icon-bg') as HTMLElement;
+-                  if (iconB) iconB.style.background = '#fff';
+-                  const svgP = el.querySelector('.svg-phone') as HTMLElement;
+-                  if (svgP) svgP.style.stroke = '#0e9ab5';
++                  el.style.borderColor = 'rgba(14,154,181,0.3)';
++                  el.style.background = '#ebf8fa';
+                 }}
+                 onMouseLeave={(e) => {
+                   const el = e.currentTarget as HTMLElement;
+-                  el.style.transform = 'translateY(0)';
+-                  el.style.boxShadow = `0 8px 24px rgba(14,154,181,0.25)`;
+-                  const iconB = el.querySelector('.icon-bg') as HTMLElement;
+-                  if (iconB) iconB.style.background = 'rgba(255,255,255,0.18)';
+-                  const svgP = el.querySelector('.svg-phone') as HTMLElement;
+-                  if (svgP) svgP.style.stroke = '#fff';
++                  el.style.borderColor = 'rgba(14,154,181,0.1)';
++                  el.style.background = '#f0f9fb';
+                 }}
+               >
+-                {/* Clean phone icon */}
+-                <div
+-                  className="icon-bg"
+-                  style={{
+-                    width: '42px', height: '42px', borderRadius: '50%',
+-                    background: 'rgba(255,255,255,0.18)',
+-                    display: 'flex', alignItems: 'center', justifyItems: 'center',
+-                    justifyContent: 'center', flexShrink: 0,
+-                    transition: 'all 0.25s',
+-                  }}
+-                >
+-                  <svg
+-                    className="svg-phone"
+-                    width="20" height="20" fill="none" viewBox="0 0 24 24"
+-                    stroke="#fff" strokeWidth="2.5"
+-                    style={{ transition: 'stroke 0.25s' }}
+-                  >
++                <div style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
++                  <svg style={{ width: 20, height: 20, color: '#ffffff' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                   </svg>
+                 </div>
+                 <div>
+-                  <span style={{ display: 'block', fontSize: '10px', fontWeight: 700, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+-                    DIRECT TELEPHONE:
++                  <span style={{ display: 'block', fontSize: 9.5, fontWeight: 700, color: '#64748b', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 2 }}>
++                    Direct Telephone:
+                   </span>
+-                  <span style={{ display: 'block', fontSize: '18px', fontWeight: 800, color: '#fff', fontFamily: 'Poppins, sans-serif', letterSpacing: '0.02em' }}>
++                  <span style={{ display: 'block', fontSize: 17.5, fontWeight: 800, color: '#0f2735', fontFamily: 'Poppins, sans-serif', letterSpacing: '0.02em', lineHeight: 1.1 }}>
+                     07364 921002
+                   </span>
+                 </div>
+               </a>
++
+             </div>
+ 
+           </div>
++
+         </div>
+       </div>
+ 
+-      {/* Styled utilities for CSS Animations (keyframe pulse) */}
++      {/* Styled Grid Breakpoints */}
+       <style>{`
+-        @keyframes pulse {
+-          0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(58,170,53, 0.7); }
+-          70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(58,170,53, 0); }
+-          100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(58,170,53, 0); }
++        .info-grid-container {
++          display: grid;
++          grid-template-columns: 1.25fr 1fr;
++          gap: 32px;
++          align-items: stretch;
+         }
+         @media (max-width: 1024px) {
+-          #info-banner-layout {
++          .info-grid-container {
+             grid-template-columns: 1fr !important;
+-          }
+-          #info-hero-card {
+-            min-height: 380px !important;
++            gap: 24px !important;
+           }
+         }
+-        @media (max-width: 640px) {
+-          #info-hero-card {
+-            padding: 32px 24px !important;
+-          }
+-          #info-hero-card div {
+-            padding: 24px 20px !important;
+-          }
++        @keyframes ping {
++          0% { transform: scale(1); opacity: 1; }
++          70%, 100% { transform: scale(2); opacity: 0; }
+         }
+       `}</style>
+     </section>
+diff --git a/app/components/Navbar.tsx b/app/components/Navbar.tsx
+index 26a9343..a321f96 100644
+--- a/app/components/Navbar.tsx
++++ b/app/components/Navbar.tsx
+@@ -54,8 +54,9 @@ export default function Navbar() {
+       <nav
+         className="sticky top-0 z-50 transition-shadow duration-300"
+         style={{
+-          background: `linear-gradient(135deg, #0b7a91 0%, ${TEAL} 50%, #0d8fa8 100%)`,
+-          boxShadow: scrolled ? '0 6px 30px rgba(14,154,181,.45)' : '0 2px 16px rgba(14,154,181,.25)',
++          background: '#ffffff',
++          boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,.12)' : '0 2px 10px rgba(0,0,0,.08)',
++          borderBottom: '1px solid #f0f0f0',
+         }}
+       >
+         <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px', height: 84 }}
+@@ -89,7 +90,7 @@ export default function Navbar() {
+                     {/* Underline */}
+                     <span style={{
+                       position: 'absolute', bottom: 0, left: 12, right: 12, height: 2,
+-                      background: `linear-gradient(90deg, #ffffff, ${GREEN})`,
++                      background: `linear-gradient(90deg, ${TEAL}, ${GREEN})`,
+                       borderRadius: 2,
+                       transform: hovered === item.label ? 'scaleX(1)' : 'scaleX(0)',
+                       transformOrigin: 'left',
+@@ -127,7 +128,7 @@ export default function Navbar() {
+                     {item.label}
+                     <span style={{
+                       position: 'absolute', bottom: 0, left: 12, right: 12, height: 2,
+-                      background: `linear-gradient(90deg, #ffffff, ${GREEN})`,
++                      background: `linear-gradient(90deg, ${TEAL}, ${GREEN})`,
+                       borderRadius: 2, transform: 'scaleX(0)',
+                       transformOrigin: 'left', transition: 'transform .25s',
+                     }} />
+@@ -155,10 +156,10 @@ export default function Navbar() {
+               onClick={() => setMobileOpen(true)}
+               aria-label="Open menu"
+               className="flex flex-col justify-center items-center gap-1.5 rounded-lg transition-colors"
+-              style={{ width: 44, height: 44, background: 'rgba(255,255,255,0.15)' }}>
+-              <span style={{ display: 'block', width: 26, height: 2.5, background: '#ffffff', borderRadius: 2 }} />
+-              <span style={{ display: 'block', width: 20, height: 2.5, background: '#ffffff', borderRadius: 2 }} />
+-              <span style={{ display: 'block', width: 26, height: 2.5, background: '#ffffff', borderRadius: 2 }} />
++              style={{ width: 44, height: 44, background: `rgba(14,154,181,0.08)`, border: `1px solid rgba(14,154,181,0.2)` }}>
++              <span style={{ display: 'block', width: 26, height: 2.5, background: TEAL, borderRadius: 2 }} />
++              <span style={{ display: 'block', width: 20, height: 2.5, background: TEAL, borderRadius: 2 }} />
++              <span style={{ display: 'block', width: 26, height: 2.5, background: TEAL, borderRadius: 2 }} />
+             </button>
+           </div>
+         </div>
+@@ -253,11 +254,11 @@ const navLinkStyle = (active: boolean): React.CSSProperties => ({
+   position: 'relative',
+   display: 'inline-flex',
+   alignItems: 'center',
+-  padding: '10px 16px',
+-  fontSize: 15,
++  padding: '10px 14px',
++  fontSize: 14.5,
+   fontWeight: 700,
+   letterSpacing: '0.01em',
+-  color: active ? '#a8f0ff' : 'rgba(255,255,255,0.95)',
++  color: active ? '#0e9ab5' : '#1a2540',
+   textDecoration: 'none',
+   whiteSpace: 'nowrap',
+   transition: 'color .2s',
+diff --git a/app/components/QuickLinks.tsx b/app/components/QuickLinks.tsx
+index 17a5653..3787966 100644
+--- a/app/components/QuickLinks.tsx
++++ b/app/components/QuickLinks.tsx
+@@ -5,147 +5,146 @@ import Link from 'next/link';
+ const TEAL = '#0e9ab5';
+ const RED = '#e0142a';
+ const GREEN = '#3aaa35';
++const NAVY = '#1a2b4a';
+ 
+ const cards = [
+   {
+     id: 'visitor-information',
+-    title: 'VISITOR INFORMATION',
++    title: 'Visitor Information',
+     desc: 'View all visitor guidelines, visiting hours, terms & conditions for a smooth and comfortable clinic visit.',
+     href: '/visitor-information',
++    accentColor: TEAL,
+     icon: (
+-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 52, height: 52 }}>
+-        <circle cx="24" cy="24" r="23" stroke={TEAL} strokeWidth="2" strokeDasharray="4 3" />
+-        <circle cx="24" cy="18" r="6" fill={TEAL} opacity=".15" stroke={TEAL} strokeWidth="2" />
+-        <path d="M13 36c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
+-        <path d="M28 23.5l2 1.5" stroke={GREEN} strokeWidth="1.5" strokeLinecap="round" />
+-        <circle cx="32" cy="14" r="4" fill={GREEN} opacity=".2" stroke={GREEN} strokeWidth="1.5" />
+-        <path d="M30 14h4M32 12v4" stroke={GREEN} strokeWidth="1.5" strokeLinecap="round" />
++      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
++        <circle cx="16" cy="12" r="5" stroke={TEAL} strokeWidth="2" />
++        <path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
++        <path d="M22 8h4M24 6v4" stroke={TEAL} strokeWidth="1.8" strokeLinecap="round" />
+       </svg>
+     ),
+-    accentColor: TEAL,
+   },
+   {
+     id: 'find-a-doctor',
+-    title: 'FIND A DOCTOR',
++    title: 'Find a Doctor',
+     desc: 'Search and schedule consultations with our experienced, specialist medical professionals.',
+     href: '/doctors',
++    accentColor: RED,
+     icon: (
+-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 52, height: 52 }}>
+-        <rect x="8" y="6" width="32" height="36" rx="4" fill={TEAL} opacity=".08" stroke={TEAL} strokeWidth="2" />
+-        <circle cx="24" cy="20" r="6" fill={TEAL} opacity=".15" stroke={TEAL} strokeWidth="2" />
+-        <path d="M14 36c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
+-        <path d="M20 20h8M24 16v8" stroke={RED} strokeWidth="2" strokeLinecap="round" />
+-        <circle cx="34" cy="34" r="5" fill="white" stroke={RED} strokeWidth="2" />
+-        <path d="M37.5 37.5l3 3" stroke={RED} strokeWidth="2" strokeLinecap="round" />
++      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
++        <rect x="4" y="2" width="24" height="28" rx="4" stroke={RED} strokeWidth="2" fill="none" />
++        <circle cx="16" cy="14" r="5" stroke={RED} strokeWidth="2" fill="none" />
++        <path d="M8 26c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke={RED} strokeWidth="2" strokeLinecap="round" />
++        <circle cx="26" cy="26" r="4" fill="white" stroke={RED} strokeWidth="2" />
++        <path d="M28.5 28.5l2.5 2.5" stroke={RED} strokeWidth="2" strokeLinecap="round" />
+       </svg>
+     ),
+-    accentColor: RED,
+   },
+   {
+     id: 'our-locations',
+-    title: 'OUR LOCATIONS',
++    title: 'Our Locations',
+     desc: 'Locate our clinic, pharmacy outlets, and get precise directions to visit us easily.',
+     href: '/contact',
++    accentColor: GREEN,
+     icon: (
+-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 52, height: 52 }}>
+-        <path d="M24 6C17.373 6 12 11.373 12 18c0 9 12 24 12 24s12-15 12-24c0-6.627-5.373-12-12-12z" fill={TEAL} opacity=".12" stroke={TEAL} strokeWidth="2" />
+-        <circle cx="24" cy="18" r="5" fill={TEAL} opacity=".25" stroke={TEAL} strokeWidth="2" />
+-        <path d="M10 42h28" stroke={GREEN} strokeWidth="2" strokeLinecap="round" />
+-        <path d="M17 42l-3-8M31 42l3-8" stroke={GREEN} strokeWidth="1.5" strokeLinecap="round" />
++      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
++        <path d="M16 3C10.477 3 6 7.477 6 13c0 7 10 18 10 18S26 20 26 13C26 7.477 21.523 3 16 3z" stroke={GREEN} strokeWidth="2" fill={`${GREEN}14`} />
++        <circle cx="16" cy="13" r="4" stroke={GREEN} strokeWidth="2" fill={`${GREEN}20`} />
++        <path d="M6 30h20" stroke={GREEN} strokeWidth="1.8" strokeLinecap="round" />
+       </svg>
+     ),
+-    accentColor: GREEN,
+   },
+   {
+     id: 'connect-with-us',
+-    title: 'CONNECT WITH US',
++    title: 'Connect With Us',
+     desc: 'Get in touch with our team for appointments, support, and emergency patient care inquiries.',
+     href: '/contact',
++    accentColor: TEAL,
+     icon: (
+-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 52, height: 52 }}>
+-        <rect x="6" y="10" width="36" height="26" rx="5" fill={TEAL} opacity=".1" stroke={TEAL} strokeWidth="2" />
+-        <path d="M6 15l18 12 18-12" stroke={TEAL} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+-        <circle cx="37" cy="11" r="5" fill={RED} />
+-        <path d="M35 11h4M37 9v4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
++      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
++        <rect x="2" y="6" width="28" height="20" rx="4" stroke={TEAL} strokeWidth="2" fill={`${TEAL}10`} />
++        <path d="M2 10l14 9 14-9" stroke={TEAL} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
++        <circle cx="26" cy="8" r="4" fill={RED} />
++        <path d="M24.5 8h3M26 6.5v3" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+       </svg>
+     ),
+-    accentColor: TEAL,
+   },
+ ];
+ 
+ export default function QuickLinks() {
+   return (
+-    <section id="quick-links" style={{ background: '#f7fafd', padding: '0 0 0 0', position: 'relative', overflow: 'hidden' }}>
+-
+-      {/* Top accent bar */}
+-      <div style={{ height: 4, background: `linear-gradient(90deg, ${TEAL}, ${GREEN}, ${TEAL})` }} />
+-
+-      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '72px 44px' }}>
++    <section
++      id="quick-links"
++      style={{ background: '#ffffff', padding: '80px 0', position: 'relative', overflow: 'hidden', borderTop: '1px solid #f0f2f8' }}
++    >
++      <div style={{ maxWidth: 1300, margin: '0 auto', padding: '0 40px' }}>
+ 
+         {/* Section header */}
+-        <div style={{ textAlign: 'center', marginBottom: 44 }} data-animate="fade-up">
++        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+           <span style={{
+-            display: 'inline-block', fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
+-            color: TEAL, textTransform: 'uppercase', marginBottom: 10,
+-            padding: '5px 18px', borderRadius: 20,
+-            background: 'rgba(14,154,181,0.1)', border: `1px solid rgba(14,154,181,0.25)`,
++            display: 'inline-block', fontSize: 11.5, fontWeight: 700,
++            letterSpacing: '0.2em', color: TEAL, textTransform: 'uppercase',
++            marginBottom: 12, padding: '5px 18px', borderRadius: 20,
++            background: `${TEAL}12`, border: `1px solid ${TEAL}30`,
+           }}>
+             Quick Access
+           </span>
+-          <h2 style={{ fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 800, color: '#0d2d3a', margin: '8px 0 6px', letterSpacing: '-0.02em', fontFamily: 'Poppins, sans-serif' }}>
++          <h2 style={{
++            fontSize: 'clamp(22px, 3vw, 36px)',
++            fontWeight: 800, color: NAVY,
++            margin: '10px 0 10px',
++            letterSpacing: '-0.02em',
++            fontFamily: 'Poppins, sans-serif',
++          }}>
+             Everything You Need, At Your Fingertips
+           </h2>
+-          <p style={{ fontSize: 15, color: '#5a7a88', maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
++          <p style={{ fontSize: 15, color: '#374151', maxWidth: 480, margin: '0 auto', lineHeight: 1.65 }}>
+             Navigate through our services with ease and find exactly what you are looking for.
+           </p>
+         </div>
+ 
+-        {/* Cards Grid */}
+-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }} id="quick-links-grid">
++        {/* Cards */}
++        <div
++          id="quick-links-grid"
++          style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 22 }}
++        >
+           {cards.map((card) => (
+-            <div
++            <Link
+               key={card.id}
++              href={card.href}
+               id={`ql-card-${card.id}`}
+-              className="ql-card"
+-              data-animate="zoom-in"
+               style={{
+                 background: '#ffffff',
+-                borderRadius: 16,
+-                padding: '36px 28px 28px',
+-                boxShadow: '0 4px 24px rgba(14,154,181,0.07)',
+-                border: '1.5px solid rgba(14,154,181,0.1)',
++                borderRadius: 14,
++                padding: '32px 26px',
++                boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
++                border: '1.5px solid #eef0f8',
++                borderLeft: `4px solid ${card.accentColor}`,
+                 display: 'flex',
+                 flexDirection: 'column',
+                 alignItems: 'flex-start',
+-                gap: 16,
+-                transition: 'all 0.28s cubic-bezier(.25,.46,.45,.94), opacity 0.85s, transform 0.85s',
+-                cursor: 'default',
++                gap: 14,
++                textDecoration: 'none',
++                transition: 'all 0.24s ease',
+                 position: 'relative',
+                 overflow: 'hidden',
+               }}
+               onMouseEnter={(e) => {
+-                const el = e.currentTarget;
+-                el.style.transform = 'translateY(-6px)';
+-                el.style.boxShadow = `0 16px 48px rgba(14,154,181,0.18)`;
+-                el.style.borderColor = card.accentColor;
++                const el = e.currentTarget as HTMLElement;
++                el.style.transform = 'translateY(-5px)';
++                el.style.boxShadow = `0 14px 42px rgba(0,0,0,0.10)`;
++                el.style.background = `${card.accentColor}06`;
+               }}
+               onMouseLeave={(e) => {
+-                const el = e.currentTarget;
++                const el = e.currentTarget as HTMLElement;
+                 el.style.transform = 'translateY(0)';
+-                el.style.boxShadow = '0 4px 24px rgba(14,154,181,0.07)';
+-                el.style.borderColor = 'rgba(14,154,181,0.1)';
++                el.style.boxShadow = '0 2px 16px rgba(0,0,0,0.05)';
++                el.style.background = '#ffffff';
+               }}
+             >
+-              {/* Top color accent strip */}
++              {/* Icon circle */}
+               <div style={{
+-                position: 'absolute', top: 0, left: 0, right: 0, height: 3,
+-                background: `linear-gradient(90deg, ${card.accentColor}, ${card.accentColor}88)`,
+-              }} />
+-
+-              {/* Icon */}
+-              <div style={{
+-                width: 72, height: 72, borderRadius: 16,
+-                background: `rgba(14,154,181,0.07)`,
++                width: 60, height: 60, borderRadius: 14,
++                background: `${card.accentColor}10`,
++                border: `1.5px solid ${card.accentColor}25`,
+                 display: 'flex', alignItems: 'center', justifyContent: 'center',
+                 flexShrink: 0,
+               }}>
+@@ -154,44 +153,39 @@ export default function QuickLinks() {
+ 
+               {/* Title */}
+               <h3 style={{
+-                fontSize: 15, fontWeight: 800, color: '#0d2d3a',
+-                letterSpacing: '0.04em', lineHeight: 1.3,
++                fontSize: 16, fontWeight: 800, color: NAVY,
++                letterSpacing: '-0.01em', lineHeight: 1.3,
+                 fontFamily: 'Poppins, sans-serif',
++                margin: 0,
+               }}>
+                 {card.title}
+               </h3>
+ 
+-              {/* Divider */}
+-              <div style={{ width: 40, height: 2, background: card.accentColor, borderRadius: 2 }} />
+-
+               {/* Description */}
+-              <p style={{ fontSize: 14, color: '#5a7a88', lineHeight: 1.7, flexGrow: 1, margin: 0 }}>
++              <p style={{
++                fontSize: 13.5, color: '#475569', lineHeight: 1.7,
++                flexGrow: 1, margin: 0,
++              }}>
+                 {card.desc}
+               </p>
+ 
+-              {/* Learn More */}
+-              <Link
+-                href={card.href}
+-                style={{
+-                  display: 'inline-flex', alignItems: 'center', gap: 6,
+-                  fontSize: 13, fontWeight: 700, color: RED,
+-                  textDecoration: 'none', letterSpacing: '0.03em', marginTop: 4,
+-                  transition: 'gap 0.2s',
+-                }}
+-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = '10px'; }}
+-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = '6px'; }}
+-              >
++              {/* Arrow link */}
++              <div style={{
++                display: 'inline-flex', alignItems: 'center', gap: 6,
++                fontSize: 12.5, fontWeight: 700, color: card.accentColor,
++                letterSpacing: '0.04em',
++                marginTop: 4,
++              }}>
+                 Learn More
+-                <svg width="14" height="14" fill="none" stroke={RED} viewBox="0 0 24 24">
++                <svg width="14" height="14" fill="none" stroke={card.accentColor} viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                 </svg>
+-              </Link>
+-            </div>
++              </div>
++            </Link>
+           ))}
+         </div>
+       </div>
+ 
+-      {/* Responsive styles */}
+       <style>{`
+         @media (max-width: 1100px) {
+           #quick-links-grid { grid-template-columns: repeat(2, 1fr) !important; }
+diff --git a/app/components/ServicesCards.tsx b/app/components/ServicesCards.tsx
+index fb4bb1b..6f672c3 100644
+--- a/app/components/ServicesCards.tsx
++++ b/app/components/ServicesCards.tsx
+@@ -5,70 +5,66 @@ import Link from 'next/link';
+ const TEAL = '#0e9ab5';
+ const GREEN = '#3aaa35';
+ const RED = '#e0142a';
++const NAVY = '#1a2b4a';
+ 
+ const cards = [
+   {
+     id: 'consultation',
+     number: '01',
+-    color: TEAL,
+-    darkColor: '#076f84',
++    accentColor: TEAL,
+     label: 'Instant Clinic',
+     title: 'Consultation',
+-    desc: 'Connect within 60 seconds with our medical experts at Acharjee Health Clinic.',
++    desc: 'Connect within 60 seconds with our medical experts. Real-time consultations that prioritise your time and well-being.',
+     href: '/services/consultations',
+     badge: '60 sec',
+     badgeLabel: 'Connect Time',
+     icon: (
+-      <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+-        <circle cx="22" cy="22" r="22" fill={TEAL} fillOpacity="0.12" />
+-        <path d="M22 13a5 5 0 100 10 5 5 0 000-10z" stroke={TEAL} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+-        <path d="M13 31c0-4.418 4.03-8 9-8s9 3.582 9 8" stroke={TEAL} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+-        <circle cx="30" cy="20" r="3" fill={TEAL} fillOpacity="0.3" stroke={TEAL} strokeWidth="1.5" />
+-        <path d="M30 18v2.5l1.5 1" stroke={TEAL} strokeWidth="1.3" strokeLinecap="round" />
++      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
++        <circle cx="20" cy="20" r="20" fill={`${TEAL}14`} />
++        <path d="M20 10a6 6 0 100 12 6 6 0 000-12z" stroke={TEAL} strokeWidth="2" strokeLinecap="round" fill="none" />
++        <path d="M10 30c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
++        <path d="M28 14h4M30 12v4" stroke={TEAL} strokeWidth="1.8" strokeLinecap="round" />
+       </svg>
+     ),
+   },
+   {
+     id: 'medicines',
+     number: '02',
+-    color: GREEN,
+-    darkColor: '#1e7a1b',
++    accentColor: GREEN,
+     label: '24/7 Delivery',
+     title: 'Medicines',
+-    desc: 'Essential medicines delivered to your doorstep anytime, especially in emergency situations.',
++    desc: 'Essential medicines delivered to your doorstep anytime ΓÇö especially during emergencies ΓÇö fast and reliable.',
+     href: '/services/pharmacy',
+     badge: '24/7',
+     badgeLabel: 'Available',
+     icon: (
+-      <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+-        <circle cx="22" cy="22" r="22" fill={GREEN} fillOpacity="0.12" />
+-        <rect x="14" y="11" width="16" height="22" rx="3" stroke={GREEN} strokeWidth="2" fill="none" />
+-        <path d="M18 11V9a2 2 0 014 0v2" stroke={GREEN} strokeWidth="2" strokeLinecap="round" />
+-        <line x1="19" y1="18" x2="25" y2="18" stroke={GREEN} strokeWidth="2" strokeLinecap="round" />
+-        <line x1="22" y1="15" x2="22" y2="21" stroke={GREEN} strokeWidth="2" strokeLinecap="round" />
+-        <line x1="19" y1="25" x2="25" y2="25" stroke={GREEN} strokeWidth="1.5" strokeLinecap="round" />
+-        <line x1="19" y1="28" x2="23" y2="28" stroke={GREEN} strokeWidth="1.5" strokeLinecap="round" />
++      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
++        <circle cx="20" cy="20" r="20" fill={`${GREEN}14`} />
++        <rect x="13" y="9" width="14" height="22" rx="3" stroke={GREEN} strokeWidth="2" fill="none" />
++        <path d="M17 9V7a2 2 0 014 0v2" stroke={GREEN} strokeWidth="2" strokeLinecap="round" />
++        <line x1="17" y1="18" x2="23" y2="18" stroke={GREEN} strokeWidth="2" strokeLinecap="round" />
++        <line x1="20" y1="15" x2="20" y2="21" stroke={GREEN} strokeWidth="2" strokeLinecap="round" />
++        <line x1="17" y1="25" x2="23" y2="25" stroke={GREEN} strokeWidth="1.5" strokeLinecap="round" />
+       </svg>
+     ),
+   },
+   {
+     id: 'lab-tests',
+     number: '03',
+-    color: RED,
+-    darkColor: '#a30d1e',
++    accentColor: RED,
+     label: 'Accurate Results',
+     title: 'Lab Tests',
+-    desc: 'Home sample collection with 99.8% accuracy in test results for your convenience.',
++    desc: 'Home sample collection with 99.8% accuracy. Get precise diagnostic results from the comfort of your home.',
+     href: '/services/diagnostics',
+     badge: '99.8%',
+     badgeLabel: 'Accuracy',
+     icon: (
+-      <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+-        <circle cx="22" cy="22" r="22" fill={RED} fillOpacity="0.12" />
+-        <path d="M18 10h8M21 10v12L13 30a4 4 0 004 4h10a4 4 0 004-4L23 22V10" stroke={RED} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+-        <circle cx="20" cy="30" r="1.5" fill={RED} />
+-        <circle cx="25" cy="28" r="1" fill={RED} />
+-        <circle cx="17" cy="32" r="1" fill={RED} />
++      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
++        <circle cx="20" cy="20" r="20" fill={`${RED}14`} />
++        <path d="M16 9h8M19 9v13l-8 8a4 4 0 004 4h10a4 4 0 004-4l-8-8V9" stroke={RED} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
++        <circle cx="18" cy="29" r="1.5" fill={RED} />
++        <circle cx="23" cy="27" r="1" fill={RED} />
++        <circle cx="15" cy="31" r="1" fill={RED} />
+       </svg>
+     ),
+   },
+@@ -79,50 +75,41 @@ export default function ServicesCards() {
+     <section
+       id="services-cards"
+       style={{
+-        background: 'linear-gradient(160deg, #f0f8fb 0%, #ffffff 50%, #f5fdf5 100%)',
+-        padding: '72px 0',
++        background: '#ffffff',
++        padding: '80px 0',
+         overflow: 'hidden',
+         position: 'relative',
++        borderTop: '1px solid #f0f2f8',
+       }}
+     >
+-      {/* Decorative background shapes */}
+-      <div style={{
+-        position: 'absolute', top: -60, right: -60,
+-        width: 320, height: 320, borderRadius: '50%',
+-        background: 'radial-gradient(circle, rgba(14,154,181,0.07) 0%, transparent 70%)',
+-        pointerEvents: 'none',
+-      }} />
+-      <div style={{
+-        position: 'absolute', bottom: -40, left: -40,
+-        width: 280, height: 280, borderRadius: '50%',
+-        background: 'radial-gradient(circle, rgba(58,170,53,0.06) 0%, transparent 70%)',
+-        pointerEvents: 'none',
+-      }} />
+-
+-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
++      <div style={{ maxWidth: 1300, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
+ 
+         {/* Section header */}
+-        <div style={{ textAlign: 'center', marginBottom: 52 }} data-animate="fade-up">
+-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+-            <div style={{ width: 28, height: 2, background: `linear-gradient(90deg, transparent, ${TEAL})`, borderRadius: 2 }} />
++        <div style={{ textAlign: 'center', marginBottom: 52 }}>
++          <div style={{
++            display: 'inline-flex', alignItems: 'center', gap: 10,
++            marginBottom: 14,
++          }}>
++            <div style={{ width: 32, height: 2, background: TEAL, borderRadius: 2 }} />
+             <span style={{
+-              fontSize: 11.5, fontWeight: 800, letterSpacing: '0.22em', color: TEAL,
++              fontSize: 12, fontWeight: 800, letterSpacing: '0.2em', color: TEAL,
+               textTransform: 'uppercase',
+             }}>Our Core Services</span>
+-            <div style={{ width: 28, height: 2, background: `linear-gradient(90deg, ${TEAL}, transparent)`, borderRadius: 2 }} />
++            <div style={{ width: 32, height: 2, background: TEAL, borderRadius: 2 }} />
+           </div>
+           <h2 style={{
+-            fontSize: 'clamp(26px, 3.2vw, 42px)', fontWeight: 800, color: '#0d2433',
+-            fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em',
+-            lineHeight: 1.15, marginBottom: 16,
++            fontSize: 'clamp(26px, 3.2vw, 40px)',
++            fontWeight: 800,
++            color: NAVY,
++            fontFamily: 'Poppins, sans-serif',
++            letterSpacing: '-0.025em',
++            lineHeight: 1.2,
++            marginBottom: 14,
+           }}>
+             Comprehensive Healthcare,{' '}
+-            <span style={{
+-              background: `linear-gradient(135deg, ${TEAL}, #0d8fa8)`,
+-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+-            }}>Right at Your Door</span>
++            <span style={{ color: TEAL }}>Right at Your Door</span>
+           </h2>
+-          <p style={{ fontSize: 15.5, color: '#6b8a9a', maxWidth: 520, margin: '0 auto', lineHeight: 1.7 }}>
++          <p style={{ fontSize: 15.5, color: '#374151', maxWidth: 500, margin: '0 auto', lineHeight: 1.7 }}>
+             Expert healthcare services designed around you ΓÇö fast, reliable, and delivered with compassion.
+           </p>
+         </div>
+@@ -130,125 +117,120 @@ export default function ServicesCards() {
+         {/* Cards grid */}
+         <div
+           id="services-grid"
+-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}
++          style={{
++            display: 'grid',
++            gridTemplateColumns: 'repeat(3, 1fr)',
++            gap: 24,
++          }}
+         >
+           {cards.map((card) => (
+             <div
+               key={card.id}
+               id={`service-card-${card.id}`}
+-              data-animate="zoom-in"
+               style={{
+-                background: '#fff',
+-                borderRadius: 24,
+-                padding: '36px 32px',
++                background: '#ffffff',
++                borderRadius: 18,
++                padding: '36px 30px',
+                 position: 'relative',
+                 overflow: 'hidden',
+-                boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
+-                border: '1.5px solid rgba(0,0,0,0.06)',
+-                transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border-color 0.3s, opacity 0.85s, transform 0.85s',
++                boxShadow: '0 2px 20px rgba(0,0,0,0.06)',
++                border: `1.5px solid #eef0f8`,
++                transition: 'transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease',
+                 cursor: 'default',
+               }}
+               onMouseEnter={(e) => {
+                 const el = e.currentTarget as HTMLElement;
+-                el.style.transform = 'translateY(-10px)';
+-                el.style.boxShadow = `0 24px 56px rgba(0,0,0,0.12)`;
+-                el.style.borderColor = `${card.color}40`;
+-                const topBar = el.querySelector('.card-top-bar') as HTMLElement;
++                el.style.transform = 'translateY(-8px)';
++                el.style.boxShadow = `0 20px 50px rgba(0,0,0,0.10)`;
++                el.style.borderColor = `${card.accentColor}50`;
++                const topBar = el.querySelector('.srv-top-bar') as HTMLElement;
+                 if (topBar) topBar.style.transform = 'scaleX(1)';
+               }}
+               onMouseLeave={(e) => {
+                 const el = e.currentTarget as HTMLElement;
+                 el.style.transform = 'translateY(0)';
+-                el.style.boxShadow = '0 4px 24px rgba(0,0,0,0.07)';
+-                el.style.borderColor = 'rgba(0,0,0,0.06)';
+-                const topBar = el.querySelector('.card-top-bar') as HTMLElement;
++                el.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
++                el.style.borderColor = '#eef0f8';
++                const topBar = el.querySelector('.srv-top-bar') as HTMLElement;
+                 if (topBar) topBar.style.transform = 'scaleX(0)';
+               }}
+             >
+-              {/* Top animated accent bar */}
+-              <div className="card-top-bar" style={{
++              {/* Top accent bar */}
++              <div className="srv-top-bar" style={{
+                 position: 'absolute', top: 0, left: 0, right: 0, height: 4,
+-                background: `linear-gradient(90deg, ${card.color}, ${card.darkColor})`,
++                background: `linear-gradient(90deg, ${card.accentColor}, ${card.accentColor}88)`,
+                 transform: 'scaleX(0)', transformOrigin: 'left',
+-                transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+-                borderRadius: '24px 24px 0 0',
++                transition: 'transform 0.3s ease',
++                borderRadius: '18px 18px 0 0',
+               }} />
+ 
+-              {/* Large faint number */}
++              {/* Ghost number */}
+               <div style={{
+-                position: 'absolute', right: 24, top: 16,
+-                fontSize: 72, fontWeight: 900,
+-                color: `${card.color}0d`,
++                position: 'absolute', right: 20, top: 14,
++                fontSize: 68, fontWeight: 900,
++                color: `${card.accentColor}0d`,
+                 fontFamily: 'Poppins, sans-serif',
+                 lineHeight: 1, userSelect: 'none',
+                 letterSpacing: '-0.04em',
+               }}>{card.number}</div>
+ 
+-              {/* Icon + badge row */}
+-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 24 }}>
++              {/* Icon + badge */}
++              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 22 }}>
+                 {card.icon}
+                 <div style={{
+-                  display: 'flex', flexDirection: 'column', alignItems: 'center',
+-                  background: `linear-gradient(135deg, ${card.color}15, ${card.color}08)`,
+-                  border: `1.5px solid ${card.color}30`,
+-                  borderRadius: 12, padding: '8px 12px', textAlign: 'center',
++                  background: `${card.accentColor}12`,
++                  border: `1.5px solid ${card.accentColor}30`,
++                  borderRadius: 10, padding: '7px 12px',
++                  textAlign: 'center',
+                 }}>
+-                  <span style={{
+-                    fontSize: 18, fontWeight: 900, color: card.color,
+-                    fontFamily: 'Poppins, sans-serif', lineHeight: 1.1,
+-                  }}>{card.badge}</span>
+-                  <span style={{ fontSize: 9.5, fontWeight: 700, color: card.color, opacity: 0.7, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{card.badgeLabel}</span>
++                  <div style={{ fontSize: 17, fontWeight: 900, color: card.accentColor, fontFamily: 'Poppins, sans-serif', lineHeight: 1.1 }}>{card.badge}</div>
++                  <div style={{ fontSize: 9, fontWeight: 700, color: card.accentColor, opacity: 0.75, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{card.badgeLabel}</div>
+                 </div>
+               </div>
+ 
+               {/* Label */}
+               <span style={{
+-                display: 'inline-block',
+-                fontSize: 11, fontWeight: 800, letterSpacing: '0.14em',
+-                color: card.color, textTransform: 'uppercase',
+-                marginBottom: 6,
++                display: 'inline-block', fontSize: 10.5, fontWeight: 800,
++                letterSpacing: '0.16em', color: card.accentColor,
++                textTransform: 'uppercase', marginBottom: 5,
+               }}>{card.label}</span>
+ 
+               {/* Title */}
+               <h3 style={{
+-                fontSize: 28, fontWeight: 900, color: '#0d2433',
++                fontSize: 26, fontWeight: 900, color: NAVY,
+                 fontFamily: 'Poppins, sans-serif',
+                 lineHeight: 1.1, marginBottom: 6,
+-                letterSpacing: '-0.025em',
++                letterSpacing: '-0.02em',
+               }}>{card.title}</h3>
+ 
+-              {/* Thin accent divider */}
++              {/* Accent divider */}
+               <div style={{
+-                width: 44, height: 3,
+-                background: `linear-gradient(90deg, ${card.color}, ${card.darkColor})`,
++                width: 40, height: 3,
++                background: card.accentColor,
+                 borderRadius: 3, marginBottom: 16,
+               }} />
+ 
+               {/* Description */}
+-              <p style={{
+-                fontSize: 14.5, color: '#5a7280',
+-                lineHeight: 1.75, marginBottom: 28,
+-              }}>{card.desc}</p>
++              <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.75, marginBottom: 26 }}>{card.desc}</p>
+ 
+-              {/* Learn More link */}
++              {/* Learn More */}
+               <Link
+                 href={card.href}
+                 style={{
+                   display: 'inline-flex', alignItems: 'center', gap: 8,
+-                  color: card.color, fontWeight: 800, fontSize: 13.5,
+-                  textDecoration: 'none',
+-                  letterSpacing: '0.02em',
++                  color: card.accentColor, fontWeight: 800, fontSize: 13,
++                  textDecoration: 'none', letterSpacing: '0.02em',
+                   transition: 'gap 0.22s',
+                 }}
+-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = '14px'; }}
++                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = '13px'; }}
+                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = '8px'; }}
+               >
+                 <span style={{
+-                  width: 30, height: 30, borderRadius: '50%',
+-                  background: `${card.color}15`,
+-                  border: `1.5px solid ${card.color}40`,
+-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+-                  fontSize: 14, transition: 'background 0.22s, border-color 0.22s',
++                  width: 28, height: 28, borderRadius: '50%',
++                  background: `${card.accentColor}14`,
++                  border: `1.5px solid ${card.accentColor}35`,
++                  display: 'inline-flex', alignItems: 'center',
++                  justifyContent: 'center', fontSize: 13,
+                 }}>ΓåÆ</span>
+                 Learn More
+               </Link>
+diff --git a/app/components/WhyChoose.tsx b/app/components/WhyChoose.tsx
+index ab57b95..06cd07d 100644
+--- a/app/components/WhyChoose.tsx
++++ b/app/components/WhyChoose.tsx
+@@ -76,7 +76,7 @@ export default function WhyChoose() {
+           <div
+             data-animate="fade-right"
+             style={{
+-              background: '#f8f9fb',
++              background: '#ffffff',
+               padding: '48px 56px',
+               display: 'flex',
+               flexDirection: 'column',
+@@ -112,7 +112,7 @@ export default function WhyChoose() {
+ 
+             {/* Body text */}
+             <p style={{
+-              fontSize: 15, color: '#5a7280', lineHeight: 1.8,
++              fontSize: 15, color: '#334155', lineHeight: 1.8,
+               marginBottom: 28, maxWidth: 540,
+             }}>
+               At Acharjee Health Clinic, your health is our priority. We offer comprehensive medical services with a focus on personalized care and compassion, ensuring that every patient feels supported and valued throughout their journey with us.
+@@ -132,7 +132,7 @@ export default function WhyChoose() {
+                     <path d="M3 10l5 5 9-9" stroke={RED} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                     <path d="M7 10l3 3 5-5" stroke={RED} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" opacity=".4" />
+                   </svg>
+-                  <span style={{ fontSize: 13.5, color: '#2d4a5a', fontWeight: 600, lineHeight: 1.4 }}>{f}</span>
++                  <span style={{ fontSize: 13.5, color: '#1e293b', fontWeight: 600, lineHeight: 1.4 }}>{f}</span>
+                 </div>
+               ))}
+             </div>
+@@ -141,7 +141,7 @@ export default function WhyChoose() {
+             <div style={{ width: '100%', height: 1, background: '#e2e8f0', marginBottom: 24 }} />
+ 
+             {/* Body closing */}
+-            <p style={{ fontSize: 14, color: '#7a9198', lineHeight: 1.75, marginBottom: 28 }}>
++            <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.75, marginBottom: 28 }}>
+               Our commitment to your well-being drives us to deliver the highest standards of medical excellence ΓÇö because every patient deserves the very best.
+             </p>
+ 
+diff --git a/app/components/WhyChooseCards.tsx b/app/components/WhyChooseCards.tsx
+index 27be866..50bb030 100644
+--- a/app/components/WhyChooseCards.tsx
++++ b/app/components/WhyChooseCards.tsx
+@@ -1,39 +1,52 @@
+ 'use client';
+ 
+-import Image from 'next/image';
+ import Link from 'next/link';
+ 
+ const TEAL = '#0e9ab5';
+-const RED = '#e0142a';
+-const GREEN = '#3aaa35';
++const NAVY = '#1a2b4a';
++const INDIGO = '#4f46e5';
+ 
+ const cards = [
+   {
+     id: 'better-care',
+-    image: '/1.jpeg',
+-    alt: 'Better Care Environment',
+     title: 'Not Just Better Care, But a Better Experience',
+     desc: 'At Acharjee Health Clinic, we prioritize not only your health but also your experience. Our team is dedicated to providing exceptional medical care in a comfortable and supportive environment, making your journey to wellness smoother.',
+-    href: '/about',
+-    accent: TEAL,
++    icon: (
++      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
++        <path d="M18 6a8 8 0 100 16A8 8 0 0018 6z" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" fill="none" />
++        <path d="M7 32c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" />
++        <path d="M14 14l3 3 5-5" stroke={TEAL} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
++      </svg>
++    ),
+   },
+   {
+     id: 'community-care',
+-    image: '/4.jpg',
+-    alt: 'Community Healthcare',
+     title: 'Serving Our Community with Exemplary Care',
+     desc: 'At Acharjee Health Clinic, we are committed to offering high-quality healthcare services to all. Our compassionate team ensures that every patient receives personalized care, focusing on both treatment and experience.',
+-    href: '/about',
+-    accent: GREEN,
++    icon: (
++      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
++        <circle cx="12" cy="13" r="5" stroke={INDIGO} strokeWidth="2" fill="none" />
++        <circle cx="24" cy="13" r="5" stroke={TEAL} strokeWidth="2" fill="none" />
++        <path d="M4 30c0-4.418 3.582-8 8-8" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" />
++        <path d="M24 22c4.418 0 8 3.582 8 8" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
++        <path d="M12 22c3.314 0 6 2.686 6 6H18c0-3.314 2.686-6 6-6" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" />
++      </svg>
++    ),
+   },
+   {
+     id: 'specialty-medicine',
+-    image: '/2.jpg',
+-    alt: 'Specialty Medicine',
+     title: 'Specialty Medicine Delivered with Compassion',
+     desc: 'At Acharjee Health Clinic, we offer specialized medical services provided by a team of expert doctors who are dedicated to delivering care with compassion and understanding. Your health and comfort are our top priorities.',
+-    href: '/services',
+-    accent: RED,
++    icon: (
++      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
++        <rect x="10" y="6" width="16" height="24" rx="3" stroke={INDIGO} strokeWidth="2" fill="none" />
++        <path d="M14 6V4a2 2 0 014 0v2" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" />
++        <line x1="15" y1="15" x2="21" y2="15" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
++        <line x1="18" y1="12" x2="18" y2="18" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
++        <line x1="15" y1="22" x2="21" y2="22" stroke={INDIGO} strokeWidth="1.5" strokeLinecap="round" />
++        <line x1="15" y1="26" x2="19" y2="26" stroke={INDIGO} strokeWidth="1.5" strokeLinecap="round" />
++      </svg>
++    ),
+   },
+ ];
+ 
+@@ -41,169 +54,148 @@ export default function WhyChooseCards() {
+   return (
+     <section
+       id="why-choose-cards"
+-      style={{ background: '#fff', padding: '72px 0', overflow: 'hidden', position: 'relative' }}
++      style={{ background: '#ffffff', padding: '80px 0', overflow: 'hidden' }}
+     >
+-      {/* Subtle bg pattern */}
+-      <div style={{
+-        position: 'absolute', inset: 0, opacity: 0.025,
+-        backgroundImage: 'radial-gradient(circle, #0e9ab5 1px, transparent 1px)',
+-        backgroundSize: '32px 32px',
+-        pointerEvents: 'none',
+-      }} />
+-
+-      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px', position: 'relative', zIndex: 1 }}>
+-
+-        {/* ΓöÇΓöÇ Header ΓöÇΓöÇ */}
+-        <div style={{ textAlign: 'center', marginBottom: 44 }} data-animate="fade-up">
+-          <span style={{
+-            display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 12,
+-            fontWeight: 700, letterSpacing: '0.2em', color: TEAL,
+-            textTransform: 'uppercase', marginBottom: 12,
+-          }}>
+-            <span style={{ width: 32, height: 2, background: TEAL, display: 'inline-block', borderRadius: 2 }} />
+-            WHY CHOOSE
+-            <span style={{ width: 32, height: 2, background: TEAL, display: 'inline-block', borderRadius: 2 }} />
+-          </span>
++      <div style={{ maxWidth: 1300, margin: '0 auto', padding: '0 40px' }}>
+ 
++        {/* Header */}
++        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+           <h2 style={{
+-            fontSize: 'clamp(24px, 3vw, 38px)',
+-            fontWeight: 800, color: '#0d2433',
++            fontSize: 'clamp(26px, 3vw, 38px)',
++            fontWeight: 800,
++            color: NAVY,
+             fontFamily: 'Poppins, sans-serif',
+-            letterSpacing: '-0.02em', lineHeight: 1.2,
++            letterSpacing: '-0.02em',
+             marginBottom: 12,
+           }}>
+-            Acharjee Health Clinic
++            Why Choose Us
+           </h2>
+-          <p style={{
+-            fontSize: 17, color: '#4a7280', fontWeight: 500,
+-            letterSpacing: '0.01em',
+-          }}>
+-            We Are Committed to Protecting Your Health
++          <p style={{ fontSize: 16, color: '#374151', maxWidth: 480, margin: '0 auto', lineHeight: 1.6 }}>
++            We Are Committed to Protecting Your Health ΓÇö Acharjee Health Clinic
+           </p>
+-
+-          {/* Underline accent */}
+-          <div style={{
+-            display: 'flex', justifyContent: 'center', marginTop: 18, gap: 6,
+-          }}>
+-            <div style={{ width: 48, height: 3, background: TEAL, borderRadius: 2 }} />
+-            <div style={{ width: 12, height: 3, background: GREEN, borderRadius: 2 }} />
+-            <div style={{ width: 6, height: 3, background: RED, borderRadius: 2 }} />
+-          </div>
+         </div>
+ 
+-        {/* ΓöÇΓöÇ Cards Grid ΓöÇΓöÇ */}
+-        <div style={{
+-          display: 'grid',
+-          gridTemplateColumns: 'repeat(3, 1fr)',
+-          gap: 28,
+-        }} id="why-cards-grid">
+-          {cards.map((card) => (
++        {/* Grid ΓÇö 3 cols top row, 2 cards + 1 CTA bottom row */}
++        <div
++          id="why-cards-grid"
++          style={{
++            display: 'grid',
++            gridTemplateColumns: 'repeat(3, 1fr)',
++            gap: 20,
++          }}
++        >
++          {cards.map((card, i) => (
+             <div
+               key={card.id}
+               id={`wc-card-${card.id}`}
+-              className="wc-card"
+-              data-animate="zoom-in"
+               style={{
+-                background: '#fff',
+-                borderRadius: 18,
+-                overflow: 'hidden',
+-                boxShadow: '0 4px 28px rgba(0,0,0,0.07)',
+-                border: '1.5px solid #eef2f6',
+-                display: 'flex', flexDirection: 'column',
+-                transition: 'all 0.3s cubic-bezier(.25,.46,.45,.94), opacity 0.85s, transform 0.85s',
++                background: '#f8f9fe',
++                borderRadius: 14,
++                padding: '30px 28px',
++                border: '1.5px solid #e8ecf8',
++                display: 'flex',
++                flexDirection: 'row',
++                alignItems: 'flex-start',
++                gap: 20,
++                transition: 'all 0.25s ease',
++                cursor: 'default',
++                position: 'relative',
+               }}
+               onMouseEnter={(e) => {
+-                const el = e.currentTarget;
+-                el.style.transform = 'translateY(-8px)';
+-                el.style.boxShadow = `0 20px 56px rgba(14,154,181,0.16)`;
+-                el.style.borderColor = card.accent;
++                e.currentTarget.style.borderColor = `${INDIGO}40`;
++                e.currentTarget.style.boxShadow = `0 8px 32px rgba(79,70,229,0.12)`;
++                e.currentTarget.style.background = '#fff';
++                e.currentTarget.style.transform = 'translateY(-3px)';
+               }}
+               onMouseLeave={(e) => {
+-                const el = e.currentTarget;
+-                el.style.transform = 'translateY(0)';
+-                el.style.boxShadow = '0 4px 28px rgba(0,0,0,0.07)';
+-                el.style.borderColor = '#eef2f6';
++                e.currentTarget.style.borderColor = '#e8ecf8';
++                e.currentTarget.style.boxShadow = 'none';
++                e.currentTarget.style.background = '#f8f9fe';
++                e.currentTarget.style.transform = 'translateY(0)';
+               }}
+             >
+-              {/* Image */}
+-              <div style={{ position: 'relative', height: 220, overflow: 'hidden', flexShrink: 0 }}>
+-                <Image
+-                  src={card.image}
+-                  alt={card.alt}
+-                  fill
+-                  className="object-cover object-center"
+-                  sizes="(max-width: 768px) 100vw, 33vw"
+-                  style={{ transition: 'transform 0.4s ease' }}
+-                />
+-                {/* Gradient overlay bottom */}
+-                <div style={{
+-                  position: 'absolute', bottom: 0, left: 0, right: 0, height: '50%',
+-                  background: 'linear-gradient(to top, rgba(0,0,0,0.45), transparent)',
+-                }} />
+-                {/* Number badge */}
+-                <div style={{
+-                  position: 'absolute', top: 16, left: 16,
+-                  width: 36, height: 36, borderRadius: '50%',
+-                  background: card.accent,
+-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+-                  color: '#fff', fontWeight: 800, fontSize: 14, fontFamily: 'Poppins, sans-serif',
+-                  boxShadow: `0 4px 12px ${card.accent}66`,
+-                }}>
+-                  0{cards.indexOf(card) + 1}
+-                </div>
+-              </div>
+-
+-              {/* Content */}
++              {/* Icon Box */}
+               <div style={{
+-                padding: '28px 28px 24px',
+-                display: 'flex', flexDirection: 'column', flexGrow: 1,
++                width: 60,
++                height: 60,
++                borderRadius: 12,
++                background: `rgba(79,70,229,0.08)`,
++                display: 'flex',
++                alignItems: 'center',
++                justifyContent: 'center',
++                flexShrink: 0,
+               }}>
+-                {/* Accent bar */}
+-                <div style={{ width: 36, height: 3, background: card.accent, borderRadius: 2, marginBottom: 16 }} />
++                {card.icon}
++              </div>
+ 
++              {/* Text */}
++              <div>
+                 <h3 style={{
+-                  fontSize: 17, fontWeight: 800, color: '#0d2433',
+-                  fontFamily: 'Poppins, sans-serif', lineHeight: 1.35,
+-                  marginBottom: 14, letterSpacing: '-0.01em',
++                  fontSize: 15.5,
++                  fontWeight: 800,
++                  color: NAVY,
++                  marginBottom: 6,
++                  lineHeight: 1.3,
++                  fontFamily: 'Poppins, sans-serif',
+                 }}>
+                   {card.title}
+                 </h3>
+-
+                 <p style={{
+-                  fontSize: 13.5, color: '#5a7280', lineHeight: 1.75,
+-                  flexGrow: 1, marginBottom: 22,
++                  fontSize: 13.5,
++                  color: '#475569',
++                  lineHeight: 1.65,
++                  margin: 0,
+                 }}>
+                   {card.desc}
+                 </p>
+-
+-                <Link
+-                  href={card.href}
+-                  style={{
+-                    display: 'inline-flex', alignItems: 'center', gap: 8,
+-                    fontSize: 13, fontWeight: 700, color: card.accent,
+-                    textDecoration: 'none', letterSpacing: '0.03em',
+-                    paddingBottom: 2,
+-                    borderBottom: `2px solid ${card.accent}33`,
+-                    transition: 'all 0.2s', alignSelf: 'flex-start',
+-                  }}
+-                  onMouseEnter={(e) => {
+-                    (e.currentTarget as HTMLElement).style.gap = '12px';
+-                    (e.currentTarget as HTMLElement).style.borderBottomColor = card.accent;
+-                  }}
+-                  onMouseLeave={(e) => {
+-                    (e.currentTarget as HTMLElement).style.gap = '8px';
+-                    (e.currentTarget as HTMLElement).style.borderBottomColor = `${card.accent}33`;
+-                  }}
+-                >
+-                  Learn More
+-                  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+-                  </svg>
+-                </Link>
+               </div>
+             </div>
+           ))}
+         </div>
++
++        {/* Centered CTA Button */}
++        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
++          <Link
++            href="/appointment"
++            id="wc-cta-card"
++            style={{
++              background: NAVY,
++              borderRadius: 10,
++              padding: '16px 40px',
++              display: 'inline-flex',
++              alignItems: 'center',
++              justifyContent: 'center',
++              gap: 12,
++              textDecoration: 'none',
++              transition: 'all 0.25s ease',
++              cursor: 'pointer',
++              boxShadow: '0 8px 24px rgba(26,43,74,0.15)',
++            }}
++            onMouseEnter={(e) => {
++              (e.currentTarget as HTMLElement).style.background = '#263a5e';
++              (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
++              (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 30px rgba(26,43,74,0.25)`;
++            }}
++            onMouseLeave={(e) => {
++              (e.currentTarget as HTMLElement).style.background = NAVY;
++              (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
++              (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 24px rgba(26,43,74,0.15)';
++            }}
++          >
++            <span style={{
++              fontSize: 16,
++              fontWeight: 800,
++              color: '#ffffff',
++              fontFamily: 'Poppins, sans-serif',
++              letterSpacing: '0.02em',
++            }}>
++              Book Your Consultation
++            </span>
++            <svg width="18" height="18" fill="none" stroke="#ffffff" viewBox="0 0 24 24">
++              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
++            </svg>
++          </Link>
++        </div>
+       </div>
+ 
+       {/* Responsive */}
+@@ -211,7 +203,7 @@ export default function WhyChooseCards() {
+         @media (max-width: 1024px) {
+           #why-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
+         }
+-        @media (max-width: 640px) {
++        @media (max-width: 768px) {
+           #why-cards-grid { grid-template-columns: 1fr !important; }
+         }
+       `}</style>
+diff --git a/app/globals.css b/app/globals.css
+index 3d15f35..d2f87b2 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -13,8 +13,11 @@ html {
+ body {
+   font-family: 'Poppins', 'Inter', Arial, Helvetica, sans-serif;
+   background: #ffffff;
+-  color: #1a1a2e;
++  color: #111827; /* Tailwind gray-900 (ultra readable dark gray) instead of navy blue-black */
+   overflow-x: hidden;
++  -webkit-font-smoothing: antialiased;
++  -moz-osx-font-smoothing: grayscale;
++  text-rendering: optimizeLegibility;
+ }
+ 
+ /* ΓöÇΓöÇΓöÇ Premium Scroll Entrance Animations ΓöÇΓöÇΓöÇ */

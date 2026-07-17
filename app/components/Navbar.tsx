@@ -54,8 +54,9 @@ export default function Navbar() {
       <nav
         className="sticky top-0 z-50 transition-shadow duration-300"
         style={{
-          background: `linear-gradient(135deg, #0b7a91 0%, ${TEAL} 50%, #0d8fa8 100%)`,
-          boxShadow: scrolled ? '0 6px 30px rgba(14,154,181,.45)' : '0 2px 16px rgba(14,154,181,.25)',
+          background: '#ffffff',
+          boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,.12)' : '0 2px 10px rgba(0,0,0,.08)',
+          borderBottom: '1px solid #f0f0f0',
         }}
       >
         <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px', height: 84 }}
@@ -89,7 +90,7 @@ export default function Navbar() {
                     {/* Underline */}
                     <span style={{
                       position: 'absolute', bottom: 0, left: 12, right: 12, height: 2,
-                      background: `linear-gradient(90deg, #ffffff, ${GREEN})`,
+                      background: `linear-gradient(90deg, ${TEAL}, ${GREEN})`,
                       borderRadius: 2,
                       transform: hovered === item.label ? 'scaleX(1)' : 'scaleX(0)',
                       transformOrigin: 'left',
@@ -127,7 +128,7 @@ export default function Navbar() {
                     {item.label}
                     <span style={{
                       position: 'absolute', bottom: 0, left: 12, right: 12, height: 2,
-                      background: `linear-gradient(90deg, #ffffff, ${GREEN})`,
+                      background: `linear-gradient(90deg, ${TEAL}, ${GREEN})`,
                       borderRadius: 2, transform: 'scaleX(0)',
                       transformOrigin: 'left', transition: 'transform .25s',
                     }} />
@@ -155,10 +156,10 @@ export default function Navbar() {
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
               className="flex flex-col justify-center items-center gap-1.5 rounded-lg transition-colors"
-              style={{ width: 44, height: 44, background: 'rgba(255,255,255,0.15)' }}>
-              <span style={{ display: 'block', width: 26, height: 2.5, background: '#ffffff', borderRadius: 2 }} />
-              <span style={{ display: 'block', width: 20, height: 2.5, background: '#ffffff', borderRadius: 2 }} />
-              <span style={{ display: 'block', width: 26, height: 2.5, background: '#ffffff', borderRadius: 2 }} />
+              style={{ width: 44, height: 44, background: `rgba(14,154,181,0.08)`, border: `1px solid rgba(14,154,181,0.2)` }}>
+              <span style={{ display: 'block', width: 26, height: 2.5, background: TEAL, borderRadius: 2 }} />
+              <span style={{ display: 'block', width: 20, height: 2.5, background: TEAL, borderRadius: 2 }} />
+              <span style={{ display: 'block', width: 26, height: 2.5, background: TEAL, borderRadius: 2 }} />
             </button>
           </div>
         </div>
@@ -253,11 +254,11 @@ const navLinkStyle = (active: boolean): React.CSSProperties => ({
   position: 'relative',
   display: 'inline-flex',
   alignItems: 'center',
-  padding: '10px 16px',
-  fontSize: 15,
+  padding: '10px 14px',
+  fontSize: 14.5,
   fontWeight: 700,
   letterSpacing: '0.01em',
-  color: active ? '#a8f0ff' : 'rgba(255,255,255,0.95)',
+  color: active ? '#0e9ab5' : '#1a2540',
   textDecoration: 'none',
   whiteSpace: 'nowrap',
   transition: 'color .2s',

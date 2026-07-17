@@ -76,7 +76,7 @@ export default function WhyChoose() {
           <div
             data-animate="fade-right"
             style={{
-              background: '#f8f9fb',
+              background: '#ffffff',
               padding: '48px 56px',
               display: 'flex',
               flexDirection: 'column',
@@ -97,13 +97,13 @@ export default function WhyChoose() {
 
             {/* Heading */}
             <h2 style={{
-              fontSize: 'clamp(22px, 2.8vw, 34px)',
-              fontWeight: 800,
-              color: '#0d2433',
+              fontSize: 'clamp(20px, 2.4vw, 30px)',
+              fontWeight: 600,
+              color: '#000000',
               lineHeight: 1.25,
               fontFamily: 'Poppins, sans-serif',
               marginBottom: 20,
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.01em',
             }}>
               We Provide Exceptional{' '}
               <span style={{ color: TEAL }}>Patient Care</span>{' '}
@@ -112,7 +112,7 @@ export default function WhyChoose() {
 
             {/* Body text */}
             <p style={{
-              fontSize: 15, color: '#5a7280', lineHeight: 1.8,
+              fontSize: 15, color: '#334155', lineHeight: 1.8,
               marginBottom: 28, maxWidth: 540,
             }}>
               At Acharjee Health Clinic, your health is our priority. We offer comprehensive medical services with a focus on personalized care and compassion, ensuring that every patient feels supported and valued throughout their journey with us.
@@ -132,7 +132,7 @@ export default function WhyChoose() {
                     <path d="M3 10l5 5 9-9" stroke={RED} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M7 10l3 3 5-5" stroke={RED} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" opacity=".4" />
                   </svg>
-                  <span style={{ fontSize: 13.5, color: '#2d4a5a', fontWeight: 600, lineHeight: 1.4 }}>{f}</span>
+                  <span style={{ fontSize: 13.5, color: '#1e293b', fontWeight: 600, lineHeight: 1.4 }}>{f}</span>
                 </div>
               ))}
             </div>
@@ -141,7 +141,7 @@ export default function WhyChoose() {
             <div style={{ width: '100%', height: 1, background: '#e2e8f0', marginBottom: 24 }} />
 
             {/* Body closing */}
-            <p style={{ fontSize: 14, color: '#7a9198', lineHeight: 1.75, marginBottom: 28 }}>
+            <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.75, marginBottom: 28 }}>
               Our commitment to your well-being drives us to deliver the highest standards of medical excellence — because every patient deserves the very best.
             </p>
 

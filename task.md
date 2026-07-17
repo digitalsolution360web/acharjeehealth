@@ -1,0 +1,8 @@
+- [x] Upgrade `AnimateObserver.tsx` to use MutationObserver for robust element detection.
+- [x] Create the new `/about` page route folder and `app/about/page.tsx`.
+- [x] Implement About Us page sections with exact client-provided copy and integrated image assets (`5.jpg` to `9.jpg`).
+- [x] Set image count limit to exactly one large featured image per content section.
+- [x] Align container sizes and paddings to match the Navbar's grid container boundary (`maxWidth: 1520`).
+- [x] Redesign the Core Foundation (Mission, Vision, Values) section into premium cards with micro-value components.
+- [x] Build and route validation tests (live on port 3000).
+- [x] Complete walkthrough of visual and technical alignments.

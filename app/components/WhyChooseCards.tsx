@@ -1,39 +1,52 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 const TEAL = '#0e9ab5';
-const RED = '#e0142a';
-const GREEN = '#3aaa35';
+const NAVY = '#1a2b4a';
+const INDIGO = '#4f46e5';
 
 const cards = [
   {
     id: 'better-care',
-    image: '/1.jpeg',
-    alt: 'Better Care Environment',
     title: 'Not Just Better Care, But a Better Experience',
     desc: 'At Acharjee Health Clinic, we prioritize not only your health but also your experience. Our team is dedicated to providing exceptional medical care in a comfortable and supportive environment, making your journey to wellness smoother.',
-    href: '/about',
-    accent: TEAL,
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <path d="M18 6a8 8 0 100 16A8 8 0 0018 6z" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" fill="none" />
+        <path d="M7 32c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" />
+        <path d="M14 14l3 3 5-5" stroke={TEAL} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
   },
   {
     id: 'community-care',
-    image: '/4.jpg',
-    alt: 'Community Healthcare',
     title: 'Serving Our Community with Exemplary Care',
     desc: 'At Acharjee Health Clinic, we are committed to offering high-quality healthcare services to all. Our compassionate team ensures that every patient receives personalized care, focusing on both treatment and experience.',
-    href: '/about',
-    accent: GREEN,
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <circle cx="12" cy="13" r="5" stroke={INDIGO} strokeWidth="2" fill="none" />
+        <circle cx="24" cy="13" r="5" stroke={TEAL} strokeWidth="2" fill="none" />
+        <path d="M4 30c0-4.418 3.582-8 8-8" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" />
+        <path d="M24 22c4.418 0 8 3.582 8 8" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
+        <path d="M12 22c3.314 0 6 2.686 6 6H18c0-3.314 2.686-6 6-6" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
   },
   {
     id: 'specialty-medicine',
-    image: '/2.jpg',
-    alt: 'Specialty Medicine',
     title: 'Specialty Medicine Delivered with Compassion',
     desc: 'At Acharjee Health Clinic, we offer specialized medical services provided by a team of expert doctors who are dedicated to delivering care with compassion and understanding. Your health and comfort are our top priorities.',
-    href: '/services',
-    accent: RED,
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <rect x="10" y="6" width="16" height="24" rx="3" stroke={INDIGO} strokeWidth="2" fill="none" />
+        <path d="M14 6V4a2 2 0 014 0v2" stroke={INDIGO} strokeWidth="2" strokeLinecap="round" />
+        <line x1="15" y1="15" x2="21" y2="15" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
+        <line x1="18" y1="12" x2="18" y2="18" stroke={TEAL} strokeWidth="2" strokeLinecap="round" />
+        <line x1="15" y1="22" x2="21" y2="22" stroke={INDIGO} strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="15" y1="26" x2="19" y2="26" stroke={INDIGO} strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
   },
 ];
 
@@ -41,168 +54,147 @@ export default function WhyChooseCards() {
   return (
     <section
       id="why-choose-cards"
-      style={{ background: '#fff', padding: '72px 0', overflow: 'hidden', position: 'relative' }}
+      style={{ background: '#ffffff', padding: '80px 0', overflow: 'hidden' }}
     >
-      {/* Subtle bg pattern */}
-      <div style={{
-        position: 'absolute', inset: 0, opacity: 0.025,
-        backgroundImage: 'radial-gradient(circle, #0e9ab5 1px, transparent 1px)',
-        backgroundSize: '32px 32px',
-        pointerEvents: 'none',
-      }} />
+      <div style={{ maxWidth: 1300, margin: '0 auto', padding: '0 40px' }}>
 
-      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px', position: 'relative', zIndex: 1 }}>
-
-        {/* ── Header ── */}
-        <div style={{ textAlign: 'center', marginBottom: 44 }} data-animate="fade-up">
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 12,
-            fontWeight: 700, letterSpacing: '0.2em', color: TEAL,
-            textTransform: 'uppercase', marginBottom: 12,
-          }}>
-            <span style={{ width: 32, height: 2, background: TEAL, display: 'inline-block', borderRadius: 2 }} />
-            WHY CHOOSE
-            <span style={{ width: 32, height: 2, background: TEAL, display: 'inline-block', borderRadius: 2 }} />
-          </span>
-
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
           <h2 style={{
-            fontSize: 'clamp(24px, 3vw, 38px)',
-            fontWeight: 800, color: '#0d2433',
+            fontSize: 'clamp(20px, 2.4vw, 30px)',
+            fontWeight: 600,
+            color: '#000000',
             fontFamily: 'Poppins, sans-serif',
-            letterSpacing: '-0.02em', lineHeight: 1.2,
+            letterSpacing: '-0.01em',
             marginBottom: 12,
           }}>
-            Acharjee Health Clinic
+            Why Choose Us
           </h2>
-          <p style={{
-            fontSize: 17, color: '#4a7280', fontWeight: 500,
-            letterSpacing: '0.01em',
-          }}>
-            We Are Committed to Protecting Your Health
+          <p style={{ fontSize: 16, color: '#374151', maxWidth: 480, margin: '0 auto', lineHeight: 1.6 }}>
+            We Are Committed to Protecting Your Health — Acharjee Health Clinic
           </p>
-
-          {/* Underline accent */}
-          <div style={{
-            display: 'flex', justifyContent: 'center', marginTop: 18, gap: 6,
-          }}>
-            <div style={{ width: 48, height: 3, background: TEAL, borderRadius: 2 }} />
-            <div style={{ width: 12, height: 3, background: GREEN, borderRadius: 2 }} />
-            <div style={{ width: 6, height: 3, background: RED, borderRadius: 2 }} />
-          </div>
         </div>
 
-        {/* ── Cards Grid ── */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 28,
-        }} id="why-cards-grid">
-          {cards.map((card) => (
+        {/* Grid — 3 cols top row, 2 cards + 1 CTA bottom row */}
+        <div
+          id="why-cards-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 20,
+          }}
+        >
+          {cards.map((card, i) => (
             <div
               key={card.id}
               id={`wc-card-${card.id}`}
-              className="wc-card"
-              data-animate="zoom-in"
               style={{
-                background: '#fff',
-                borderRadius: 18,
-                overflow: 'hidden',
-                boxShadow: '0 4px 28px rgba(0,0,0,0.07)',
-                border: '1.5px solid #eef2f6',
-                display: 'flex', flexDirection: 'column',
-                transition: 'all 0.3s cubic-bezier(.25,.46,.45,.94), opacity 0.85s, transform 0.85s',
+                background: '#f8f9fe',
+                borderRadius: 14,
+                padding: '30px 28px',
+                border: '1.5px solid #e8ecf8',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                gap: 20,
+                transition: 'all 0.25s ease',
+                cursor: 'default',
+                position: 'relative',
               }}
               onMouseEnter={(e) => {
-                const el = e.currentTarget;
-                el.style.transform = 'translateY(-8px)';
-                el.style.boxShadow = `0 20px 56px rgba(14,154,181,0.16)`;
-                el.style.borderColor = card.accent;
+                e.currentTarget.style.borderColor = `${INDIGO}40`;
+                e.currentTarget.style.boxShadow = `0 8px 32px rgba(79,70,229,0.12)`;
+                e.currentTarget.style.background = '#fff';
+                e.currentTarget.style.transform = 'translateY(-3px)';
               }}
               onMouseLeave={(e) => {
-                const el = e.currentTarget;
-                el.style.transform = 'translateY(0)';
-                el.style.boxShadow = '0 4px 28px rgba(0,0,0,0.07)';
-                el.style.borderColor = '#eef2f6';
+                e.currentTarget.style.borderColor = '#e8ecf8';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.background = '#f8f9fe';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              {/* Image */}
-              <div style={{ position: 'relative', height: 220, overflow: 'hidden', flexShrink: 0 }}>
-                <Image
-                  src={card.image}
-                  alt={card.alt}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  style={{ transition: 'transform 0.4s ease' }}
-                />
-                {/* Gradient overlay bottom */}
-                <div style={{
-                  position: 'absolute', bottom: 0, left: 0, right: 0, height: '50%',
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.45), transparent)',
-                }} />
-                {/* Number badge */}
-                <div style={{
-                  position: 'absolute', top: 16, left: 16,
-                  width: 36, height: 36, borderRadius: '50%',
-                  background: card.accent,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: '#fff', fontWeight: 800, fontSize: 14, fontFamily: 'Poppins, sans-serif',
-                  boxShadow: `0 4px 12px ${card.accent}66`,
-                }}>
-                  0{cards.indexOf(card) + 1}
-                </div>
+              {/* Icon Box */}
+              <div style={{
+                width: 60,
+                height: 60,
+                borderRadius: 12,
+                background: `rgba(79,70,229,0.08)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}>
+                {card.icon}
               </div>
 
-              {/* Content */}
-              <div style={{
-                padding: '28px 28px 24px',
-                display: 'flex', flexDirection: 'column', flexGrow: 1,
-              }}>
-                {/* Accent bar */}
-                <div style={{ width: 36, height: 3, background: card.accent, borderRadius: 2, marginBottom: 16 }} />
-
+              {/* Text */}
+              <div>
                 <h3 style={{
-                  fontSize: 17, fontWeight: 800, color: '#0d2433',
-                  fontFamily: 'Poppins, sans-serif', lineHeight: 1.35,
-                  marginBottom: 14, letterSpacing: '-0.01em',
+                  fontSize: 14.5,
+                  fontWeight: 600,
+                  color: '#000000',
+                  marginBottom: 6,
+                  lineHeight: 1.3,
+                  fontFamily: 'Poppins, sans-serif',
                 }}>
                   {card.title}
                 </h3>
-
                 <p style={{
-                  fontSize: 13.5, color: '#5a7280', lineHeight: 1.75,
-                  flexGrow: 1, marginBottom: 22,
+                  fontSize: 13.5,
+                  color: '#475569',
+                  lineHeight: 1.65,
+                  margin: 0,
                 }}>
                   {card.desc}
                 </p>
-
-                <Link
-                  href={card.href}
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 8,
-                    fontSize: 13, fontWeight: 700, color: card.accent,
-                    textDecoration: 'none', letterSpacing: '0.03em',
-                    paddingBottom: 2,
-                    borderBottom: `2px solid ${card.accent}33`,
-                    transition: 'all 0.2s', alignSelf: 'flex-start',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.gap = '12px';
-                    (e.currentTarget as HTMLElement).style.borderBottomColor = card.accent;
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.gap = '8px';
-                    (e.currentTarget as HTMLElement).style.borderBottomColor = `${card.accent}33`;
-                  }}
-                >
-                  Learn More
-                  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Centered CTA Button */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
+          <Link
+            href="/appointment"
+            id="wc-cta-card"
+            style={{
+              background: NAVY,
+              borderRadius: 10,
+              padding: '16px 40px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 12,
+              textDecoration: 'none',
+              transition: 'all 0.25s ease',
+              cursor: 'pointer',
+              boxShadow: '0 8px 24px rgba(26,43,74,0.15)',
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = '#263a5e';
+              (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+              (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 30px rgba(26,43,74,0.25)`;
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = NAVY;
+              (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+              (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 24px rgba(26,43,74,0.15)';
+            }}
+          >
+            <span style={{
+              fontSize: 16,
+              fontWeight: 800,
+              color: '#ffffff',
+              fontFamily: 'Poppins, sans-serif',
+              letterSpacing: '0.02em',
+            }}>
+              Book Your Consultation
+            </span>
+            <svg width="18" height="18" fill="none" stroke="#ffffff" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
       </div>
 
@@ -211,7 +203,7 @@ export default function WhyChooseCards() {
         @media (max-width: 1024px) {
           #why-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           #why-cards-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>

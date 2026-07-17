@@ -13,8 +13,11 @@ html {
 body {
   font-family: 'Poppins', 'Inter', Arial, Helvetica, sans-serif;
   background: #ffffff;
-  color: #1a1a2e;
+  color: #111827; /* Tailwind gray-900 (ultra readable dark gray) instead of navy blue-black */
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* ─── Premium Scroll Entrance Animations ─── */
