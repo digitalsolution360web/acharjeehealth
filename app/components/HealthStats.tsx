@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const TEAL = '#0e9ab5';
@@ -9,7 +10,8 @@ const RED = '#e0142a';
 const stats = [
   {
     id: 'patients',
-    number: '20,000+',
+    target: 20000,
+    suffix: '+',
     label: 'Satisfied Patients',
     desc: 'We are proud to have provided top-quality care to over 20,000 satisfied patients, ensuring their health and well-being.',
     icon: (
@@ -25,7 +27,8 @@ const stats = [
   },
   {
     id: 'concerns',
-    number: '68%',
+    target: 68,
+    suffix: '%',
     label: 'Health Concerns Worldwide',
     desc: 'Many adults worldwide experience health concerns that are preventable with regular check-ups and early intervention.',
     icon: (
@@ -41,7 +44,8 @@ const stats = [
   },
   {
     id: 'access',
-    number: '25%',
+    target: 25,
+    suffix: '%',
     label: 'Access to Medical Care',
     desc: 'People globally still need better access to essential medical services and treatments that could save lives.',
     icon: (
@@ -57,7 +61,8 @@ const stats = [
   },
   {
     id: 'preventable',
-    number: '80%',
+    target: 80,
+    suffix: '%',
     label: 'Preventable Health Problems',
     desc: '80% of health problems can be avoided or cured with timely medical attention and expert care by professionals.',
     icon: (
@@ -71,12 +76,64 @@ const stats = [
   },
 ];
 
+// Helper Counter component to animate counting from 0 when visible
+function Counter({ target, suffix }: { target: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const elementRef = useRef<HTMLSpanElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+    const end = target;
+    const duration = 2000; // Animation duration 2 seconds
+    const startTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing curve (ease-out quad)
+      const easeProgress = progress * (2 - progress);
+      const currentCount = Math.floor(easeProgress * end);
+      
+      setCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [hasStarted, target]);
+
+  return (
+    <span ref={elementRef}>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
+
 export default function HealthStats() {
   return (
     <section
       id="health-stats"
       style={{
-        background: 'linear-gradient(135deg, #06182a 0%, #091e30 55%, #061422 100%)',
+        background: 'linear-gradient(135deg, #0d2847 0%, #153c65 55%, #0d2139 100%)',
         padding: '72px 0 36px 0',
         overflow: 'hidden',
         position: 'relative',
@@ -118,7 +175,7 @@ export default function HealthStats() {
             }}>Top Priority</span>
           </h2>
 
-          <p style={{ fontSize: 15.5, color: '#94a3b8', maxWidth: 520, margin: '0 auto 28px', lineHeight: 1.7 }}>
+          <p style={{ fontSize: 15.5, color: '#e2e8f0', maxWidth: 520, margin: '0 auto 28px', lineHeight: 1.7 }}>
             Delivering exceptional, compassionate healthcare solutions that transform lives — one patient at a time.
           </p>
 
@@ -212,7 +269,7 @@ export default function HealthStats() {
                 background: `linear-gradient(135deg, #fff 0%, ${stat.color} 100%)`,
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
               }}>
-                {stat.number}
+                <Counter target={stat.target} suffix={stat.suffix} />
               </div>
 
               {/* Label */}
@@ -228,7 +285,7 @@ export default function HealthStats() {
               <div style={{ width: 40, height: 2, background: stat.bg, borderRadius: 2, marginBottom: 14, opacity: 0.7 }} />
 
               {/* Desc */}
-              <p style={{ fontSize: 13, color: '#94a3b8', lineHeight: 1.7, margin: 0 }}>
+              <p style={{ fontSize: 13, color: '#e2e8f0', lineHeight: 1.7, margin: 0 }}>
                 {stat.desc}
               </p>
             </div>

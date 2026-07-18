@@ -1,5 +1,8 @@
 import HeroSlider from "./components/HeroSlider";
-import QuickLinks from "./components/QuickLinks";
+import AppointmentBar from "./components/AppointmentBar";
+import BookingHelper from "./components/BookingHelper";
+import Service from "./components/Service";
+// import QuickLinks from "./components/QuickLinks";
 import InfoBanner from "./components/InfoBanner";
 import AboutSection from "./components/AboutSection";
 import ServicesCards from "./components/ServicesCards";
@@ -13,7 +16,10 @@ export default function Home() {
   return (
     <>
       <HeroSlider />
-      <QuickLinks />
+      <AppointmentBar />
+      <BookingHelper />
+      <Service />
+      {/* <QuickLinks /> */}
       <WhyChoose />
       <WhyChooseCards />
       <DoctorVideo />

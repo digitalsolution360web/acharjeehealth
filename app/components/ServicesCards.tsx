@@ -82,7 +82,7 @@ export default function ServicesCards() {
         borderTop: '1px solid #f0f2f8',
       }}
     >
-      <div style={{ maxWidth: 1300, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px', position: 'relative', zIndex: 1 }}>
 
         {/* Section header */}
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -128,7 +128,7 @@ export default function ServicesCards() {
               key={card.id}
               id={`service-card-${card.id}`}
               style={{
-                background: '#ffffff',
+                background: '#e8f4f9',
                 borderRadius: 18,
                 padding: '36px 30px',
                 position: 'relative',

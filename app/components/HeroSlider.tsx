@@ -94,7 +94,7 @@ export default function HeroSlider() {
         <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
           {slides.map((_, i) => (
             <button
-               key={i}
+              key={i}
               onClick={() => goTo(i)}
               aria-label={`Slide ${i + 1}`}
               className="transition-all duration-300 rounded-full border-2 border-white/70"

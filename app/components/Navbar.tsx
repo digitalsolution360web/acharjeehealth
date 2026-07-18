@@ -64,7 +64,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="shrink-0 flex items-center" style={{ height: 84 }}>
-            <Image src="/logoo.jpeg" alt="Acharjee Health Clinic & Pharmacy"
+            <Image src="/logoo.png" alt="Acharjee Health Clinic & Pharmacy"
               width={175} height={56} priority
               style={{ height: '56px', width: 'auto', objectFit: 'contain', borderRadius: 6 }} />
           </Link>

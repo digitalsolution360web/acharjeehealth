@@ -71,7 +71,7 @@ export default function Footer() {
           {/* Col 1: Brand */}
           <div>
             <div style={{ marginBottom: 22 }}>
-              <Image src="/logoo.jpeg" alt="Acharjee Health Clinic & Pharmacy" width={160} height={52} style={{ height: 52, width: 'auto', objectFit: 'contain', borderRadius: 6 }} />
+              <Image src="/logoo.png" alt="Acharjee Health Clinic & Pharmacy" width={160} height={52} style={{ height: 52, width: 'auto', objectFit: 'contain', borderRadius: 6 }} />
             </div>
             <p style={{ fontSize: 13.5, color: '#94a3b8', lineHeight: 1.75, marginBottom: 24, maxWidth: 280 }}>
               Acharjee Health Clinic &amp; Pharmacy — 48 years of trusted, compassionate healthcare serving Asansol and beyond.

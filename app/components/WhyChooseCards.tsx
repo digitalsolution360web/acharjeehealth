@@ -56,7 +56,7 @@ export default function WhyChooseCards() {
       id="why-choose-cards"
       style={{ background: '#ffffff', padding: '80px 0', overflow: 'hidden' }}
     >
-      <div style={{ maxWidth: 1300, margin: '0 auto', padding: '0 40px' }}>
+      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px' }}>
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -89,10 +89,10 @@ export default function WhyChooseCards() {
               key={card.id}
               id={`wc-card-${card.id}`}
               style={{
-                background: '#f8f9fe',
+                background: '#e8f4f9',
                 borderRadius: 14,
                 padding: '30px 28px',
-                border: '1.5px solid #e8ecf8',
+                border: '1.5px solid #cce5ef',
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'flex-start',
@@ -110,7 +110,7 @@ export default function WhyChooseCards() {
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = '#e8ecf8';
                 e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.background = '#f8f9fe';
+                e.currentTarget.style.background = '#e8f4f9';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -119,7 +119,7 @@ export default function WhyChooseCards() {
                 width: 60,
                 height: 60,
                 borderRadius: 12,
-                background: `rgba(79,70,229,0.08)`,
+                background: '#d0eaf3',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
