@@ -25,7 +25,7 @@ const stats = [
 
 export default function WhyChoose() {
   return (
-    <section id="why-choose" style={{ background: '#fff', padding: '72px 0 36px 0', overflow: 'hidden' }}>
+    <section id="why-choose" style={{ background: '#fff', padding: '36px 0 24px 0', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 clamp(16px, 4vw, 44px)' }}>
         <div
           id="why-choose-grid"

@@ -21,7 +21,7 @@ export default function AboutPage() {
 
   return (
     <div style={{ background: '#fcfdfe', minHeight: '100vh', color: '#1a2d3d', wordBreak: 'break-word', fontFamily: 'Poppins, Arial, Helvetica, sans-serif' }}>
-      
+
       {/* 1. HERO BREADCRUMB HEADER */}
       <section style={{
         position: 'relative',
@@ -31,7 +31,7 @@ export default function AboutPage() {
         overflow: 'hidden'
       }}>
         <div style={{ position: 'absolute', top: 0, right: 0, width: 320, height: 320, background: 'rgba(255,255,255,0.06)', borderRadius: '50%', filter: 'blur(90px)', pointerEvents: 'none' }} />
-        
+
         <div className="section-container" style={{ maxWidth: 1520, margin: '0 auto', position: 'relative', zIndex: 10 }}>
           <div style={{ display: 'flex', gap: 8, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.75)', marginBottom: 12 }}>
             <Link href="/" style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none' }}>Home</Link>
@@ -48,17 +48,17 @@ export default function AboutPage() {
       </section>
 
       {/* 2. SERVICES OVERVIEW & 5.JPG SPECIALTIES SECTION */}
-      <section style={{ padding: '72px 0', background: '#fcfdfe' }}>
+      <section style={{ padding: '48px 0', background: '#fcfdfe' }}>
         <div className="section-container" style={{ maxWidth: 1520, margin: '0 auto' }}>
           <div id="intro-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.25fr', gap: '64px', alignItems: 'center' }}>
-            
+
             {/* Main 5.jpg image card */}
-            <div data-animate="fade-right" style={{ position: 'relative', height: 480, borderRadius: 28, overflow: 'hidden', boxShadow: '0 24px 64px rgba(13,36,60,0.08)', background: '#ffffff', border: '1.5px solid #f1f5f9' }}>
-              <Image 
-                src="/5.jpg" 
-                alt="Services Graphic" 
-                fill 
-                style={{ objectFit: 'contain', padding: 12 }} 
+            <div data-animate="fade-right" style={{ position: 'relative', height: 600, borderRadius: 28, overflow: 'hidden', boxShadow: '0 24px 64px rgba(13,36,60,0.08)', border: '1.5px solid #f1f5f9' }}>
+              <Image
+                src="/5.jpg"
+                alt="Services Graphic"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
                 priority
               />
             </div>
@@ -67,11 +67,11 @@ export default function AboutPage() {
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: 50, background: 'rgba(14, 154, 181, 0.1)', color: '#0e9ab5', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 14 }}>
                 Acharjee Services & specialties
               </span>
-              
+
               <h2 style={{ fontSize: 'clamp(24px, 3.2vw, 36px)', fontWeight: 800, color: '#0d2433', margin: '0 0 18px', lineHeight: 1.25, letterSpacing: '-0.02em' }}>
                 Your Health is Our Top Priority
               </h2>
-              
+
               <p style={{ fontSize: 16, fontWeight: 600, color: '#324a5e', borderLeft: `4px solid ${TEAL}`, paddingLeft: 18, margin: '0 0 24px', lineHeight: 1.65 }}>
                 At Acharjee Health Clinic & Pharmacy, we offer expert healthcare across a wide range of specialties to ensure comprehensive care for all your medical needs
               </p>
@@ -89,16 +89,16 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
 
       {/* 3. LEGACY - Mr. Premananda Acharya (6.JPG IMAGE) */}
-      <section style={{ padding: '72px 0', background: '#ffffff', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9' }}>
+      <section style={{ padding: '48px 0', background: '#ffffff' }}>
         <div className="section-container" style={{ maxWidth: 1520, margin: '0 auto' }}>
           <div id="legacy-grid" style={{ display: 'grid', gridTemplateColumns: '1.25fr 1.05fr', gap: '64px', alignItems: 'center' }}>
-            
+
             <div data-animate="fade-right">
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: 50, background: 'rgba(58,170,53,0.1)', color: '#3aaa35', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 14 }}>
                 Our Roots
@@ -113,11 +113,11 @@ export default function AboutPage() {
 
             {/* Main 6.jpg image card */}
             <div data-animate="fade-left" style={{ position: 'relative', height: 480, borderRadius: 28, overflow: 'hidden', boxShadow: '0 24px 64px rgba(13,36,60,0.08)', border: '1.5px solid #f1f5f9' }}>
-              <Image 
-                src="/6.jpg" 
-                alt="Clinic Legacy" 
-                fill 
-                style={{ objectFit: 'cover' }} 
+              <Image
+                src="/6.jpg"
+                alt="Clinic Legacy"
+                fill
+                style={{ objectFit: 'cover' }}
               />
             </div>
 
@@ -126,17 +126,17 @@ export default function AboutPage() {
       </section>
 
       {/* 4. EXECUTIVE BREATHE - Chandana Acharya (7.JPG IMAGE) */}
-      <section style={{ padding: '72px 0', background: '#fcfdfe' }}>
+      <section style={{ padding: '48px 0', background: '#fcfdfe' }}>
         <div className="section-container" style={{ maxWidth: 1520, margin: '0 auto' }}>
           <div id="profile-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.25fr', gap: '64px', alignItems: 'center' }}>
-            
+
             {/* Main 7.jpg image card */}
             <div data-animate="fade-right" style={{ position: 'relative', height: 480, borderRadius: 28, overflow: 'hidden', boxShadow: '0 24px 64px rgba(13,36,60,0.08)', border: '1.5px solid #f1f5f9' }}>
-              <Image 
-                src="/7.jpg" 
-                alt="Advocate Chandana Acharya" 
-                fill 
-                style={{ objectFit: 'cover', objectPosition: 'top' }} 
+              <Image
+                src="/7.jpg"
+                alt="Advocate Chandana Acharya"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'top' }}
               />
             </div>
 
@@ -150,7 +150,7 @@ export default function AboutPage() {
               <p style={{ fontSize: 15, color: '#516b7e', lineHeight: 1.8, margin: '0 0 28px', textAlign: 'justify' }}>
                 Advocate Chandana Acharya is a beacon of empowerment, excelling in law, business, and family life. With over 35 years of experience in law, she has earned respect for her legal expertise and dedication to justice. In the last five years, she has also thrived as a business partner, helping manage her family’s successful pharmacy and clinic. Beyond her professional achievements, she skillfully balances her career with family and social responsibilities, embodying modern womanhood through multitasking, leadership, and compassion. Her story is one of resilience and determination, showing that women can break barriers and excel in all aspects of life.
               </p>
-              
+
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div style={{ background: '#ffffff', border: '1px solid #f1f5f9', padding: '16px', borderRadius: 16, boxShadow: '0 4px 16px rgba(0,0,0,0.01)' }}>
                   <h4 style={{ fontSize: 20, fontWeight: 900, color: TEAL, margin: 0 }}>35+ Years</h4>
@@ -168,10 +168,10 @@ export default function AboutPage() {
       </section>
 
       {/* 5. RATINGS PANEL - 8.JPG IMAGE */}
-      <section style={{ padding: '72px 0', background: '#ffffff', borderTop: '1px solid #eef3f6' }}>
+      <section style={{ padding: '48px 0', background: '#ffffff' }}>
         <div className="section-container" style={{ maxWidth: 1520, margin: '0 auto' }}>
           <div id="ratings-grid" style={{ display: 'grid', gridTemplateColumns: '1.25fr 1.05fr', gap: '64px', alignItems: 'center' }}>
-            
+
             <div data-animate="fade-right">
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: 50, background: 'rgba(58,170,53,0.1)', color: '#3aaa35', fontSize: 11, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 14 }}>
                 ⭐ AVERAGE GOOGLE RATINGS
@@ -185,12 +185,12 @@ export default function AboutPage() {
             </div>
 
             {/* Main 8.jpg featured ratings image card */}
-            <div data-animate="fade-left" style={{ position: 'relative', height: 420, borderRadius: 28, overflow: 'hidden', boxShadow: '0 24px 64px rgba(13,36,60,0.08)', background: '#ffffff', border: '1.5px solid #f1f5f9' }}>
-              <Image 
-                src="/8.jpg" 
-                alt="Google Ratings Data" 
-                fill 
-                style={{ objectFit: 'contain', padding: 16 }} 
+            <div data-animate="fade-left" style={{ position: 'relative', height: 420, borderRadius: 28, overflow: 'hidden', boxShadow: '0 24px 64px rgba(13,36,60,0.08)', border: '1.5px solid #f1f5f9' }}>
+              <Image
+                src="/8.jpg"
+                alt="Google Ratings Data"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
               />
             </div>
 
@@ -199,17 +199,17 @@ export default function AboutPage() {
       </section>
 
       {/* 6. SECURITY & DATA PRIVACY - 9.JPG IMAGE */}
-      <section style={{ padding: '72px 0', background: '#fcfdfe', borderTop: '1px solid #eef3f6', borderBottom: '1px solid #eef3f6' }}>
+      <section style={{ padding: '48px 0', background: '#fcfdfe' }}>
         <div className="section-container" style={{ maxWidth: 1520, margin: '0 auto' }}>
           <div id="privacy-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.25fr', gap: '64px', alignItems: 'center' }}>
-            
+
             {/* Main 9.jpg confidentiality image card */}
-            <div data-animate="fade-right" style={{ position: 'relative', height: 420, borderRadius: 28, overflow: 'hidden', boxShadow: '0 24px 64px rgba(13,36,60,0.08)', background: '#ffffff', border: '1.5px solid #f1f5f9' }}>
-              <Image 
-                src="/9.jpg" 
-                alt="Patient Privacy Shield" 
-                fill 
-                style={{ objectFit: 'contain', padding: 16 }} 
+            <div data-animate="fade-right" style={{ position: 'relative', height: 420, borderRadius: 28, overflow: 'hidden', boxShadow: '0 24px 64px rgba(13,36,60,0.08)', border: '1.5px solid #f1f5f9' }}>
+              <Image
+                src="/9.jpg"
+                alt="Patient Privacy Shield"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
               />
             </div>
 
@@ -230,11 +230,11 @@ export default function AboutPage() {
       </section>
 
       {/* 7. PREMIUM CORE PILLARS SECTION (MISSION, VISION, VALUES) */}
-      <section style={{ padding: '80px 0', background: 'linear-gradient(180deg, #ffffff 0%, #f7fbfd 100%)' }}>
+      <section style={{ padding: '48px 0', background: 'linear-gradient(180deg, #ffffff 0%, #f7fbfd 100%)' }}>
         <div className="section-container" style={{ maxWidth: 1520, margin: '0 auto' }}>
-          
+
           {/* Section Header */}
-          <div data-animate="fade-up" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 60px' }}>
+          <div data-animate="fade-up" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 40px' }}>
             <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: 50, background: 'rgba(14,154,181,0.08)', color: TEAL, fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: 14 }}>
               OUR CORE FOUNDATION
             </span>
@@ -247,7 +247,7 @@ export default function AboutPage() {
           </div>
 
           <div id="pillars-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.15fr', gap: 32, alignItems: 'stretch' }}>
-            
+
             {/* Card 1: MISSION */}
             <div data-animate="fade-right" className="pillar-card border-accent-teal" style={{ background: '#ffffff', border: '1.5px solid #edf6f8', borderRadius: 28, padding: '36px', boxShadow: '0 10px 30px rgba(13,36,60,0.02)', display: 'flex', flexDirection: 'column', transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }}>
               <div style={{ width: 48, height: 48, borderRadius: 16, background: 'rgba(14,154,181,0.1)', color: '#0e9ab5', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 900, marginBottom: 24 }}>
@@ -276,9 +276,9 @@ export default function AboutPage() {
                 🤝
               </div>
               <h3 style={{ fontSize: 18, fontWeight: 800, color: '#0d2433', margin: '0 0 20px', letterSpacing: '0.06em', fontFamily: 'Poppins, sans-serif' }}>OUR VALUES</h3>
-              
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                
+
                 {/* Value 1: Compassion */}
                 <div className="value-micro-card" style={{ background: '#fffafa', border: '1px solid #fbebeb', padding: '14px 18px', borderRadius: 18, transition: 'all 0.2s' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>

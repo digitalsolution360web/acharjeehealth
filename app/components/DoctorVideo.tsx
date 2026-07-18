@@ -12,7 +12,7 @@ export default function DoctorVideo() {
       id="doctor-video"
       style={{
         background: '#ffffff',
-        padding: '72px 0',
+        padding: '48px 0',
         overflow: 'hidden',
         position: 'relative',
         borderTop: '1px solid #f0f2f8',

@@ -54,7 +54,7 @@ export default function WhyChooseCards() {
   return (
     <section
       id="why-choose-cards"
-      style={{ background: '#ffffff', padding: '80px 0', overflow: 'hidden' }}
+      style={{ background: '#ffffff', padding: '48px 0', overflow: 'hidden' }}
     >
       <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 clamp(16px, 4vw, 44px)' }}>
 

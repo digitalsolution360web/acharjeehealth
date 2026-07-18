@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -45,15 +46,66 @@ const whyItems = [
   },
 ];
 
+function Counter({ target, suffix }: { target: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const elementRef = useRef<HTMLSpanElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+    const end = target;
+    const duration = 2000; // Animation duration 2 seconds
+    const startTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing curve (ease-out quad)
+      const easeProgress = progress * (2 - progress);
+      const currentCount = Math.floor(easeProgress * end);
+      
+      setCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [hasStarted, target]);
+
+  return (
+    <span ref={elementRef}>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
+
 const stats = [
-  { value: '15+', label: 'Years of Service' },
-  { value: '50k+', label: 'Happy Patients' },
-  { value: '98%', label: 'Satisfaction Rate' },
+  { target: 15, suffix: '+', label: 'Years of Service' },
+  { target: 50, suffix: 'k+', label: 'Happy Patients' },
+  { target: 98, suffix: '%', label: 'Satisfaction Rate' },
 ];
 
 export default function AboutSection() {
   return (
-    <section id="about-section" style={{ background: '#ffffff', padding: '72px 0 84px 0', overflow: 'hidden', position: 'relative' }}>
+    <section id="about-section" style={{ background: '#ffffff', padding: '48px 0', overflow: 'hidden', position: 'relative' }}>
       {/* Grid Pattern Background */}
       <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '45%', opacity: 0.03, backgroundImage: 'radial-gradient(#0e9ab5 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', pointerEvents: 'none' }} />
 
@@ -114,8 +166,8 @@ export default function AboutSection() {
                       boxShadow: '0 4px 16px rgba(0,0,0,0.02)',
                     }}
                   >
-                    <div style={{ fontSize: 24, fontWeight: 900, color: TEAL, fontFamily: 'Poppins, sans-serif', minWidth: 55, lineHeight: 1 }}>
-                      {s.value}
+                     <div style={{ fontSize: 24, fontWeight: 900, color: TEAL, fontFamily: 'Poppins, sans-serif', minWidth: 65, lineHeight: 1 }}>
+                      <Counter target={s.target} suffix={s.suffix} />
                     </div>
                     <div style={{ fontSize: 11, fontWeight: 700, color: '#64748b', lineHeight: 1.2, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                       {s.label}

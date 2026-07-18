@@ -22,11 +22,12 @@ export default function Home() {
       {/* <QuickLinks /> */}
       <WhyChoose />
       <WhyChooseCards />
+      <HealthStats />
       <DoctorVideo />
       <InfoBanner />
       <AboutSection />
       <ServicesCards />
-      <HealthStats />
+
       <LicenseBanner />
     </>
   );

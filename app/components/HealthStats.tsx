@@ -134,7 +134,7 @@ export default function HealthStats() {
       id="health-stats"
       style={{
         background: 'linear-gradient(135deg, #0d2847 0%, #153c65 55%, #0d2139 100%)',
-        padding: '72px 0 36px 0',
+        padding: '48px 0 24px 0',
         overflow: 'hidden',
         position: 'relative',
       }}

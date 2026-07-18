@@ -9,7 +9,7 @@ const RED = '#e0142a';
 
 export default function InfoBanner() {
   return (
-    <section id="info-banner" style={{ background: '#ffffff', padding: '72px 0', overflow: 'hidden', position: 'relative' }}>
+    <section id="info-banner" style={{ background: '#ffffff', padding: '48px 0', overflow: 'hidden', position: 'relative' }}>
       {/* Decorative Blur Backgrounds */}
       <div style={{ position: 'absolute', top: '10%', left: '-10%', width: 450, height: 450, borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,154,181,0.06) 0%, transparent 70%)', filter: 'blur(40px)', pointerEvents: 'none', zIndex: 0 }} />
       <div style={{ position: 'absolute', bottom: '10%', right: '-5%', width: 350, height: 350, borderRadius: '50%', background: 'radial-gradient(circle, rgba(58,170,53,0.04) 0%, transparent 70%)', filter: 'blur(30px)', pointerEvents: 'none', zIndex: 0 }} />

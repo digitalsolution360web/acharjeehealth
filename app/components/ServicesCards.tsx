@@ -76,7 +76,7 @@ export default function ServicesCards() {
       id="services-cards"
       style={{
         background: '#ffffff',
-        padding: '80px 0',
+        padding: '48px 0',
         overflow: 'hidden',
         position: 'relative',
         borderTop: '1px solid #f0f2f8',
@@ -128,13 +128,25 @@ export default function ServicesCards() {
               key={card.id}
               id={`service-card-${card.id}`}
               style={{
-                background: '#e8f4f9',
+                background: card.id === 'medicines'
+                  ? '#b8edba'
+                  : card.id === 'lab-tests'
+                  ? '#fbbfc4'
+                  : '#c2e8f5',
                 borderRadius: 18,
                 padding: '36px 30px',
                 position: 'relative',
                 overflow: 'hidden',
-                boxShadow: '0 2px 20px rgba(0,0,0,0.06)',
-                border: `1.5px solid #eef0f8`,
+                boxShadow: card.id === 'medicines'
+                  ? '0 4px 24px rgba(58,170,53,0.22)'
+                  : card.id === 'lab-tests'
+                  ? '0 4px 24px rgba(224,20,42,0.22)'
+                  : '0 4px 24px rgba(14,154,181,0.18)',
+                border: card.id === 'medicines'
+                  ? `2px solid ${GREEN}80`
+                  : card.id === 'lab-tests'
+                  ? `2px solid ${RED}80`
+                  : `2px solid ${TEAL}60`,
                 transition: 'transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease',
                 cursor: 'default',
               }}
@@ -178,8 +190,16 @@ export default function ServicesCards() {
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 22 }}>
                 {card.icon}
                 <div style={{
-                  background: `${card.accentColor}12`,
-                  border: `1.5px solid ${card.accentColor}30`,
+                  background: card.id === 'medicines'
+                    ? `${GREEN}50`
+                    : card.id === 'lab-tests'
+                    ? `${RED}50`
+                    : `${card.accentColor}35`,
+                  border: card.id === 'medicines'
+                    ? `2px solid ${GREEN}99`
+                    : card.id === 'lab-tests'
+                    ? `2px solid ${RED}99`
+                    : `2px solid ${card.accentColor}70`,
                   borderRadius: 10, padding: '7px 12px',
                   textAlign: 'center',
                 }}>
