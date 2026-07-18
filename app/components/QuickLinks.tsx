@@ -75,7 +75,7 @@ export default function QuickLinks() {
       id="quick-links"
       style={{ background: '#ffffff', padding: '80px 0', position: 'relative', overflow: 'hidden', borderTop: '1px solid #f0f2f8' }}
     >
-      <div style={{ maxWidth: 1300, margin: '0 auto', padding: '0 40px' }}>
+      <div style={{ maxWidth: 1300, margin: '0 auto', padding: '0 clamp(16px, 4vw, 40px)' }}>
 
         {/* Section header */}
         <div style={{ textAlign: 'center', marginBottom: 52 }}>

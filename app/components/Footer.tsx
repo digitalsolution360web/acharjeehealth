@@ -63,7 +63,7 @@ export default function Footer() {
       <div style={{ position: 'absolute', top: '10%', left: '-5%', width: 360, height: 360, borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,154,181,0.12) 0%, transparent 70%)', filter: 'blur(40px)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: '10%', right: '-5%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(58,170,53,0.1) 0%, transparent 70%)', filter: 'blur(35px)', pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '64px 40px 0', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: 'clamp(40px, 5vw, 64px) clamp(16px, 4vw, 40px) 0', position: 'relative', zIndex: 1 }}>
 
         {/* ── Main Grid ── */}
         <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1.2fr', gap: '48px', marginBottom: 56 }} id="footer-grid">
@@ -198,8 +198,11 @@ export default function Footer() {
       </div>
 
       <style>{`
-        @media (max-width: 1200px) { #footer-grid { grid-template-columns: 1fr 1fr !important; } }
-        @media (max-width: 640px) { #footer-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 1200px) { #footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; } }
+        @media (max-width: 640px) { 
+          #footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+          #site-footer .bottom-bar { flex-direction: column !important; text-align: center !important; }
+        }
       `}</style>
     </footer>
   );

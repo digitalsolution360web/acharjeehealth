@@ -17,7 +17,7 @@ export default function BookingHelper() {
       }}
     >
       {/* Centered container matching Navbar width (maxWidth: 1520, padding: 0 44px) */}
-      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px' }}>
+      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 clamp(16px, 4vw, 44px)' }}>
         <div
           id="booking-helper-layout"
           style={{
@@ -424,6 +424,14 @@ export default function BookingHelper() {
           }
           #helper-right-layout {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #booking-helper {
+            padding: 36px 0 !important;
+          }
+          .booking-card {
+            padding: 18px 14px !important;
           }
         }
       `}</style>

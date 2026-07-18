@@ -14,7 +14,7 @@ export default function InfoBanner() {
       <div style={{ position: 'absolute', top: '10%', left: '-10%', width: 450, height: 450, borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,154,181,0.06) 0%, transparent 70%)', filter: 'blur(40px)', pointerEvents: 'none', zIndex: 0 }} />
       <div style={{ position: 'absolute', bottom: '10%', right: '-5%', width: 350, height: 350, borderRadius: '50%', background: 'radial-gradient(circle, rgba(58,170,53,0.04) 0%, transparent 70%)', filter: 'blur(30px)', pointerEvents: 'none', zIndex: 0 }} />
 
-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 10 }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 10 }}>
         <div id="info-banner-layout" className="info-grid-container">
           
           {/* LEFT PANEL: Commitment to Care (Light themed card) */}
@@ -218,6 +218,14 @@ export default function InfoBanner() {
           .info-grid-container {
             grid-template-columns: 1fr !important;
             gap: 24px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          #info-hero-card {
+            padding: 28px 20px !important;
+          }
+          #info-banner {
+            padding: 48px 0 !important;
           }
         }
         @keyframes ping {

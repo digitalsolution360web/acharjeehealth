@@ -151,7 +151,7 @@ export default function HealthStats() {
       <div style={{ position: 'absolute', top: -80, left: -80, width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,154,181,0.15) 0%, transparent 70%)', filter: 'blur(48px)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: -60, right: -60, width: 350, height: 350, borderRadius: '50%', background: 'radial-gradient(circle, rgba(58,170,53,0.12) 0%, transparent 70%)', filter: 'blur(40px)', pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 1 }}>
 
         {/* ── Header ── */}
         <div style={{ textAlign: 'center', marginBottom: 52 }} data-animate="fade-up">
@@ -299,6 +299,7 @@ export default function HealthStats() {
         }
         @media (max-width: 640px) {
           #health-stats-grid { grid-template-columns: 1fr !important; }
+          #health-stats { padding: 48px 0 28px 0 !important; }
         }
       `}</style>
     </section>

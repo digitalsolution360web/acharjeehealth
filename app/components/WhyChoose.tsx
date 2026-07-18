@@ -26,7 +26,7 @@ const stats = [
 export default function WhyChoose() {
   return (
     <section id="why-choose" style={{ background: '#fff', padding: '72px 0 36px 0', overflow: 'hidden' }}>
-      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px' }}>
+      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 clamp(16px, 4vw, 44px)' }}>
         <div
           id="why-choose-grid"
           style={{
@@ -189,8 +189,12 @@ export default function WhyChoose() {
       <style>{`
         @media (max-width: 900px) {
           #why-choose-grid { grid-template-columns: 1fr !important; }
-          #why-choose-content { padding: 40px 28px !important; }
+          #why-choose-content { padding: 40px 24px !important; }
           #stats-bar { padding: 14px 16px !important; }
+        }
+        @media (max-width: 640px) {
+          #why-choose { padding: 48px 0 28px 0 !important; }
+          #why-choose-content { padding: 28px 16px !important; }
         }
       `}</style>
     </section>

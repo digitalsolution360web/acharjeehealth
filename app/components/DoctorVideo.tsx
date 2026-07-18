@@ -32,7 +32,7 @@ export default function DoctorVideo() {
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 1 }}>
 
         {/* ── Section Header ── */}
         <div style={{ textAlign: 'center', marginBottom: 44 }} data-animate="fade-up">
@@ -87,9 +87,10 @@ export default function DoctorVideo() {
                 muted
                 loop
                 playsInline
+                id="doctor-main-video"
                 style={{
                   width: '100%',
-                  height: '950px',
+                  height: 'clamp(320px, 55vw, 950px)',
                   objectFit: 'cover',
                   objectPosition: 'top',
                   display: 'block',
@@ -220,7 +221,8 @@ export default function DoctorVideo() {
           #doctor-video-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
         }
         @media (max-width: 640px) {
-          #doctor-video-grid video { height: 280px !important; }
+          #doctor-main-video { height: 600px !important; }
+          #doctor-video { padding: 48px 0 !important; }
         }
       `}</style>
     </section>

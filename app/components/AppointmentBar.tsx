@@ -61,7 +61,7 @@ export default function AppointmentBar() {
       id="appointment-bar"
       style={{
         background: 'url(/banner.png)',
-        backgroundSize: 'contain',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         boxShadow: '0 4px 24px rgba(14,154,181,0.10)',
@@ -69,11 +69,11 @@ export default function AppointmentBar() {
         zIndex: 10,
         paddingBottom: '44px',
         paddingTop: '20px',
-        minHeight: '613px',
+        minHeight: 'clamp(400px, 55vw, 613px)',
       }}
     >
       {/* Heading — plain text (background removed per request) */}
-      <div style={{ padding: '10px 44px', textAlign: 'center' }}>
+      <div style={{ padding: '10px clamp(16px, 4vw, 44px)', textAlign: 'center' }}>
         <h2 style={{
           color: '#0b5162',
           fontSize: 'clamp(16px, 1.4vw, 22px)',
@@ -87,10 +87,10 @@ export default function AppointmentBar() {
       </div>
 
       {/* Content aligned to navbar width */}
-      <div style={{ maxWidth: 1220, margin: '0 auto', padding: '0 44px' }}>
+      <div id="appt-container" style={{ maxWidth: 1220, margin: '0 auto', padding: '0 clamp(16px, 4vw, 44px)' }}>
 
         {/* Search Bar - full width inside container */}
-        <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'white', padding: '50px', borderRadius: '10px', marginTop: '50px' }}>
+        <div id="appt-search-box" style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'white', padding: 'clamp(20px, 4vw, 50px)', borderRadius: '10px', marginTop: '30px' }}>
           <div
             id="appt-search-row"
             style={{
@@ -187,7 +187,7 @@ export default function AppointmentBar() {
 
         {/* Four category boxes under the search (icon + title) */}
         <div style={{ margin: '20px auto 32px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+          <div id="appt-category-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
             {[
               {
                 title: 'Specialities', color: '#cdeff7', stroke: '#0e9ab5', icon: (
@@ -245,12 +245,7 @@ export default function AppointmentBar() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          #appt-search-row { flex-direction: column !important; border-radius: 10px !important; }
-          #book-appt-btn { padding: 14px 20px !important; width: 100% !important; }
-          #appt-quick-icons { justify-content: center !important; }
-        }
-        /* Make inputs and placeholders clearly visible like the design screenshot */
+        /* ── Input styles ── */
         #appt-search-row input {
           color: #1a2b4a;
           background: transparent;
@@ -259,15 +254,51 @@ export default function AppointmentBar() {
           font-size: 14px;
           padding: 0;
           font-family: Inter, Poppins, sans-serif;
+          width: 100%;
         }
         #appt-search-row input::placeholder {
           color: #123b4a;
-          opacity: 1; /* ensure placeholder color shows consistently across browsers */
+          opacity: 1;
           font-weight: 600;
         }
-        /* keep the thin divider full height on small screens */
-        @media (max-width: 420px) {
-          #appt-search-row > div + div { align-self: stretch; }
+
+        /* ── Responsive: Mobile ── */
+        @media (max-width: 900px) {
+          #appointment-bar {
+            background-size: cover !important;
+            min-height: unset !important;
+            padding-top: 20px !important;
+            padding-bottom: 32px !important;
+          }
+          #appt-container {
+            padding: 0 16px !important;
+          }
+          #appt-search-box {
+            padding: 20px 16px !important;
+          }
+          #appt-search-row {
+            flex-direction: column !important;
+            gap: 12px !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+          }
+          #appt-search-row > div {
+            width: 100% !important;
+            flex: none !important;
+          }
+          #book-appt-btn {
+            width: 100% !important;
+            padding: 14px 20px !important;
+          }
+          #appt-category-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #appt-category-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
         }
       `}</style>
     </section>

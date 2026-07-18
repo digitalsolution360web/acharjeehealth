@@ -106,7 +106,7 @@ export default function Service() {
       }}
     >
       {/* Container aligned with Navbar width (maxWidth: 1520, padding: 0 44px) */}
-      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px' }}>
+      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 clamp(16px, 4vw, 44px)' }}>
         <div
           id="services-layout"
           style={{
@@ -256,6 +256,14 @@ export default function Service() {
         @media (max-width: 640px) {
           #services-grid {
             grid-template-columns: 1fr !important;
+          }
+          #services-section {
+            padding: 32px 0 !important;
+          }
+        }
+        @media (max-width: 400px) {
+          .service-tile {
+            padding: 12px 14px !important;
           }
         }
       `}</style>

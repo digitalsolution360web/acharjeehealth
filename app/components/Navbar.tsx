@@ -59,7 +59,7 @@ export default function Navbar() {
           borderBottom: '1px solid #f0f0f0',
         }}
       >
-        <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px', height: 84 }}
+        <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 clamp(16px, 3vw, 44px)', height: 84 }}
           className="flex items-center justify-between">
 
           {/* Logo */}
@@ -170,8 +170,8 @@ export default function Navbar() {
 
       {/* ══════════════ MOBILE MENU ══════════════ */}
       {mobileOpen && (
-        <div className="fixed inset-0 flex flex-col overflow-y-auto"
-          style={{ zIndex: 9999, background: 'rgba(8,8,24,0.97)', backdropFilter: 'blur(12px)' }}>
+        <div id="mobile-overlay" className="fixed inset-0 flex flex-col overflow-y-auto"
+          style={{ zIndex: 9999, background: 'rgba(8,8,24,0.77)', backdropFilter: 'blur(12px)' }}>
 
           {/* Close */}
           <button onClick={() => setMobileOpen(false)} aria-label="Close"
@@ -183,8 +183,8 @@ export default function Navbar() {
           </button>
 
           <div style={{ padding: '72px 24px 32px' }} className="flex flex-col flex-1">
-            <Image src="/logoo.jpeg" alt="Acharjee" width={130} height={42}
-              style={{ height: '36px', width: 'auto', objectFit: 'contain', marginBottom: 32, borderRadius: 4 }} />
+            <Image src="/logoo.png" alt="Acharjee" width={175} height={56}
+              style={{ height: '56px', width: 'auto', objectFit: 'contain', marginBottom: 32, borderRadius: 6 }} />
 
             <div style={{ borderTop: '1px solid rgba(255,255,255,.08)' }}>
               {navItems.map(item => (
@@ -243,6 +243,10 @@ export default function Navbar() {
         @media (max-width: 1099px) {
           #desktop-nav { display: none !important; }
           #hamburger-btn { display: flex !important; }
+        }
+        /* Ensure mobile overlay doesn't appear on wide screens */
+        @media (min-width: 1100px) {
+          #mobile-overlay { display: none !important; }
         }
       `}</style>
     </>

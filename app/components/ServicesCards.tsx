@@ -82,7 +82,7 @@ export default function ServicesCards() {
         borderTop: '1px solid #f0f2f8',
       }}
     >
-      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 clamp(16px, 4vw, 44px)', position: 'relative', zIndex: 1 }}>
 
         {/* Section header */}
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -245,6 +245,7 @@ export default function ServicesCards() {
         }
         @media (max-width: 640px) {
           #services-grid { grid-template-columns: 1fr !important; }
+          #services-cards { padding: 48px 0 !important; }
         }
       `}</style>
     </section>

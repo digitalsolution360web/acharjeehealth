@@ -57,7 +57,7 @@ export default function AboutSection() {
       {/* Grid Pattern Background */}
       <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '45%', opacity: 0.03, backgroundImage: 'radial-gradient(#0e9ab5 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 10 }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 10 }}>
         <div id="about-grid" className="about-grid-container">
           
           {/* COLUMN 1: Visual Trust Assets (Left) */}

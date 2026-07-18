@@ -56,7 +56,7 @@ export default function WhyChooseCards() {
       id="why-choose-cards"
       style={{ background: '#ffffff', padding: '80px 0', overflow: 'hidden' }}
     >
-      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 44px' }}>
+      <div style={{ maxWidth: 1520, margin: '0 auto', padding: '0 clamp(16px, 4vw, 44px)' }}>
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
@@ -205,6 +205,7 @@ export default function WhyChooseCards() {
         }
         @media (max-width: 768px) {
           #why-cards-grid { grid-template-columns: 1fr !important; }
+          #why-choose-cards { padding: 48px 0 !important; }
         }
       `}</style>
     </section>
