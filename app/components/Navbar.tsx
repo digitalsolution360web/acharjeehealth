@@ -79,14 +79,16 @@ export default function Navbar() {
                     onMouseEnter={() => setHovered(item.label)}
                     onMouseLeave={() => setHovered(null)}>
 
-                    <span style={navLinkStyle(hovered === item.label)}
-                      className="flex items-center gap-1 cursor-pointer select-none">
-                      {item.label}
-                      <svg style={{ width: 12, height: 12, transition: 'transform .2s', transform: hovered === item.label ? 'rotate(180deg)' : 'none', opacity: .6 }}
-                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </span>
+                    <Link href={item.href} style={{ textDecoration: 'none' }}>
+                      <span style={navLinkStyle(hovered === item.label)}
+                        className="flex items-center gap-1 cursor-pointer select-none">
+                        {item.label}
+                        <svg style={{ width: 12, height: 12, transition: 'transform .2s', transform: hovered === item.label ? 'rotate(180deg)' : 'none', opacity: .6 }}
+                          fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </span>
+                    </Link>
                     {/* Underline */}
                     <span style={{
                       position: 'absolute', bottom: 0, left: 12, right: 12, height: 2,
@@ -191,15 +193,22 @@ export default function Navbar() {
                 <div key={item.label} style={{ borderBottom: '1px solid rgba(255,255,255,.08)' }}>
                   {item.dropdown ? (
                     <>
-                      <button onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
-                        className="w-full flex items-center justify-between text-left text-white font-semibold hover:text-[#0e9ab5] transition-colors"
-                        style={{ padding: '16px 0', fontSize: 17 }}>
-                        {item.label}
-                        <svg style={{ width: 16, height: 16, transition: 'transform .2s', transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none', color: mobileExpanded === item.label ? TEAL : '#9ca3af' }}
-                          fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <Link href={item.href} onClick={() => setMobileOpen(false)}
+                          className="block text-white hover:text-[#0e9ab5] transition-colors font-semibold"
+                          style={{ padding: '16px 0', fontSize: 17, textDecoration: 'none' }}>
+                          {item.label}
+                        </Link>
+                        <button onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
+                          className="flex items-center justify-between text-left text-white font-semibold hover:text-[#0e9ab5] transition-colors"
+                          style={{ padding: '12px 0 12px 8px', fontSize: 16 }}>
+                          <span className="text-sm text-slate-300">View categories</span>
+                          <svg style={{ width: 16, height: 16, transition: 'transform .2s', transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none', color: mobileExpanded === item.label ? TEAL : '#9ca3af' }}
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                      </div>
                       {mobileExpanded === item.label && (
                         <div style={{ paddingLeft: 16, paddingBottom: 12 }}>
                           {item.dropdown.map(sub => (
