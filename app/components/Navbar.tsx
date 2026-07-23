@@ -4,6 +4,137 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+/* ── Inline Enquiry Modal ── */
+function EnquiryModal({ onClose }: { onClose: () => void }) {
+  const [sent, setSent] = useState(false);
+  const [focusField, setFocusField] = useState<string | null>(null);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [onClose]);
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 99999,
+        background: 'rgba(8,8,24,0.72)', backdropFilter: 'blur(10px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '20px',
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          background: '#fff', borderRadius: 20, width: '100%', maxWidth: 440,
+          padding: '36px 32px', position: 'relative',
+          boxShadow: '0 24px 80px rgba(0,0,0,0.3)',
+          animation: 'popIn 0.25s cubic-bezier(0.34,1.56,0.64,1) both',
+        }}
+      >
+        {/* Top accent bar */}
+        {/* <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: 'linear-gradient(90deg,#0e9ab5,#3aaa35)', borderRadius: '20px 20px 0 0' }} /> */}
+
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          style={{
+            position: 'absolute', top: 14, right: 14,
+            width: 32, height: 32, borderRadius: '50%',
+            border: '1.5px solid #e2e8f0', background: '#f8fafc',
+            cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: '#64748b', fontSize: 16, lineHeight: 1,
+            transition: 'all 0.2s',
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#fee2e2'; (e.currentTarget as HTMLElement).style.color = '#e0142a'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#f8fafc'; (e.currentTarget as HTMLElement).style.color = '#64748b'; }}
+        >
+          ✕
+        </button>
+
+        {!sent ? (
+          <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div style={{ marginBottom: 6 }}>
+              <h3 style={{ fontSize: 22, fontWeight: 800, color: '#0b3b4a', margin: '0 0 4px', fontFamily: "'Poppins',sans-serif" }}>
+                Book Appointment
+              </h3>
+              <p style={{ fontSize: 13, color: '#64748b', margin: 0 }}>Fill in your details and we'll call you back shortly.</p>
+            </div>
+
+            {[
+              { id: 'nb-eq-name', label: 'Full Name', type: 'text', placeholder: 'Your name' },
+              { id: 'nb-eq-phone', label: 'Phone Number', type: 'tel', placeholder: '10-digit mobile number', pattern: '[0-9]{10}', maxLength: 10 },
+              { id: 'nb-eq-email', label: 'Email Address', type: 'email', placeholder: 'your@email.com' },
+            ].map(f => (
+              <div key={f.id}>
+                <label htmlFor={f.id} style={{ fontSize: 12, fontWeight: 700, color: '#334155', display: 'block', marginBottom: 4 }}>
+                  {f.label}
+                </label>
+                <input
+                  id={f.id} type={f.type} placeholder={f.placeholder}
+                  required pattern={f.pattern} maxLength={f.maxLength}
+                  style={{
+                    width: '100%', padding: '11px 14px', borderRadius: 10,
+                    border: focusField === f.id ? '1.5px solid #0e9ab5' : '1.5px solid #cbd5e1',
+                    boxShadow: focusField === f.id ? '0 0 0 3px rgba(14,154,181,0.12)' : 'none',
+                    fontSize: 13.5, outline: 'none', boxSizing: 'border-box',
+                    fontFamily: 'inherit', color: '#0f172a', transition: 'all 0.2s',
+                  }}
+                  onFocus={() => setFocusField(f.id)}
+                  onBlur={() => setFocusField(null)}
+                />
+              </div>
+            ))}
+
+            <button
+              type="submit"
+              style={{
+                padding: '13px', borderRadius: 10, border: 'none',
+                background: 'linear-gradient(135deg,#0e9ab5,#3aaa35)',
+                color: '#fff', fontWeight: 700, fontSize: 15,
+                cursor: 'pointer', fontFamily: 'inherit',
+                transition: 'all 0.2s',
+                boxShadow: '0 4px 18px rgba(14,154,181,0.3)',
+                marginTop: 4,
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+            >
+              Send Enquiry →
+            </button>
+          </form>
+        ) : (
+          <div style={{ textAlign: 'center', padding: '32px 16px' }}>
+            <div style={{
+              width: 64, height: 64, borderRadius: '50%',
+              background: '#ecfdf5', border: '2.5px solid #3aaa35',
+              color: '#3aaa35', display: 'flex', alignItems: 'center',
+              justifyContent: 'center', fontSize: 32, margin: '0 auto 16px',
+            }}>✓</div>
+            <p style={{ fontWeight: 800, color: '#0b3b4a', fontSize: 20, marginBottom: 6, fontFamily: "'Poppins',sans-serif" }}>Enquiry Received!</p>
+            <p style={{ fontSize: 13.5, color: '#64748b', lineHeight: 1.6 }}>
+              Thank you! Our healthcare relationship manager will contact you shortly.
+            </p>
+            <button
+              onClick={onClose}
+              style={{
+                marginTop: 20, padding: '10px 28px', borderRadius: 10,
+                border: 'none', background: 'linear-gradient(135deg,#0e9ab5,#3aaa35)',
+                color: '#fff', fontWeight: 700, fontSize: 14, cursor: 'pointer',
+              }}
+            >Close</button>
+          </div>
+        )}
+      </div>
+      <style>{`@keyframes popIn { from { opacity:0; transform:scale(0.85); } to { opacity:1; transform:scale(1); } }`}</style>
+    </div>
+  );
+}
+
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
@@ -12,9 +143,9 @@ const navItems = [
     label: 'Doctors List',
     href: '/doctors',
     dropdown: [
+      { label: 'Meet Our Team', href: '/doctors' },
       { label: 'General Physician', href: '/doctors' },
       { label: 'Specialist Doctors', href: '/doctors' },
-      { label: 'Meet Our Team', href: '/doctors' },
     ],
   },
   { label: 'Lab Test', href: '/lab-test' },
@@ -34,6 +165,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
@@ -141,17 +273,18 @@ export default function Navbar() {
 
           {/* Right actions */}
           <div className="flex items-center gap-3">
-            <a href="/appointment"
+            <button
+              onClick={() => setEnquiryOpen(true)}
               className="hidden sm:flex items-center gap-2 text-white font-bold rounded-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
               style={{
                 background: `linear-gradient(135deg,${RED},#c01020)`,
                 padding: '11px 22px', fontSize: 14,
                 letterSpacing: '0.02em',
                 boxShadow: '0 4px 18px rgba(224,20,42,.4)',
-                textDecoration: 'none', whiteSpace: 'nowrap',
+                border: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
               }}>
               <CalIcon /> Book Appointment
-            </a>
+            </button>
 
             {/* Hamburger — visible < 1100px */}
             <button id="hamburger-btn"
@@ -232,18 +365,22 @@ export default function Navbar() {
               ))}
             </div>
 
-            <a href="/appointment" onClick={() => setMobileOpen(false)}
+            <button
+              onClick={() => { setMobileOpen(false); setEnquiryOpen(true); }}
               className="flex items-center justify-center gap-2 w-full text-white font-bold rounded-xl"
               style={{
                 marginTop: 32, padding: '14px 0', fontSize: 16,
                 background: `linear-gradient(135deg,${RED},#c01020)`,
-                textDecoration: 'none',
+                border: 'none', cursor: 'pointer', width: '100%',
               }}>
               <CalIcon /> Book Appointment
-            </a>
+            </button>
           </div>
         </div>
       )}
+
+      {/* ══════════════ ENQUIRY MODAL ══════════════ */}
+      {enquiryOpen && <EnquiryModal onClose={() => setEnquiryOpen(false)} />}
 
       {/* ────── Responsive: hide desktop-nav < 1100px ────── */}
       <style>{`

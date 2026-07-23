@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /* ─── Slug map (matches doctorsData.ts) ─── */
 const slugs: Record<number, string> = {
@@ -223,7 +223,7 @@ const doctors = [
 ];
 
 /* ─── Doctor Card ─── */
-function DoctorCard({ doc }: { doc: typeof doctors[0] }) {
+function DoctorCard({ doc, onBook }: { doc: typeof doctors[0]; onBook: () => void }) {
   return (
     <div className="doctor-card" style={{ '--accent': doc.accent, '--border-c': doc.accentBorder } as React.CSSProperties}>
       {/* Badge */}
@@ -267,9 +267,17 @@ function DoctorCard({ doc }: { doc: typeof doctors[0] }) {
 
         {/* Buttons */}
         <div className="card-actions">
-          <Link href="/appointment" className="book-btn" style={{ background: `linear-gradient(135deg, ${doc.accentBorder}, ${doc.accentBorder}cc)` }}>
+          <button
+            onClick={onBook}
+            className="book-btn"
+            style={{
+              background: `linear-gradient(135deg, ${doc.accentBorder}, ${doc.accentBorder}cc)`,
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
             Book Appointment
-          </Link>
+          </button>
           <Link
             href={`/doctors/${slugs[doc.id]}`}
             className="read-more-btn"
@@ -390,7 +398,7 @@ function DoctorCard({ doc }: { doc: typeof doctors[0] }) {
           flex-direction: row;
           align-items: center;
           gap: 8px;
-          margin-top: 10px;
+          margin-top: auto;
           flex-wrap: nowrap;
         }
         .read-more-btn,
@@ -482,14 +490,512 @@ const LocIcon = ({ color }: { color: string }) => (
   </svg>
 );
 
+interface BookingModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  selectedDoc: typeof doctors[0] | null;
+  doctorsList: typeof doctors;
+}
+
+function BookingModal({ isOpen, onClose, selectedDoc, doctorsList }: BookingModalProps) {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    doctorId: selectedDoc ? selectedDoc.id : (doctorsList[0]?.id || 1),
+    date: '',
+    message: '',
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Sync state when selectedDoc changes
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        doctorId: selectedDoc ? selectedDoc.id : (doctorsList[0]?.id || 1),
+        date: '',
+        message: '',
+      });
+      setIsSubmitted(false);
+    }
+  }, [selectedDoc, isOpen, doctorsList]);
+
+  if (!isOpen) return null;
+
+  const currentDoc = doctorsList.find(d => d.id === Number(formData.doctorId)) || selectedDoc || doctorsList[0];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const phoneClean = formData.phone.replace(/\D/g, '');
+    if (phoneClean.length < 10) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    setIsSubmitted(true);
+  };
+
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(15, 23, 42, 0.65)',
+      backdropFilter: 'blur(8px)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1000,
+      padding: 16,
+    }}>
+      <div style={{
+        background: '#ffffff',
+        width: '100%',
+        maxWidth: 480,
+        borderRadius: 24,
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 40px rgba(14, 154, 181, 0.1)',
+        overflow: 'hidden',
+        position: 'relative',
+        border: '1px solid rgba(226, 232, 240, 0.8)',
+      }}>
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: 18,
+            right: 18,
+            width: 32,
+            height: 32,
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.2)',
+            border: 'none',
+            color: '#ffffff',
+            fontSize: 20,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.2s',
+            zIndex: 10,
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+            e.currentTarget.style.transform = 'scale(1.05)';
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+            e.currentTarget.style.transform = 'scale(1)';
+          }}
+          aria-label="Close modal"
+        >
+          &times;
+        </button>
+
+        {!isSubmitted ? (
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+            {/* Header with gradient strip */}
+            <div style={{
+              background: 'linear-gradient(135deg, #0e9ab5, #0b3b4a)',
+              padding: '28px 28px 24px',
+              color: '#ffffff',
+            }}>
+              <span style={{
+                background: 'rgba(255, 255, 255, 0.15)',
+                color: '#ffffff',
+                fontSize: 10,
+                fontWeight: 700,
+                padding: '4px 12px',
+                borderRadius: 20,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                display: 'inline-block',
+                marginBottom: 8,
+              }}>
+                Enquiry Form
+              </span>
+              <h3 style={{
+                fontSize: 22,
+                fontWeight: 800,
+                margin: 0,
+                fontFamily: "'Poppins', sans-serif",
+                letterSpacing: '-0.02em',
+                color: '#ffffff',
+                lineHeight: 1.2,
+              }}>
+                Book an Enquiry
+              </h3>
+              <p style={{
+                fontSize: 13,
+                color: 'rgba(255, 255, 255, 0.85)',
+                margin: '6px 0 0',
+                lineHeight: 1.4,
+              }}>
+                Enter your details and our team will connect with you shortly.
+              </p>
+            </div>
+
+            {/* Form Fields */}
+            <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+
+              {/* Info Badge for Selected Doctor */}
+              {selectedDoc ? (
+                <div style={{
+                  background: '#f0fafc',
+                  border: '1px solid #ccecf2',
+                  borderRadius: 14,
+                  padding: '12px 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                  marginBottom: 4,
+                }}>
+                  <div style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    background: '#ffffff',
+                    border: '1.5px solid #0e9ab5',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    {selectedDoc.image ? (
+                      <img src={selectedDoc.image} alt={selectedDoc.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    ) : (
+                      <span style={{ fontSize: 18 }}>👩‍⚕️</span>
+                    )}
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: '#0e9ab5', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      Enquiry For Specialist
+                    </div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#0b3b4a', lineHeight: 1.2, marginTop: 1 }}>
+                      {selectedDoc.name}
+                    </div>
+                    <div style={{ fontSize: 12, color: '#537a9a', marginTop: 1 }}>
+                      {selectedDoc.specialty}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div style={{
+                  background: '#f0fafc',
+                  border: '1px solid #ccecf2',
+                  borderRadius: 14,
+                  padding: '12px 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                  marginBottom: 4,
+                }}>
+                  <div style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    background: '#e0f4f9',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#0e9ab5',
+                    fontSize: 20,
+                    flexShrink: 0,
+                  }}>
+                    🏥
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: '#0e9ab5', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      Enquiry Scope
+                    </div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#0b3b4a', lineHeight: 1.2, marginTop: 1 }}>
+                      General Clinic Consultation
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Full Name */}
+              <div>
+                <label style={{ fontSize: 13, fontWeight: 700, color: '#334155', display: 'block', marginBottom: 6 }}>
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter patient full name"
+                  value={formData.name}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '12px 14px',
+                    borderRadius: 10,
+                    border: '1.5px solid #cbd5e1',
+                    fontSize: 14,
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                    fontFamily: 'inherit',
+                    color: '#0f172a',
+                    transition: 'all 0.2s',
+                  }}
+                  onFocus={e => {
+                    e.currentTarget.style.borderColor = '#0e9ab5';
+                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(14, 154, 181, 0.12)';
+                  }}
+                  onBlur={e => {
+                    e.currentTarget.style.borderColor = '#cbd5e1';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                />
+              </div>
+
+              {/* Mobile Number */}
+              <div>
+                <label style={{ fontSize: 13, fontWeight: 700, color: '#334155', display: 'block', marginBottom: 6 }}>
+                  Mobile Number
+                </label>
+                <input
+                  type="tel"
+                  placeholder="Enter 10-digit mobile number"
+                  value={formData.phone}
+                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                  required
+                  maxLength={10}
+                  pattern="[0-9]{10}"
+                  style={{
+                    width: '100%',
+                    padding: '12px 14px',
+                    borderRadius: 10,
+                    border: '1.5px solid #cbd5e1',
+                    fontSize: 14,
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                    fontFamily: 'inherit',
+                    color: '#0f172a',
+                    transition: 'all 0.2s',
+                  }}
+                  onFocus={e => {
+                    e.currentTarget.style.borderColor = '#0e9ab5';
+                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(14, 154, 181, 0.12)';
+                  }}
+                  onBlur={e => {
+                    e.currentTarget.style.borderColor = '#cbd5e1';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                />
+              </div>
+
+              {/* Email Address */}
+              <div>
+                <label style={{ fontSize: 13, fontWeight: 700, color: '#334155', display: 'block', marginBottom: 6 }}>
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  placeholder="Enter email (e.g. yourname@gmail.com)"
+                  value={formData.email}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '12px 14px',
+                    borderRadius: 10,
+                    border: '1.5px solid #cbd5e1',
+                    fontSize: 14,
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                    fontFamily: 'inherit',
+                    color: '#0f172a',
+                    transition: 'all 0.2s',
+                  }}
+                  onFocus={e => {
+                    e.currentTarget.style.borderColor = '#0e9ab5';
+                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(14, 154, 181, 0.12)';
+                  }}
+                  onBlur={e => {
+                    e.currentTarget.style.borderColor = '#cbd5e1';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Footer Actions */}
+            <div style={{
+              padding: '18px 28px 24px',
+              borderTop: '1px solid #f1f5f9',
+              background: '#f8fafc',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              gap: 12,
+            }}>
+              <button
+                type="button"
+                onClick={onClose}
+                style={{
+                  padding: '11px 20px',
+                  borderRadius: 10,
+                  border: '1.5px solid #cbd5e1',
+                  background: '#ffffff',
+                  color: '#475569',
+                  fontSize: 14,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#f1f5f9'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#ffffff'; }}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                style={{
+                  padding: '11px 24px',
+                  borderRadius: 10,
+                  border: 'none',
+                  background: 'linear-gradient(135deg, #0e9ab5, #3aaa35)',
+                  color: '#ffffff',
+                  fontSize: 14,
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  transition: 'all 0.2s',
+                  boxShadow: '0 4px 14px rgba(14, 154, 181, 0.25)',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.9'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; }}
+              >
+                Submit Enquiry →
+              </button>
+            </div>
+          </form>
+        ) : (
+          /* Success Screen */
+          <div style={{ padding: '40px 32px', textAlign: 'center' }}>
+            <div style={{
+              width: 72,
+              height: 72,
+              borderRadius: '50%',
+              background: '#ecfdf5',
+              border: '3px solid #3aaa35',
+              color: '#3aaa35',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 36,
+              margin: '0 auto 20px',
+            }}>
+              ✓
+            </div>
+            <h3 style={{
+              fontSize: 22,
+              fontWeight: 800,
+              color: '#0f172a',
+              margin: '0 0 8px',
+              fontFamily: "'Poppins', sans-serif",
+            }}>
+              Enquiry Received!
+            </h3>
+            <p style={{
+              fontSize: 14,
+              color: '#475569',
+              lineHeight: 1.6,
+              maxWidth: 380,
+              margin: '0 auto 24px',
+            }}>
+              Thank you, <strong style={{ color: '#0f172a' }}>{formData.name}</strong>. Your enquiry for {selectedDoc ? <strong style={{ color: '#0f172a' }}>{selectedDoc.name}</strong> : 'our medical services'} has been successfully submitted.
+            </p>
+            <div style={{
+              background: '#f8fafc',
+              border: '1px solid #e2e8f0',
+              borderRadius: 14,
+              padding: 16,
+              marginBottom: 28,
+              fontSize: 13,
+              color: '#64748b',
+              textAlign: 'left',
+            }}>
+              <div style={{ margin: '0 0 6px', display: 'flex', justifyContent: 'space-between' }}>
+                <strong>Mobile:</strong> <span>{formData.phone}</span>
+              </div>
+              <div style={{ margin: '0 0 6px', display: 'flex', justifyContent: 'space-between' }}>
+                <strong>Email:</strong> <span>{formData.email}</span>
+              </div>
+              <div style={{ margin: 0, marginTop: 8, paddingTop: 8, borderTop: '1px solid #e2e8f0', fontSize: 12, lineHeight: 1.4 }}>
+                Our healthcare relationship manager will contact you shortly on your registered number or email address.
+              </div>
+            </div>
+            <button
+              onClick={onClose}
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: 10,
+                border: 'none',
+                background: 'linear-gradient(135deg, #0e9ab5, #3aaa35)',
+                color: '#ffffff',
+                fontSize: 14,
+                fontWeight: 700,
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                transition: 'all 0.2s',
+                boxShadow: '0 4px 14px rgba(14, 154, 181, 0.25)',
+              }}
+            >
+              Close Window
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /* ─── Main Page ─── */
 export default function DoctorsPage() {
   const [search, setSearch] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDoc, setSelectedDoc] = useState<typeof doctors[0] | null>(null);
+
+  const [current, setCurrent] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(4);
 
   const filtered = doctors.filter(d =>
     d.name.toLowerCase().includes(search.toLowerCase()) ||
     d.specialty.toLowerCase().includes(search.toLowerCase())
   );
+
+  useEffect(() => {
+    const updateCards = () => {
+      if (window.innerWidth < 600) setCardsPerView(1);
+      else if (window.innerWidth < 900) setCardsPerView(2);
+      else if (window.innerWidth < 1200) setCardsPerView(3);
+      else setCardsPerView(4);
+    };
+    updateCards();
+    window.addEventListener('resize', updateCards);
+    return () => window.removeEventListener('resize', updateCards);
+  }, []);
+
+  useEffect(() => {
+    setCurrent(0);
+  }, [search]);
+
+  const maxIndex = Math.max(0, filtered.length - cardsPerView);
+
+  const prev = () => setCurrent(c => Math.max(0, c - 1));
+  const next = () => setCurrent(c => Math.min(maxIndex, c + 1));
 
   return (
     <>
@@ -540,53 +1046,129 @@ export default function DoctorsPage() {
           </svg>
         </div>
 
-        {/* Breadcrumb */}
-        <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center', gap: 8, alignItems: 'center', fontSize: 13, color: 'rgba(255,255,255,0.75)' }}>
-          <a href="/" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>Home</a>
-          <span>›</span>
-          <span style={{ color: '#fff', fontWeight: 600 }}>Doctors List</span>
-        </div>
+
       </section>
 
-      {/* ── Stats Bar ── */}
-      <div style={{ background: '#1a2540', padding: '18px 24px' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'center', gap: 'clamp(24px, 6vw, 80px)', flexWrap: 'wrap' }}>
-          {[
-            { num: '15+', label: 'Expert Doctors' },
-            { num: '48+', label: 'Years Experience' },
-            { num: '50K+', label: 'Patients Treated' },
-            { num: '4.9★', label: 'Patient Rating' },
-          ].map(s => (
-            <div key={s.label} style={{ textAlign: 'center' }}>
-              <div style={{ color: '#0e9ab5', fontSize: 22, fontWeight: 800, fontFamily: "'Poppins', sans-serif" }}>{s.num}</div>
-              <div style={{ color: '#9ca3af', fontSize: 12, fontWeight: 500 }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+
 
       {/* ── Cards Section ── */}
-      <section style={{ background: '#f8fafc', padding: 'clamp(32px, 5vw, 60px) clamp(16px, 4vw, 48px)' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+      <section style={{ background: '#f8fafc', padding: 'clamp(32px, 5vw, 60px) clamp(16px, 4vw, 48px)', overflow: 'hidden' }}>
+        <div style={{ maxWidth: 1520, margin: '0 auto' }}>
 
           {/* Section header */}
-          <div style={{ textAlign: 'center', marginBottom: 40 }}>
-            <span style={{ display: 'inline-block', background: '#e8f8fc', color: '#0e9ab5', fontWeight: 700, fontSize: 13, padding: '4px 16px', borderRadius: 20, marginBottom: 12, letterSpacing: '0.06em' }}>
+          <div style={{ textAlign: 'center', marginBottom: 20 }}>
+            <span style={{
+              display: 'inline-block',
+              fontSize: 11.5,
+              fontWeight: 700,
+              letterSpacing: '0.2em',
+              color: '#0e9ab5',
+              textTransform: 'uppercase',
+              marginBottom: 14,
+            }}>
               OUR SPECIALISTS
             </span>
-            <h2 style={{ fontSize: 'clamp(20px, 3vw, 30px)', fontWeight: 800, color: '#111827', margin: 0, fontFamily: "'Poppins', sans-serif" }}>
-              {filtered.length} Doctor{filtered.length !== 1 ? 's' : ''} Available
-            </h2>
           </div>
 
-          {/* Grid */}
+          {/* Slider */}
           {filtered.length > 0 ? (
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-              gap: 24,
-            }}>
-              {filtered.map(doc => <DoctorCard key={doc.id} doc={doc} />)}
+            <div style={{ position: 'relative' }}>
+              {/* Arrow Controls Row */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 24, alignItems: 'center', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: 15, color: '#64748b', fontWeight: 600 }}>
+                  {/* Showing {filtered.length} doctor{filtered.length > 1 ? 's' : ''} matching search */}
+                </span>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <button
+                    onClick={prev}
+                    disabled={current === 0}
+                    style={{
+                      width: 42, height: 42, borderRadius: '50%',
+                      border: `2px solid ${current === 0 ? '#e2e8f0' : '#0e9ab5'}`,
+                      background: current === 0 ? '#f8fafc' : '#fff',
+                      color: current === 0 ? '#cbd5e1' : '#0e9ab5',
+                      cursor: current === 0 ? 'not-allowed' : 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: 20, fontWeight: 700,
+                      transition: 'all 0.2s',
+                    }}
+                    aria-label="Previous doctors"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    onClick={next}
+                    disabled={current >= maxIndex}
+                    style={{
+                      width: 42, height: 42, borderRadius: '50%',
+                      border: `2px solid ${current >= maxIndex ? '#e2e8f0' : '#0e9ab5'}`,
+                      background: current >= maxIndex ? '#f8fafc' : 'linear-gradient(135deg, #0e9ab5, #0b3b4a)',
+                      color: current >= maxIndex ? '#cbd5e1' : '#fff',
+                      cursor: current >= maxIndex ? 'not-allowed' : 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: 20, fontWeight: 700,
+                      transition: 'all 0.2s',
+                    }}
+                    aria-label="Next doctors"
+                  >
+                    ›
+                  </button>
+                </div>
+              </div>
+
+              {/* Slider Track Wrapper */}
+              <div style={{ overflow: 'hidden', borderRadius: 20 }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    transform: `translateX(-${current * (100 / cardsPerView)}%)`,
+                    transition: 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
+                    willChange: 'transform',
+                  }}
+                >
+                  {filtered.map(doc => (
+                    <div
+                      key={doc.id}
+                      style={{
+                        flex: `0 0 ${100 / cardsPerView}%`,
+                        padding: '0 12px',
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <DoctorCard
+                        doc={doc}
+                        onBook={() => {
+                          setSelectedDoc(doc);
+                          setIsModalOpen(true);
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dot Indicators */}
+              {maxIndex > 0 && (
+                <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 32 }}>
+                  {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrent(i)}
+                      style={{
+                        width: i === current ? 24 : 8,
+                        height: 8,
+                        borderRadius: 4,
+                        background: i === current ? '#0e9ab5' : '#cbd5e1',
+                        border: 'none',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        padding: 0,
+                      }}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           ) : (
             <div style={{ textAlign: 'center', padding: '60px 20px', color: '#6b7280' }}>
@@ -608,16 +1190,32 @@ export default function DoctorsPage() {
         <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 15, margin: '0 0 28px' }}>
           Contact us at 07364921002 or book online — our team is here to help.
         </p>
-        <Link href="/appointment" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 10,
-          background: '#e0142a', color: '#fff', fontWeight: 700,
-          padding: '14px 36px', borderRadius: 50, textDecoration: 'none',
-          fontSize: 15, boxShadow: '0 8px 24px rgba(224,20,42,0.4)',
-          transition: 'all 0.2s',
-        }}>
+        <button
+          onClick={() => {
+            setSelectedDoc(null);
+            setIsModalOpen(true);
+          }}
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            background: '#e0142a', color: '#fff', fontWeight: 700,
+            padding: '14px 36px', borderRadius: 50, textDecoration: 'none',
+            fontSize: 15, boxShadow: '0 8px 24px rgba(224,20,42,0.4)',
+            transition: 'all 0.2s', border: 'none', cursor: 'pointer',
+            fontFamily: 'inherit',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.03)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
+        >
           📅 Book An Appointment
-        </Link>
+        </button>
       </section>
+
+      <BookingModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        selectedDoc={selectedDoc}
+        doctorsList={doctors}
+      />
 
       <style>{`
         @media (max-width: 768px) {

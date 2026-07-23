@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import EnquiryModal from './EnquiryModal';
 
 const TEAL = '#0e9ab5';
 const DARK_TEAL = '#0b7d94';
@@ -55,6 +56,7 @@ const quickIcons = [
 export default function AppointmentBar() {
   const [specialty, setSpecialty] = useState('');
   const [location, setLocation] = useState('');
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
 
   return (
     <section
@@ -165,6 +167,7 @@ export default function AppointmentBar() {
             {/* Book Button */}
             <button
               id="book-appt-btn"
+              onClick={() => setEnquiryOpen(true)}
               style={{
                 background: `linear-gradient(135deg, #0b4a6b, #07344b)`,
                 color: '#fff', border: 'none',
@@ -178,7 +181,7 @@ export default function AppointmentBar() {
                 boxShadow: '0 2px 6px rgba(7,52,75,0.18)'
               }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, ${DARK_TEAL}, #0a6f82)`; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, ${TEAL}, ${DARK_TEAL})`; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, #0b4a6b, #07344b)`; }}
             >
               Book an Appointment
             </button>
@@ -301,6 +304,7 @@ export default function AppointmentBar() {
           }
         }
       `}</style>
+      {enquiryOpen && <EnquiryModal onClose={() => setEnquiryOpen(false)} />}
     </section>
   );
 }

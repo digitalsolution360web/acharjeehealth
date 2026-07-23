@@ -9,48 +9,95 @@ import { getDoctorBySlug } from '../doctorsData';
 /* ── Enquiry Form ── */
 function EnquiryForm({ accentBorder }: { accentBorder: string }) {
   const [sent, setSent] = useState(false);
+  const [focusField, setFocusField] = useState<string | null>(null);
+
   return !sent ? (
     <form
       onSubmit={e => { e.preventDefault(); setSent(true); }}
-      style={{ display: 'flex', flexDirection: 'column', gap: 12 }}
+      style={{ display: 'flex', flexDirection: 'column', gap: 14 }}
     >
-      <h3 style={{ fontSize: 16, fontWeight: 700, color: '#1a2540', margin: '0 0 4px', fontFamily: "'Poppins',sans-serif" }}>
-        Book an Enquiry
+      <h3 style={{ fontSize: 18, fontWeight: 700, color: '#0b3b4a', margin: '0 0 4px', fontFamily: "'Poppins', sans-serif" }}>
+        Quick Enquiry
       </h3>
       {[
         { id: 'eq-name', label: 'Full Name', type: 'text', placeholder: 'Your name' },
-        { id: 'eq-phone', label: 'Phone Number', type: 'tel', placeholder: '10-digit mobile' },
+        { id: 'eq-phone', label: 'Phone Number', type: 'tel', placeholder: '10-digit mobile number', pattern: '[0-9]{10}', maxLength: 10 },
         { id: 'eq-email', label: 'Email Address', type: 'email', placeholder: 'your@email.com' },
       ].map(f => (
         <div key={f.id}>
-          <label htmlFor={f.id} style={{ fontSize: 12, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 4 }}>{f.label}</label>
-          <input id={f.id} type={f.type} placeholder={f.placeholder} required
-            style={{ width: '100%', padding: '9px 12px', borderRadius: 8, border: '1.5px solid #e5e7eb', fontSize: 13, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit', transition: 'border .2s' }}
-            onFocus={e => (e.target.style.borderColor = accentBorder)}
-            onBlur={e => (e.target.style.borderColor = '#e5e7eb')}
+          <label htmlFor={f.id} style={{ fontSize: 12, fontWeight: 700, color: '#334155', display: 'block', marginBottom: 4 }}>
+            {f.label}
+          </label>
+          <input
+            id={f.id}
+            type={f.type}
+            placeholder={f.placeholder}
+            required
+            pattern={f.pattern}
+            maxLength={f.maxLength}
+            style={{
+              width: '100%',
+              padding: '11px 14px',
+              borderRadius: 10,
+              border: focusField === f.id ? '1.5px solid #0e9ab5' : '1.5px solid #cbd5e1',
+              boxShadow: focusField === f.id ? '0 0 0 3px rgba(14, 154, 181, 0.12)' : 'none',
+              fontSize: 13.5,
+              outline: 'none',
+              boxSizing: 'border-box',
+              fontFamily: 'inherit',
+              color: '#0f172a',
+              transition: 'all 0.2s',
+            }}
+            onFocus={() => setFocusField(f.id)}
+            onBlur={() => setFocusField(null)}
           />
         </div>
       ))}
-      <div>
-        <label htmlFor="eq-msg" style={{ fontSize: 12, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 4 }}>Message</label>
-        <textarea id="eq-msg" rows={3} placeholder="Briefly describe your concern…" required
-          style={{ width: '100%', padding: '9px 12px', borderRadius: 8, border: '1.5px solid #e5e7eb', fontSize: 13, outline: 'none', boxSizing: 'border-box', resize: 'vertical', fontFamily: 'inherit' }}
-          onFocus={e => (e.target.style.borderColor = accentBorder)}
-          onBlur={e => (e.target.style.borderColor = '#e5e7eb')}
-        />
-      </div>
-      <button type="submit" style={{ padding: '10px', borderRadius: 8, border: 'none', background: accentBorder, color: '#fff', fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit', transition: 'opacity .2s' }}
-        onMouseEnter={e => ((e.target as HTMLElement).style.opacity = '0.88')}
-        onMouseLeave={e => ((e.target as HTMLElement).style.opacity = '1')}
+      <button
+        type="submit"
+        style={{
+          padding: '12px',
+          borderRadius: 10,
+          border: 'none',
+          background: 'linear-gradient(135deg, #0e9ab5, #3aaa35)',
+          color: '#ffffff',
+          fontWeight: 700,
+          fontSize: 14,
+          cursor: 'pointer',
+          fontFamily: 'inherit',
+          transition: 'all 0.2s',
+          boxShadow: '0 4px 14px rgba(14, 154, 181, 0.25)',
+          marginTop: 6,
+        }}
+        onMouseEnter={e => { (e.target as HTMLElement).style.opacity = '0.9'; }}
+        onMouseLeave={e => { (e.target as HTMLElement).style.opacity = '1'; }}
       >
         Send Enquiry →
       </button>
     </form>
   ) : (
-    <div style={{ textAlign: 'center', padding: '24px 12px' }}>
-      <div style={{ fontSize: 36, marginBottom: 8 }}>✅</div>
-      <p style={{ fontWeight: 700, color: '#1a2540', marginBottom: 4 }}>Enquiry Received!</p>
-      <p style={{ fontSize: 13, color: '#6b7280' }}>We'll contact you shortly to confirm your appointment.</p>
+    <div style={{ textAlign: 'center', padding: '32px 16px' }}>
+      <div style={{
+        width: 60,
+        height: 60,
+        borderRadius: '50%',
+        background: '#ecfdf5',
+        border: '2.5px solid #3aaa35',
+        color: '#3aaa35',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 30,
+        margin: '0 auto 16px',
+      }}>
+        ✓
+      </div>
+      <p style={{ fontWeight: 800, color: '#0b3b4a', fontSize: 18, marginBottom: 6, fontFamily: "'Poppins', sans-serif" }}>
+        Enquiry Received!
+      </p>
+      <p style={{ fontSize: 13, color: '#64748b', lineHeight: 1.5 }}>
+        Thank you. Our healthcare relationship manager will contact you shortly to confirm your details.
+      </p>
     </div>
   );
 }

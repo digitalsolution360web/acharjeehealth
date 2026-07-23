@@ -11,6 +11,9 @@ import WhyChoose from "./components/WhyChoose";
 import LicenseBanner from "./components/LicenseBanner";
 import HealthStats from "./components/HealthStats";
 import DoctorVideo from "./components/DoctorVideo";
+import DoctorSlider from "./components/DoctorSlider";
+import PatientSpeak from "./components/PatientSpeak";
+import BlogSection from "./components/BlogSection";
 
 export default function Home() {
   return (
@@ -24,10 +27,12 @@ export default function Home() {
       <WhyChooseCards />
       <HealthStats />
       <DoctorVideo />
+      <DoctorSlider />
+      <PatientSpeak />
+      <BlogSection />
       <InfoBanner />
       <AboutSection />
       <ServicesCards />
-
       <LicenseBanner />
     </>
   );

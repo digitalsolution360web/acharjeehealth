@@ -1,12 +1,15 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import EnquiryModal from './EnquiryModal';
+import Link from "next/link";
 
 const TEAL = '#0e9ab5';
 const DARK_NAVY = '#0b3b4a';
 
 export default function BookingHelper() {
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+
   return (
     <section
       id="booking-helper"
@@ -37,8 +40,8 @@ export default function BookingHelper() {
             }}
           >
             {/* Card 1: Book an Appointment */}
-            <Link
-              href="/appointment"
+            <button
+              onClick={() => setEnquiryOpen(true)}
               className="booking-card"
               style={{
                 background: '#f8faf0',
@@ -49,8 +52,9 @@ export default function BookingHelper() {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 gap: 16,
-                textDecoration: 'none',
                 cursor: 'pointer',
+                width: '100%',
+                textAlign: 'left',
               }}
             >
               <div>
@@ -74,7 +78,7 @@ export default function BookingHelper() {
                     lineHeight: 1.4,
                   }}
                 >
-                  With country's leading experts
+                  With country&apos;s leading experts
                 </p>
               </div>
               <div
@@ -96,7 +100,7 @@ export default function BookingHelper() {
                   <path d="M15 13.5v1.5h1" stroke="#718d36" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
               </div>
-            </Link>
+            </button>
 
             {/* Card 2: Hospitals */}
             <div
@@ -296,17 +300,17 @@ export default function BookingHelper() {
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: 20,
+                gap: 16,
               }}
             >
-              {/* Box 1: Health Checkups */}
+              {/* Box 1: Consultations */}
               <Link
-                href="/health-checkup"
+                href="/doctors"
                 className="right-helper-box"
                 style={{
                   border: '1.5px solid #d4f2f7',
                   borderRadius: 16,
-                  padding: '24px 16px',
+                  padding: '22px 14px',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -315,28 +319,114 @@ export default function BookingHelper() {
                   textDecoration: 'none',
                   textAlign: 'center',
                   cursor: 'pointer',
-                  minHeight: 180,
+                  minHeight: 160,
+                  gap: 10,
                 }}
               >
-                {/* Colored SVG Doctor graphic container */}
-                <div style={{ marginBottom: 16 }}>
-                  <svg width="68" height="68" viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="24" r="10" stroke="#0e9ab5" strokeWidth="2.5" fill="#e0f4f9" />
-                    <path d="M16 48c0-8.837 7.163-16 16-16s16 7.163 16 16v2H16v-2z" stroke="#0e9ab5" strokeWidth="2.5" fill="#e0f4f9" />
-                    {/* Stethoscope around neck */}
-                    <path d="M26 34c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="#3aaa35" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M32 40v6" stroke="#3aaa35" strokeWidth="2" />
-                    <circle cx="32" cy="48" r="3" fill="#3aaa35" />
-                    {/* Med cross badge */}
-                    <circle cx="48" cy="18" r="8" fill="#e0142a" />
-                    <path d="M48 14v8M44 18h8" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+                <div style={{ marginBottom: 4 }}>
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    {/* Monitor */}
+                    <rect x="8" y="10" width="44" height="30" rx="4" stroke="#0e9ab5" strokeWidth="2" />
+                    <path d="M22 40h16M30 40v6" stroke="#0e9ab5" strokeWidth="2" strokeLinecap="round" />
+                    {/* Doctor figure on screen */}
+                    <circle cx="30" cy="22" r="5" stroke="#0e9ab5" strokeWidth="1.5" />
+                    <path d="M21 35c0-5 4-8 9-8s9 3 9 8" stroke="#0e9ab5" strokeWidth="1.5" strokeLinecap="round" />
+                    {/* Speech bubble */}
+                    <rect x="36" y="10" width="12" height="9" rx="2" stroke="#0e9ab5" strokeWidth="1.5" fill="#e0f4f9" />
+                    <path d="M39 16l-2 3" stroke="#0e9ab5" strokeWidth="1.5" strokeLinecap="round" />
+                    {/* Stethoscope */}
+                    <path d="M26 29c0 2 2 4 4 4s4-2 4-4" stroke="#0e9ab5" strokeWidth="1.5" strokeLinecap="round" />
+                    <circle cx="34" cy="33" r="1.5" fill="#0e9ab5" />
                   </svg>
                 </div>
                 <span
                   style={{
-                    fontSize: 16,
+                    fontSize: 14.5,
                     fontWeight: 700,
-                    color: DARK_NAVY,
+                    color: TEAL,
+                    fontFamily: 'Poppins, sans-serif',
+                  }}
+                >
+                  Consultations
+                </span>
+              </Link>
+
+              {/* Box 2: Diagnostics */}
+              <Link
+                href="/tests-services"
+                className="right-helper-box"
+                style={{
+                  border: '1.5px solid #d4f2f7',
+                  borderRadius: 16,
+                  padding: '22px 14px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: '#ffffff',
+                  textDecoration: 'none',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  minHeight: 160,
+                  gap: 10,
+                }}
+              >
+                <div style={{ marginBottom: 4 }}>
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                    {/* Head silhouette */}
+                    <circle cx="30" cy="26" r="16" stroke="#0e9ab5" strokeWidth="2" />
+                    <path d="M30 42v6" stroke="#0e9ab5" strokeWidth="2" strokeLinecap="round" />
+                    {/* Medical plus inside head */}
+                    <circle cx="30" cy="26" r="8" stroke="#0e9ab5" strokeWidth="1.5" />
+                    <path d="M30 20v12M24 26h12" stroke="#0e9ab5" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <span
+                  style={{
+                    fontSize: 14.5,
+                    fontWeight: 700,
+                    color: TEAL,
+                    fontFamily: 'Poppins, sans-serif',
+                  }}
+                >
+                  Diagnostics
+                </span>
+              </Link>
+
+              {/* Box 3: Health Checkups */}
+              <Link
+                href="/health-checkup"
+                className="right-helper-box"
+                style={{
+                  border: '1.5px solid #d4f2f7',
+                  borderRadius: 16,
+                  padding: '22px 14px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: '#ffffff',
+                  textDecoration: 'none',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  minHeight: 160,
+                  gap: 10,
+                }}
+              >
+                <div style={{ marginBottom: 4 }}>
+                  <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="20" r="9" stroke="#0e9ab5" strokeWidth="2" />
+                    <path d="M16 46c0-8 7-14 16-14s16 6 16 14" stroke="#0e9ab5" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M26 30c0 3 2.686 5 6 5s6-2 6-5" stroke="#0e9ab5" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M32 35v5" stroke="#0e9ab5" strokeWidth="1.5" />
+                    <circle cx="32" cy="42" r="2" fill="#0e9ab5" />
+                  </svg>
+                </div>
+                <span
+                  style={{
+                    fontSize: 14.5,
+                    fontWeight: 700,
+                    color: TEAL,
                     fontFamily: 'Poppins, sans-serif',
                   }}
                 >
@@ -344,14 +434,14 @@ export default function BookingHelper() {
                 </span>
               </Link>
 
-              {/* Box 2: Tests & Services */}
+              {/* Box 4: Tests & Services */}
               <Link
                 href="/tests-services"
                 className="right-helper-box"
                 style={{
                   border: '1.5px solid #d4f2f7',
                   borderRadius: 16,
-                  padding: '24px 16px',
+                  padding: '22px 14px',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -360,31 +450,24 @@ export default function BookingHelper() {
                   textDecoration: 'none',
                   textAlign: 'center',
                   cursor: 'pointer',
-                  minHeight: 180,
+                  minHeight: 160,
+                  gap: 10,
                 }}
               >
-                {/* Colored SVG Lab/Checkup clipboard graphic container */}
-                <div style={{ marginBottom: 16 }}>
-                  <svg width="68" height="68" viewBox="0 0 64 64" fill="none">
-                    {/* Clipboard */}
-                    <rect x="20" y="12" width="28" height="38" rx="3" stroke="#0e9ab5" strokeWidth="2.5" fill="#f0fafc" />
-                    <rect x="28" y="8" width="12" height="6" rx="1.5" stroke="#0b3b4a" strokeWidth="2" fill="#ffffff" />
-                    {/* Lines on report */}
-                    <path d="M26 22H38M26 28H42M26 34H36M26 40H40" stroke="#b2dce2" strokeWidth="2.2" strokeLinecap="round" />
-                    {/* Magnifying Glass */}
-                    <circle cx="46" cy="44" r="6" stroke="#3aaa35" strokeWidth="2" fill="#ffffff" />
-                    <path d="M50.5 48.5l6.5 6.5" stroke="#3aaa35" strokeWidth="2" strokeLinecap="round" />
-                    {/* Lab Flask */}
-                    <path d="M12 36l8 12a1 1 0 0 1-.83 1.5H4.83A1 1 0 0 1 4 48l8-12z" stroke="#e0142a" strokeWidth="2" fill="#fce8ea" />
-                    <path d="M12 36v-6" stroke="#e0142a" strokeWidth="2" />
-                    <circle cx="8" cy="45" r="1.5" fill="#e0142a" />
+                <div style={{ marginBottom: 4 }}>
+                  <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+                    <rect x="18" y="10" width="26" height="36" rx="3" stroke="#0e9ab5" strokeWidth="2" />
+                    <rect x="26" y="6" width="12" height="6" rx="1.5" stroke="#0e9ab5" strokeWidth="1.5" />
+                    <path d="M24 20H36M24 27H38M24 34H32" stroke="#0e9ab5" strokeWidth="1.8" strokeLinecap="round" />
+                    <circle cx="44" cy="44" r="7" stroke="#0e9ab5" strokeWidth="2" />
+                    <path d="M49 49l5 5" stroke="#0e9ab5" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
                 <span
                   style={{
-                    fontSize: 16,
+                    fontSize: 14.5,
                     fontWeight: 700,
-                    color: DARK_NAVY,
+                    color: TEAL,
                     fontFamily: 'Poppins, sans-serif',
                   }}
                 >
@@ -435,6 +518,7 @@ export default function BookingHelper() {
           }
         }
       `}</style>
+      {enquiryOpen && <EnquiryModal onClose={() => setEnquiryOpen(false)} />}
     </section>
   );
 }
