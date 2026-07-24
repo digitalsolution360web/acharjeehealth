@@ -268,7 +268,7 @@ function DoctorCard({ doc, onBook }: { doc: typeof doctors[0]; onBook: () => voi
         {/* Buttons */}
         <div className="card-actions">
           <button
-            onClick={onBook}
+            onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
             className="book-btn"
             style={{
               background: `linear-gradient(135deg, ${doc.accentBorder}, ${doc.accentBorder}cc)`,
@@ -1191,10 +1191,7 @@ export default function DoctorsPage() {
           Contact us at 07364921002 or book online — our team is here to help.
         </p>
         <button
-          onClick={() => {
-            setSelectedDoc(null);
-            setIsModalOpen(true);
-          }}
+          onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             background: '#e0142a', color: '#fff', fontWeight: 700,

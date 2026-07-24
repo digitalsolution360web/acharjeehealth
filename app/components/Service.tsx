@@ -10,9 +10,9 @@ const services = [
     title: 'Gastroenterologist',
     icon: (
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <path d="M8 4c0 0-2 3-2 6s2 4 2 7" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round"/>
-        <path d="M12 4c0 0 2 2 2 5s-3 4-3 7s2 3 4 4" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round"/>
-        <circle cx="16" cy="8" r="2.5" stroke={TEAL} strokeWidth="1.5"/>
+        <path d="M8 4c0 0-2 3-2 6s2 4 2 7" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M12 4c0 0 2 2 2 5s-3 4-3 7s2 3 4 4" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round" />
+        <circle cx="16" cy="8" r="2.5" stroke={TEAL} strokeWidth="1.5" />
       </svg>
     ),
   },
@@ -20,8 +20,8 @@ const services = [
     title: 'ENT & Head Neck Surgeon',
     icon: (
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <path d="M12 3c-3 0-5 2-5 5 0 2 1 4 3 5v2h4v-2c2-1 3-3 3-5 0-3-2-5-5-5z" stroke={TEAL} strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M10.5 18.5L10 21M13.5 18.5L14 21" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round"/>
+        <path d="M12 3c-3 0-5 2-5 5 0 2 1 4 3 5v2h4v-2c2-1 3-3 3-5 0-3-2-5-5-5z" stroke={TEAL} strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M10.5 18.5L10 21M13.5 18.5L14 21" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -29,12 +29,12 @@ const services = [
     title: 'Neurologist',
     icon: (
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <ellipse cx="12" cy="9" rx="5" ry="5.5" stroke={TEAL} strokeWidth="1.5"/>
-        <path d="M9 9c0-1.5 1-3 3-3" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round"/>
-        <path d="M12 14.5v5" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round"/>
-        <path d="M9 19.5h6" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round"/>
-        <path d="M7 9c-2 0.5-3 2-3 4" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round"/>
-        <path d="M17 9c2 0.5 3 2 3 4" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round"/>
+        <ellipse cx="12" cy="9" rx="5" ry="5.5" stroke={TEAL} strokeWidth="1.5" />
+        <path d="M9 9c0-1.5 1-3 3-3" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round" />
+        <path d="M12 14.5v5" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M9 19.5h6" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M7 9c-2 0.5-3 2-3 4" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round" />
+        <path d="M17 9c2 0.5 3 2 3 4" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -42,13 +42,13 @@ const services = [
     title: 'Consultant Dermatologist',
     icon: (
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <rect x="4" y="6" width="16" height="13" rx="3" stroke={TEAL} strokeWidth="1.5"/>
-        <circle cx="8.5" cy="11" r="1.3" fill={TEAL}/>
-        <circle cx="12" cy="9.5" r="1" fill={TEAL}/>
-        <circle cx="15.5" cy="12" r="1.3" fill={TEAL}/>
-        <circle cx="10" cy="14" r="1" fill={TEAL}/>
-        <circle cx="14" cy="14.5" r="1" fill={TEAL}/>
-        <path d="M12 4v2" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round"/>
+        <rect x="4" y="6" width="16" height="13" rx="3" stroke={TEAL} strokeWidth="1.5" />
+        <circle cx="8.5" cy="11" r="1.3" fill={TEAL} />
+        <circle cx="12" cy="9.5" r="1" fill={TEAL} />
+        <circle cx="15.5" cy="12" r="1.3" fill={TEAL} />
+        <circle cx="10" cy="14" r="1" fill={TEAL} />
+        <circle cx="14" cy="14.5" r="1" fill={TEAL} />
+        <path d="M12 4v2" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -56,9 +56,9 @@ const services = [
     title: 'Urologist',
     icon: (
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <path d="M9 4c-3 2-4 5-3 8 0.5 2 2 3 2 5v2h6v-2c0-2 1.5-3 2-5 1-3 0-6-3-8" stroke={TEAL} strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M9 19h6" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round"/>
-        <ellipse cx="12" cy="9" rx="2" ry="3" stroke={TEAL} strokeWidth="1.3"/>
+        <path d="M9 4c-3 2-4 5-3 8 0.5 2 2 3 2 5v2h6v-2c0-2 1.5-3 2-5 1-3 0-6-3-8" stroke={TEAL} strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M9 19h6" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" />
+        <ellipse cx="12" cy="9" rx="2" ry="3" stroke={TEAL} strokeWidth="1.3" />
       </svg>
     ),
   },
@@ -66,8 +66,8 @@ const services = [
     title: 'Cardiologist',
     icon: (
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <path d="M12 20s-8-5.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5.5-8 11-8 11z" stroke={TEAL} strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M5 12h3l2-3 2 6 2-3h5" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M12 20s-8-5.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5.5-8 11-8 11z" stroke={TEAL} strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M5 12h3l2-3 2 6 2-3h5" stroke={TEAL} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -75,10 +75,10 @@ const services = [
     title: 'Gynaecologist & Obstetrician',
     icon: (
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="7" r="3.5" stroke={TEAL} strokeWidth="1.5"/>
-        <path d="M12 10.5v5" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round"/>
-        <path d="M9 13.5h6" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M10 15.5l-2 4M14 15.5l2 4" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="12" cy="7" r="3.5" stroke={TEAL} strokeWidth="1.5" />
+        <path d="M12 10.5v5" stroke={TEAL} strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M9 13.5h6" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M10 15.5l-2 4M14 15.5l2 4" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -86,10 +86,10 @@ const services = [
     title: 'Child Specialist (Pediatrician)',
     icon: (
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="6.5" r="3" stroke={TEAL} strokeWidth="1.5"/>
-        <path d="M7 14c0-2.8 2-5 5-5s5 2.2 5 5" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M9 20v-4M15 20v-4" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M9 18h6" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="12" cy="6.5" r="3" stroke={TEAL} strokeWidth="1.5" />
+        <path d="M7 14c0-2.8 2-5 5-5s5 2.2 5 5" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M9 20v-4M15 20v-4" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M9 18h6" stroke={TEAL} strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -133,7 +133,7 @@ export default function Service() {
                   letterSpacing: '-0.3px',
                 }}
               >
-                Specialities &amp; Procedures
+                Explore our &amp; Department
               </h2>
             </div>
 

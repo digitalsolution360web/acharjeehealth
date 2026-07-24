@@ -26,28 +26,228 @@ const slugs: Record<number, string> = {
 };
 
 const doctors = [
-  { id: 1, image: '/d.png', name: 'Dr. Binidra Banerjee', specialty: 'Gastroenterologist', exp: '15+ Yrs', accentBorder: '#e91e63', badge: 'Gastro' },
-  { id: 2, image: '/d1.png', name: 'Dr. Atri Bandyopadhyay', specialty: 'ENT & Head Neck Surgeon', exp: '12+ Yrs', accentBorder: '#00acc1', badge: 'ENT' },
-  { id: 3, image: '/d2.png', name: 'Dr. Rupam Sil', specialty: 'ENT & Head Neck Surgeon', exp: '10+ Yrs', accentBorder: '#f9a825', badge: 'ENT' },
-  { id: 4, image: '/d3.png', name: 'Dr. Ananth Egoor', specialty: 'Neurologist', exp: '18+ Yrs', accentBorder: '#e53935', badge: 'Neuro' },
-  { id: 5, image: '/d4.png', name: 'Dr. Shibasis Chatterjee', specialty: 'Consultant Dermatologist', exp: '14+ Yrs', accentBorder: '#43a047', badge: 'Derma' },
-  { id: 6, image: '/d5.png', name: 'Dr. Raghuram Tangirala', specialty: 'Gastroenterologist', exp: '20+ Yrs', accentBorder: '#3f51b5', badge: 'Gastro' },
-  { id: 7, image: '/d6.jpeg', name: 'Dr. P. Kranthi Kumar', specialty: 'Consultant Gastroenterologist', exp: '16+ Yrs', accentBorder: '#fb8c00', badge: 'Gastro' },
-  { id: 8, image: '/d7.jpg', name: 'Dr. Sanjeev Kr. Suman', specialty: 'Neurologist', exp: '13+ Yrs', accentBorder: '#7b1fa2', badge: 'Neuro' },
-  { id: 9, image: '/d8.png', name: 'Dr. Rituparna Mukherjee', specialty: 'ENT & Head Neck Surgeon', exp: '11+ Yrs', accentBorder: '#1565c0', badge: 'ENT' },
-  { id: 10, image: '/d9.png', name: 'Dr. K. Seshu Mohan', specialty: 'Urologist', exp: '17+ Yrs', accentBorder: '#00796b', badge: 'Urology' },
-  { id: 11, image: '/d10.png', name: 'Dr. Pradip Sarkar', specialty: 'Cardiologist', exp: '22+ Yrs', accentBorder: '#558b2f', badge: 'Cardio' },
-  { id: 12, image: '/d11.png', name: 'Dr. Aishwarya Bhattacharya', specialty: 'Gynaecologist & Obstetrician', exp: '9+ Yrs', accentBorder: '#d81b60', badge: 'Gynae' },
-  { id: 13, image: '/d12.png', name: 'Dr. Nibedita Kabiraj', specialty: 'Child Specialist', exp: '12+ Yrs', accentBorder: '#388e3c', badge: 'Paeds' },
-  { id: 14, image: '/d13.png', name: 'Dr. Ratnakar Rao K', specialty: 'Orthopaedic', exp: '19+ Yrs', accentBorder: '#1976d2', badge: 'Ortho' },
-  { id: 15, image: '/d14.png', name: 'Dr. Riya Sinha', specialty: 'ENT & Head Neck Surgeon', exp: '8+ Yrs', accentBorder: '#3949ab', badge: 'ENT' },
+  {
+    id: 1,
+    image: '/d.png',
+    name: 'Dr. Binidra Banerjee',
+    title: 'Leading Gastroenterologist in Asansol, Durgapur, Dhanbad, and Jharkhand',
+    specialty: 'Gastroenterologist',
+    phone: '07364921002',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#fce4ec',
+    accentBorder: '#e91e63',
+    badge: 'Gastro',
+  },
+  {
+    id: 2,
+    image: '/d1.png',
+    name: 'Dr. Atri Bandyopadhyay',
+    title: 'Best Senior ENT Specialist in Asansol, West Bengal | Acharjee Health',
+    specialty: 'ENT & Head Neck Surgeon',
+    phone: '07364921002',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#e0f7fa',
+    accentBorder: '#00acc1',
+    badge: 'ENT',
+  },
+  {
+    id: 3,
+    image: '/d2.png',
+    name: 'Dr. Rupam Sil',
+    title: 'Best ENT Specialist in Asansol, West Bengal | Acharjee Health',
+    specialty: 'ENT & Head Neck Surgeon',
+    phone: '07364921002',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#fff8e1',
+    accentBorder: '#f9a825',
+    badge: 'ENT',
+  },
+  {
+    id: 4,
+    image: '/d3.png',
+    name: 'Dr. Ananth Egoor',
+    title: 'Best Neurologist Consultant in Asansol – Dr. Ananth Egoor (From Hyderabad)',
+    specialty: 'Neurologist',
+    phone: '07364921002',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#fce4ec',
+    accentBorder: '#e53935',
+    badge: 'Neuro',
+  },
+  {
+    id: 5,
+    image: '/d4.png',
+    name: 'Dr. Shibasis Chatterjee',
+    title: 'The Best Skin Specialist in Asansol, West Bengal | Acharjee Health',
+    specialty: 'Consultant Dermatologist',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#e8f5e9',
+    accentBorder: '#43a047',
+    badge: 'Derma',
+  },
+  {
+    id: 6,
+    image: '/d5.png',
+    name: 'Dr. Raghuram Tangirala',
+    title: 'Gastroenterologist in Asansol (from Hyderabad)',
+    specialty: 'Gastroenterologist',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#e8f0fe',
+    accentBorder: '#3f51b5',
+    badge: 'Gastro',
+  },
+  {
+    id: 7,
+    image: '/d6.jpeg',
+    name: 'Dr. P. Kranthi Kumar',
+    title: 'Meet the Expert: Dr. P. Kranthi Kumar – MBBS, MD (General Medicine), DM (Gastroenterology)',
+    specialty: 'Consultant Gastroenterologist',
+    phone: '+91 7364921002',
+    email: 'acharjeehealth.in@gmail.com',
+    location: '62 N.S.B. Gorai Road, Opp. IMA House, Ismile More, Asansol',
+    accent: '#fff3e0',
+    accentBorder: '#fb8c00',
+    badge: 'Gastro',
+  },
+  {
+    id: 8,
+    image: '/d7.jpg',
+    name: 'Dr. Sanjeev Kr. Suman',
+    title: 'Top Neurologist Consultant in Asansol – Dr. Sanjeev Kr. Suman',
+    specialty: 'Neurologist',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#ede7f6',
+    accentBorder: '#7b1fa2',
+    badge: 'Neuro',
+  },
+  {
+    id: 9,
+    image: '/d8.png',
+    name: 'Dr. Rituparna Mukherjee',
+    title: 'DR. RITUPARNA MUKHERJEE MBBS (Nilratan Sirkar Medical College & Hospital, Kolkata)',
+    specialty: 'ENT & Head Neck Surgeon',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: '62 N, S.B. Gorai Road, Opp. IMA House, Ismile, More, Asansol',
+    accent: '#e3f2fd',
+    accentBorder: '#1565c0',
+    badge: 'ENT',
+  },
+  {
+    id: 10,
+    image: '/d9.png',
+    name: 'Dr. K. Seshu Mohan',
+    title: 'Best Urologist Dr. K.Seshu in Asansol, West Bengal | Acharjee Health',
+    specialty: 'Urologist',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#e0f2f1',
+    accentBorder: '#00796b',
+    badge: 'Urology',
+  },
+  {
+    id: 11,
+    image: '/d10.png',
+    name: 'Dr. Pradip Sarkar',
+    title: 'Dr Pradip Sarkar, Best Cardiologist in Asansol, West Bengal | Acharjee Health',
+    specialty: 'Cardiologist',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'Ismile More, ACHARJEE PHARMACY, C/O, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#f1f8e9',
+    accentBorder: '#558b2f',
+    badge: 'Cardio',
+  },
+  {
+    id: 12,
+    image: '/d11.png',
+    name: 'Dr. Aishwarya Bhattacharya',
+    title: 'Best Gynaec Dr.Aishwarya Bhattacharya in Asansol, West Bengal | Acharjee Health',
+    specialty: 'Gynaecologist & Obstetrician',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#fce4ec',
+    accentBorder: '#d81b60',
+    badge: 'Gynae',
+  },
+  {
+    id: 13,
+    image: '/d12.png',
+    name: 'Dr. Nibedita Kabiraj',
+    title: 'Dr. Nibedita Kabiraj, Best Pediatrician in Asansol, West Bengal | Acharjee Health',
+    specialty: 'Child Specialist',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: 'ACHARJEE PHARMACY, MORE C/O, 256/2, SB Gorai Rd, Ismile, Islampur, Hamid Nagar, Asansol, West Bengal 713301',
+    accent: '#f1f8e9',
+    accentBorder: '#388e3c',
+    badge: 'Paeds',
+  },
+  {
+    id: 14,
+    image: '/d13.png',
+    name: 'Dr. Ratnakar Rao K',
+    title: 'Best Orthopaedic and Knee Replacement Surgeon in Asansol | Dr. Ratnakar Rao K',
+    specialty: 'Orthopaedic',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: '62 N, S.B. Gorai Road, Opp. IMA House, Ismile, More, Asansol',
+    accent: '#e3f2fd',
+    accentBorder: '#1976d2',
+    badge: 'Ortho',
+  },
+  {
+    id: 15,
+    image: '/d14.png',
+    name: 'Dr. Riya Sinha',
+    title: 'Dr. Riya Sinha ENT & Head and Neck Surgeon | MBBS, MS (ENT & Head and Neck Surgery)',
+    specialty: 'ENT & Head Neck Surgeon',
+    phone: '07364921002 / 7029386969',
+    email: 'acharjeehealth.in@gmail.com',
+    location: '62 N, S.B. Gorai Road, Opp. IMA House, Ismile, More, Asansol',
+    accent: '#e8eaf6',
+    accentBorder: '#3949ab',
+    badge: 'ENT',
+  },
 ];
+
+/* ─── Icons ─── */
+const PhoneIcon = ({ color }: { color: string }) => (
+  <svg width="14" height="14" fill="none" stroke={color} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+  </svg>
+);
+const MailIcon = ({ color }: { color: string }) => (
+  <svg width="14" height="14" fill="none" stroke={color} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+);
+const LocIcon = ({ color }: { color: string }) => (
+  <svg width="14" height="14" fill="none" stroke={color} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+);
 
 export default function DoctorSlider() {
   const [current, setCurrent] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(4);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [enquiryDoctor, setEnquiryDoctor] = useState<typeof doctors[0] | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const autoRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -120,7 +320,7 @@ export default function DoctorSlider() {
               margin: 0,
               lineHeight: 1.25,
             }}>
-              Meet Our Expert <span style={{ color: TEAL }}>Doctors</span>
+              Explore our departments
             </h2>
             <p style={{ color: '#64748b', fontSize: 15, margin: '10px 0 0', maxWidth: 460 }}>
               Experienced specialists dedicated to providing world-class healthcare in Asansol & West Bengal.
@@ -188,53 +388,75 @@ export default function DoctorSlider() {
                   boxSizing: 'border-box',
                 }}
               >
-                <div className="ds-card">
-                  {/* Specialty Badge */}
-                  <span className="ds-badge" style={{ background: doc.accentBorder }}>{doc.badge}</span>
+                <div className="doctor-card" style={{ '--accent': doc.accent, '--border-c': doc.accentBorder } as React.CSSProperties}>
+                  {/* Badge */}
+                  <span className="specialty-badge" style={{ background: doc.accentBorder }}>{doc.badge}</span>
 
-                  {/* Image Area */}
-                  <div className="ds-img-wrap" style={{ background: `${doc.accentBorder}14` }}>
-                    <div className="ds-img-ring" style={{ borderColor: doc.accentBorder }}>
+                  {/* Image */}
+                  <div className="card-img-wrap">
+                    <div className="img-ring" style={{ borderColor: doc.accentBorder }}>
                       <Image
                         src={doc.image}
                         alt={doc.name}
-                        width={120}
-                        height={120}
+                        width={130}
+                        height={130}
                         style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
                       />
                     </div>
-                    {/* Decorative arc */}
-                    <div className="ds-arc" style={{ borderColor: `${doc.accentBorder}30` }} />
                   </div>
 
                   {/* Content */}
-                  <div className="ds-body">
-                    <h3 className="ds-name">{doc.name}</h3>
-                    <p className="ds-spec" style={{ color: doc.accentBorder }}>{doc.specialty}</p>
+                  <div className="card-body">
+                    <h3 className="doctor-name">{doc.name}</h3>
+                    <p className="doctor-title">{doc.title}</p>
+                    <span className="specialty-chip" style={{ color: doc.accentBorder, borderColor: `${doc.accentBorder}44`, background: `${doc.accentBorder}18` }}>
+                      {doc.specialty}
+                    </span>
 
-                    <div className="ds-stats">
-                      <div className="ds-stat">
-                        <span className="ds-stat-val" style={{ color: doc.accentBorder }}>{doc.exp}</span>
-                        <span className="ds-stat-lbl">Experience</span>
+                    <div className="info-list">
+                      <div className="info-row">
+                        <PhoneIcon color={doc.accentBorder} />
+                        <span>{doc.phone}</span>
                       </div>
-                      <div className="ds-divider" />
-                      <div className="ds-stat">
-                        <span className="ds-stat-val" style={{ color: doc.accentBorder }}>⭐ 4.8</span>
-                        <span className="ds-stat-lbl">Rating</span>
+                      <div className="info-row">
+                        <MailIcon color={doc.accentBorder} />
+                        <span>{doc.email}</span>
+                      </div>
+                      <div className="info-row">
+                        <LocIcon color={doc.accentBorder} />
+                        <span>{doc.location}</span>
                       </div>
                     </div>
 
-                    <div className="ds-actions">
+                    {/* Buttons */}
+                    <div className="card-actions">
                       <button
-                        className="ds-book-btn"
-                        style={{ background: `linear-gradient(135deg, ${doc.accentBorder}, ${doc.accentBorder}cc)` }}
-                        onClick={() => setEnquiryDoctor(doc)}
+                        onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
+                        className="book-btn"
+                        style={{
+                          background: `linear-gradient(135deg, ${doc.accentBorder}, ${doc.accentBorder}cc)`,
+                          border: 'none',
+                          cursor: 'pointer'
+                        }}
                       >
                         Book Appointment
                       </button>
-                      <Link href={`/doctors/${slugs[doc.id]}`} className="ds-view-btn" style={{ color: doc.accentBorder, borderColor: `${doc.accentBorder}55` }}>
-                        View Profile
+                      <Link
+                        href={`/doctors/${slugs[doc.id]}`}
+                        className="read-more-btn"
+                        style={{ borderColor: doc.accentBorder, color: doc.accentBorder }}
+                      >
+                        Read More ▶
                       </Link>
+                    </div>
+
+                    {/* Social Icons */}
+                    <div className="social-row">
+                      {['f', 'x', '▶', 'in'].map((s, i) => (
+                        <a key={i} href="#" className="social-icon" style={{ '--s-color': doc.accentBorder } as React.CSSProperties} aria-label={s}>
+                          {s}
+                        </a>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -294,229 +516,177 @@ export default function DoctorSlider() {
         </div>
       </div>
 
-      {/* Enquiry Mini Modal */}
-      {enquiryDoctor && (
-        <div
-          style={{
-            position: 'fixed', inset: 0, background: 'rgba(11,59,74,0.55)',
-            backdropFilter: 'blur(6px)', zIndex: 1000, display: 'flex',
-            alignItems: 'center', justifyContent: 'center', padding: 16,
-          }}
-          onClick={() => setEnquiryDoctor(null)}
-        >
-          <div
-            style={{
-              background: '#fff', borderRadius: 20, padding: 36,
-              maxWidth: 420, width: '100%', position: 'relative',
-              boxShadow: '0 24px 64px rgba(0,0,0,0.2)',
-              border: `2px solid ${enquiryDoctor.accentBorder}33`,
-            }}
-            onClick={e => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setEnquiryDoctor(null)}
-              style={{
-                position: 'absolute', top: 14, right: 14, width: 30, height: 30,
-                borderRadius: '50%', border: '1.5px solid #e2e8f0', background: '#f8fafc',
-                cursor: 'pointer', fontSize: 16, color: '#64748b',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}
-            >×</button>
-            <div style={{ textAlign: 'center', marginBottom: 20 }}>
-              <div style={{
-                width: 72, height: 72, borderRadius: '50%', overflow: 'hidden',
-                border: `3px solid ${enquiryDoctor.accentBorder}`,
-                margin: '0 auto 12px', boxShadow: `0 6px 20px ${enquiryDoctor.accentBorder}40`,
-              }}>
-                <Image src={enquiryDoctor.image} alt={enquiryDoctor.name} width={72} height={72} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-              </div>
-              <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', color: DARK_NAVY, fontSize: 18, fontWeight: 800 }}>{enquiryDoctor.name}</h3>
-              <p style={{ margin: '4px 0 0', color: enquiryDoctor.accentBorder, fontSize: 13, fontWeight: 600 }}>{enquiryDoctor.specialty}</p>
-            </div>
-            <p style={{ textAlign: 'center', color: '#64748b', fontSize: 14, marginBottom: 20 }}>
-              Call us to book an appointment with {enquiryDoctor.name}
-            </p>
-            <a
-              href="tel:07364921002"
-              style={{
-                display: 'block', width: '100%', textAlign: 'center',
-                background: `linear-gradient(135deg, ${enquiryDoctor.accentBorder}, ${enquiryDoctor.accentBorder}aa)`,
-                color: '#fff', textDecoration: 'none', padding: '13px 0',
-                borderRadius: 12, fontWeight: 700, fontSize: 16,
-                fontFamily: 'Poppins, sans-serif', letterSpacing: '0.02em',
-                boxShadow: `0 6px 20px ${enquiryDoctor.accentBorder}40`,
-              }}
-            >
-              📞 07364921002
-            </a>
-          </div>
-        </div>
-      )}
-
       <style>{`
-        .ds-card {
+        .doctor-card {
           position: relative;
-          background: #ffffff;
+          background: #fff;
           border-radius: 20px;
+          box-shadow: 0 4px 24px rgba(0,0,0,0.09);
           overflow: hidden;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-          border: 1.5px solid #f1f5f9;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
           display: flex;
           flex-direction: column;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border-top: 4px solid var(--border-c);
           height: 100%;
         }
-        .ds-card:hover {
+        .doctor-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 20px 50px rgba(0,0,0,0.14);
-          border-color: rgba(14,154,181,0.2);
+          box-shadow: 0 16px 48px rgba(0,0,0,0.16);
         }
-        .ds-badge {
+        .specialty-badge {
           position: absolute;
-          top: 12px;
-          left: 12px;
+          top: 14px;
+          right: 14px;
           color: #fff;
-          font-size: 10px;
-          font-weight: 800;
-          padding: 4px 10px;
+          font-size: 11px;
+          font-weight: 700;
+          padding: 4px 12px;
           border-radius: 20px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           z-index: 2;
         }
-        .ds-img-wrap {
-          position: relative;
+        .card-img-wrap {
+          background: var(--accent);
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 30px 0 20px;
-          overflow: hidden;
+          padding: 28px 0 18px;
         }
-        .ds-img-ring {
-          width: 120px;
-          height: 120px;
+        .img-ring {
+          width: 130px;
+          height: 130px;
           border-radius: 50%;
-          border: 3.5px solid;
+          border: 4px solid;
           overflow: hidden;
-          box-shadow: 0 8px 28px rgba(0,0,0,0.15);
-          position: relative;
-          z-index: 1;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.14);
         }
-        .ds-arc {
-          position: absolute;
-          bottom: -30px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 200px;
-          height: 200px;
-          border-radius: 50%;
-          border: 40px solid;
-          opacity: 0.4;
-        }
-        .ds-body {
-          padding: 16px 18px 20px;
+        .card-body {
+          padding: 18px 20px 20px;
           display: flex;
           flex-direction: column;
-          gap: 8px;
           flex: 1;
+          gap: 8px;
         }
-        .ds-name {
-          font-size: 15px;
+        .doctor-name {
+          font-size: 16px;
           font-weight: 800;
-          color: #0b3b4a;
+          color: #111827;
           margin: 0;
           font-family: 'Poppins', sans-serif;
           line-height: 1.3;
         }
-        .ds-spec {
-          font-size: 12px;
-          font-weight: 700;
+        .doctor-title {
+          font-size: 12.5px;
+          color: #4b5563;
           margin: 0;
-          letter-spacing: 0.03em;
+          line-height: 1.5;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
-        .ds-stats {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          background: #f8fafc;
-          border-radius: 12px;
-          padding: 10px 14px;
-          margin-top: 4px;
+        .specialty-chip {
+          display: inline-block;
+          font-size: 11.5px;
+          font-weight: 700;
+          padding: 3px 10px;
+          border-radius: 20px;
+          border: 1px solid;
+          align-self: flex-start;
         }
-        .ds-stat {
+        .info-list {
           display: flex;
           flex-direction: column;
-          gap: 2px;
-          flex: 1;
-          align-items: center;
+          gap: 6px;
+          margin-top: 4px;
         }
-        .ds-stat-val {
-          font-size: 13px;
-          font-weight: 800;
-          font-family: 'Poppins', sans-serif;
-        }
-        .ds-stat-lbl {
-          font-size: 10px;
-          color: #94a3b8;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-        .ds-divider {
-          width: 1px;
-          height: 28px;
-          background: #e2e8f0;
-        }
-        .ds-actions {
+        .info-row {
           display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          font-size: 12px;
+          color: #374151;
+          line-height: 1.5;
+        }
+        .info-row svg {
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+        .card-actions {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
           gap: 8px;
           margin-top: auto;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
         }
-        .ds-book-btn {
-          flex: 1;
-          min-width: 0;
-          color: #fff;
-          border: none;
-          padding: 10px 12px;
-          border-radius: 10px;
-          font-size: 12px;
-          font-weight: 700;
-          font-family: 'Poppins', sans-serif;
-          cursor: pointer;
-          transition: all 0.2s;
-          box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-          white-space: nowrap;
-        }
-        .ds-book-btn:hover {
-          transform: scale(1.03);
-          box-shadow: 0 6px 20px rgba(0,0,0,0.22);
-        }
-        .ds-view-btn {
+        .read-more-btn,
+        .book-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 10px 12px;
-          border-radius: 10px;
-          border: 1.5px solid;
-          font-size: 12px;
-          font-weight: 700;
-          font-family: 'Poppins', sans-serif;
-          text-decoration: none;
-          background: transparent;
-          transition: all 0.2s;
+          height: 36px;
+          line-height: 1.2;
           white-space: nowrap;
+          border-radius: 8px;
+          font-family: 'Poppins', sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          transition: all 0.2s ease;
+          text-decoration: none;
+          padding: 0 14px;
+          box-sizing: border-box;
         }
-        .ds-view-btn:hover {
+        .read-more-btn {
+          flex: 0 0 auto;
+          border: 2px solid;
+          background: transparent;
+          cursor: pointer;
+        }
+        .read-more-btn:hover {
           opacity: 0.8;
+          transform: scale(1.02);
+        }
+        .book-btn {
+          flex: 1 1 0;
+          min-width: 0;
+          color: #fff;
+          text-align: center;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+        }
+        .book-btn:hover {
+          transform: scale(1.02);
+          box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+        }
+        .social-row {
+          display: flex;
+          gap: 8px;
+          margin-top: 8px;
+          justify-content: center;
+        }
+        .social-icon {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: #f3f4f6;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 11px;
+          font-weight: 900;
+          color: #374151;
+          text-decoration: none;
+          transition: all 0.2s;
+        }
+        .social-icon:hover {
+          background: var(--s-color);
+          color: #fff;
+          transform: scale(1.15);
         }
         .ds-view-all:hover {
           transform: translateY(-2px);
           box-shadow: 0 14px 40px rgba(14,154,181,0.4) !important;
-        }
-        @media (max-width: 600px) {
-          .ds-body { padding: 14px 14px 16px; }
-          .ds-name { font-size: 14px; }
         }
       `}</style>
     </section>

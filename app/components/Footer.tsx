@@ -154,8 +154,8 @@ export default function Footer() {
             <p style={{ fontSize: 13.5, color: '#94a3b8', lineHeight: 1.7, marginBottom: 22 }}>
               Get expert medical care without the wait. Book your appointment online and let us take care of the rest.
             </p>
-            <a href="/appointment"
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, background: `linear-gradient(135deg, ${RED}, #b01020)`, color: '#fff', fontWeight: 700, fontSize: 14, padding: '14px 24px', borderRadius: 12, textDecoration: 'none', boxShadow: `0 8px 24px rgba(224,20,42,0.3)`, transition: 'all 0.25s', marginBottom: 16 }}
+            <button onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, background: `linear-gradient(135deg, ${RED}, #b01020)`, color: '#fff', fontWeight: 700, fontSize: 14, padding: '14px 24px', borderRadius: 12, border: 'none', cursor: 'pointer', boxShadow: `0 8px 24px rgba(224,20,42,0.3)`, transition: 'all 0.25s', marginBottom: 16, width: '100%', fontFamily: 'inherit' }}
               onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.transform = 'translateY(-3px)'; el.style.boxShadow = '0 14px 32px rgba(224,20,42,0.45)'; }}
               onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 8px 24px rgba(224,20,42,0.3)'; }}
             >
@@ -163,7 +163,7 @@ export default function Footer() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               Book Appointment
-            </a>
+            </button>
             {/* Working Hours */}
             <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '16px 18px' }}>
               <p style={{ fontSize: 11.5, fontWeight: 700, color: TEAL, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>Working Hours</p>

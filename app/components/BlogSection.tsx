@@ -78,7 +78,7 @@ export default function BlogSection() {
               margin: 0,
               lineHeight: 1.25,
             }}>
-              Our <span style={{ color: TEAL }}>Blog</span> &amp; Latest Updates
+              Latest health information
             </h2>
             <p style={{ color: '#64748b', fontSize: 15, margin: '10px 0 0', maxWidth: 440 }}>
               Stay informed with expert health tips, medical insights and wellness guides from our specialists.

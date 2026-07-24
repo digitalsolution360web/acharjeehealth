@@ -165,12 +165,13 @@ export default function WhyChoose() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
-              <Link
-                href="/appointment"
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   color: RED, fontWeight: 700, fontSize: 14, textDecoration: 'none',
-                  transition: 'gap 0.2s',
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  padding: 0, transition: 'gap 0.2s', fontFamily: 'inherit',
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = '12px'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = '8px'; }}
@@ -179,7 +180,7 @@ export default function WhyChoose() {
                 <svg width="14" height="14" fill="none" stroke={RED} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </button>
             </div>
           </div>
         </div>

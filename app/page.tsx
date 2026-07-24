@@ -14,6 +14,7 @@ import DoctorVideo from "./components/DoctorVideo";
 import DoctorSlider from "./components/DoctorSlider";
 import PatientSpeak from "./components/PatientSpeak";
 import BlogSection from "./components/BlogSection";
+import FAQSection from "./components/FAQSection";
 
 export default function Home() {
   return (
@@ -30,9 +31,11 @@ export default function Home() {
       <DoctorSlider />
       <PatientSpeak />
       <BlogSection />
+
       <InfoBanner />
       <AboutSection />
       <ServicesCards />
+      <FAQSection />
       <LicenseBanner />
     </>
   );

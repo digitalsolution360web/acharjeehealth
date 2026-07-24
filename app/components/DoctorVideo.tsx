@@ -186,15 +186,17 @@ export default function DoctorVideo() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
-              <Link
-                href="/appointment"
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   background: '#fff', color: RED, fontWeight: 700, fontSize: 14,
                   padding: '13px 26px', borderRadius: 50,
-                  textDecoration: 'none', border: `2px solid ${RED}30`,
+                  border: `2px solid ${RED}30`,
                   boxShadow: '0 4px 16px rgba(0,0,0,0.07)',
+                  cursor: 'pointer',
                   transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                  fontFamily: 'inherit',
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
@@ -210,7 +212,7 @@ export default function DoctorVideo() {
                 }}
               >
                 Book Appointment
-              </Link>
+              </button>
             </div>
           </div>
         </div>

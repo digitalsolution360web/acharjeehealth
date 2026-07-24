@@ -155,8 +155,8 @@ export default function WhyChooseCards() {
 
         {/* Centered CTA Button */}
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
-          <Link
-            href="/appointment"
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
             id="wc-cta-card"
             style={{
               background: NAVY,
@@ -166,7 +166,7 @@ export default function WhyChooseCards() {
               alignItems: 'center',
               justifyContent: 'center',
               gap: 12,
-              textDecoration: 'none',
+              border: 'none',
               transition: 'all 0.25s ease',
               cursor: 'pointer',
               boxShadow: '0 8px 24px rgba(26,43,74,0.15)',
@@ -194,7 +194,7 @@ export default function WhyChooseCards() {
             <svg width="18" height="18" fill="none" stroke="#ffffff" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>
-          </Link>
+          </button>
         </div>
       </div>
 

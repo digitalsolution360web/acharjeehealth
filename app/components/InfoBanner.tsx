@@ -143,18 +143,19 @@ export default function InfoBanner() {
                 </h4>
                 <p style={{ fontSize: 13.5, color: '#475569', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
                   Book an{' '}
-                  <Link
-                    href="/appointment"
+                  <span
+                    onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
                     style={{
                       color: TEAL,
                       fontWeight: 800,
                       textDecoration: 'underline',
                       textDecorationThickness: '2px',
                       textDecorationColor: 'rgba(14, 154, 181, 0.3)',
+                      cursor: 'pointer',
                     }}
                   >
                     online appointment
-                  </Link>{' '}
+                  </span>{' '}
                   or access pharmacy &amp; emergency care services.
                 </p>
               </div>

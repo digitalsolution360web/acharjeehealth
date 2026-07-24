@@ -178,6 +178,13 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // Listen for custom event from doctor pages to open enquiry modal
+  useEffect(() => {
+    const handler = () => setEnquiryOpen(true);
+    window.addEventListener('open-enquiry-modal', handler);
+    return () => window.removeEventListener('open-enquiry-modal', handler);
+  }, []);
+
   return (
     <>
 
