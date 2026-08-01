@@ -80,7 +80,7 @@ export default function AppointmentBar() {
           color: '#0b5162',
           fontSize: 'clamp(16px, 1.4vw, 22px)',
           fontWeight: 700,
-          margin: '14px 0 0',
+          margin: '50px 0 0',
           fontFamily: 'Poppins, sans-serif',
           letterSpacing: '0.01em',
         }}>

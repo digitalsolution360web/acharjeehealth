@@ -88,6 +88,28 @@ body {
   }
 }
 
+.hero-slide-container {
+  background: #f8fafc;
+}
+
+.hero-slider-height {
+  position: relative;
+}
+
+.hero-slide-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.whatsapp-float-btn {
+  animation: whatsappFloat 3.5s ease-in-out infinite, whatsappPulse 2s infinite;
+}
+
+.whatsapp-float-btn:hover {
+  animation-play-state: paused;
+}
+
 .whatsapp-float-btn {
   animation: whatsappFloat 3.5s ease-in-out infinite, whatsappPulse 2s infinite;
 }
