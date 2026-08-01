@@ -169,7 +169,7 @@ export default function AppointmentBar() {
               id="book-appt-btn"
               onClick={() => setEnquiryOpen(true)}
               style={{
-                background: `linear-gradient(135deg, #0b4a6b, #07344b)`,
+                background: '#15945D',
                 color: '#fff', border: 'none',
                 padding: '0 28px', fontSize: 15,
                 fontWeight: 700, cursor: 'pointer',
@@ -177,11 +177,11 @@ export default function AppointmentBar() {
                 letterSpacing: '0.02em', whiteSpace: 'nowrap',
                 height: 56,
                 borderRadius: 8,
-                transition: 'background 0.2s ease', flexShrink: 0,
-                boxShadow: '0 2px 6px rgba(7,52,75,0.18)'
+                transition: 'all 0.2s ease', flexShrink: 0,
+                boxShadow: '0 4px 18px rgba(21,148,93,0.35)'
               }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, ${DARK_TEAL}, #0a6f82)`; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = `linear-gradient(135deg, #0b4a6b, #07344b)`; }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = '#11784b'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = '#15945D'; }}
             >
               Book an Appointment
             </button>

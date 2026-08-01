@@ -151,14 +151,14 @@ export default function WhyChoose() {
                 href="/about"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
-                  background: `linear-gradient(135deg, ${TEAL}, #0b7a91)`,
+                  background: '#15945D',
                   color: '#fff', fontWeight: 700, fontSize: 14,
                   padding: '13px 28px', borderRadius: 8, textDecoration: 'none',
-                  boxShadow: `0 6px 20px rgba(14,154,181,0.35)`,
+                  boxShadow: `0 6px 20px rgba(21,148,93,0.35)`,
                   transition: 'all 0.22s',
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#11784b'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#15945D'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
               >
                 Learn About Us
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,15 +169,16 @@ export default function WhyChoose() {
                 onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
-                  color: RED, fontWeight: 700, fontSize: 14, textDecoration: 'none',
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  padding: 0, transition: 'gap 0.2s', fontFamily: 'inherit',
+                  background: '#15945D', color: '#fff', fontWeight: 700, fontSize: 14, textDecoration: 'none',
+                  border: 'none', cursor: 'pointer',
+                  padding: '13px 28px', borderRadius: 8, transition: 'all 0.22s', fontFamily: 'inherit',
+                  boxShadow: '0 6px 20px rgba(21,148,93,0.35)',
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.gap = '12px'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.gap = '8px'; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#11784b'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#15945D'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
               >
                 Book Appointment
-                <svg width="14" height="14" fill="none" stroke={RED} viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="#ffffff" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </button>

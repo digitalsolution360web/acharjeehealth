@@ -157,7 +157,7 @@ export default function FAQSection() {
             onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
-              background: `linear-gradient(135deg, ${TEAL}, ${GREEN})`,
+              background: `#15945d`,
               color: '#fff', border: 'none', borderRadius: 50,
               padding: '14px 36px', fontSize: 15, fontWeight: 700,
               cursor: 'pointer', fontFamily: 'Poppins, sans-serif',

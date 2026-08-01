@@ -118,6 +118,7 @@ export default function ServicesCards() {
         <div
           id="services-grid"
           style={{
+
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: 24,
@@ -128,11 +129,12 @@ export default function ServicesCards() {
               key={card.id}
               id={`service-card-${card.id}`}
               style={{
+
                 background: card.id === 'medicines'
                   ? '#b8edba'
                   : card.id === 'lab-tests'
-                  ? '#fbbfc4'
-                  : '#c2e8f5',
+                    ? '#fbbfc4'
+                    : '#c2e8f5',
                 borderRadius: 18,
                 padding: '36px 30px',
                 position: 'relative',
@@ -140,13 +142,13 @@ export default function ServicesCards() {
                 boxShadow: card.id === 'medicines'
                   ? '0 4px 24px rgba(58,170,53,0.22)'
                   : card.id === 'lab-tests'
-                  ? '0 4px 24px rgba(224,20,42,0.22)'
-                  : '0 4px 24px rgba(14,154,181,0.18)',
+                    ? '0 4px 24px rgba(224,20,42,0.22)'
+                    : '0 4px 24px rgba(14,154,181,0.18)',
                 border: card.id === 'medicines'
                   ? `2px solid ${GREEN}80`
                   : card.id === 'lab-tests'
-                  ? `2px solid ${RED}80`
-                  : `2px solid ${TEAL}60`,
+                    ? `2px solid ${RED}80`
+                    : `2px solid ${TEAL}60`,
                 transition: 'transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease',
                 cursor: 'default',
               }}
@@ -193,13 +195,13 @@ export default function ServicesCards() {
                   background: card.id === 'medicines'
                     ? `${GREEN}50`
                     : card.id === 'lab-tests'
-                    ? `${RED}50`
-                    : `${card.accentColor}35`,
+                      ? `${RED}50`
+                      : `${card.accentColor}35`,
                   border: card.id === 'medicines'
                     ? `2px solid ${GREEN}99`
                     : card.id === 'lab-tests'
-                    ? `2px solid ${RED}99`
-                    : `2px solid ${card.accentColor}70`,
+                      ? `2px solid ${RED}99`
+                      : `2px solid ${card.accentColor}70`,
                   borderRadius: 10, padding: '7px 12px',
                   textAlign: 'center',
                 }}>
@@ -231,7 +233,7 @@ export default function ServicesCards() {
               }} />
 
               {/* Description */}
-              <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.75, marginBottom: 26 }}>{card.desc}</p>
+              <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.75, marginBottom: 26, flexGrow: 1, minHeight: 75 }}>{card.desc}</p>
 
               {/* Learn More */}
               <Link

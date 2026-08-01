@@ -40,7 +40,7 @@ export default function WhatsAppButton() {
 
       {/* Pulsing & Bouncing WhatsApp Button */}
       <a
-        href="https://wa.me/917364921002"
+        href="https://wa.me/917364921002?text=Hello%20Acharjee%20Health%20Clinic%2C%20I%20would%20like%20to%20book%20an%20appointment."
         target="_blank"
         rel="noopener noreferrer"
         className="pointer-events-auto w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center text-white text-3xl md:text-4xl shadow-[0_8px_24px_rgba(37,211,102,0.35)] transition-all duration-300 hover:scale-108 hover:shadow-[0_12px_32px_rgba(37,211,102,0.55)] cursor-pointer whatsapp-float-btn"

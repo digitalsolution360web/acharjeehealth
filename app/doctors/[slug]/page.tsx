@@ -64,18 +64,18 @@ function EnquiryForm({ accentBorder }: { accentBorder: string }) {
           padding: '12px',
           borderRadius: 10,
           border: 'none',
-          background: 'linear-gradient(135deg, #0e9ab5, #3aaa35)',
+          background: '#15945D',
           color: '#ffffff',
           fontWeight: 700,
           fontSize: 14,
           cursor: 'pointer',
           fontFamily: 'inherit',
           transition: 'all 0.2s',
-          boxShadow: '0 4px 14px rgba(14, 154, 181, 0.25)',
+          boxShadow: '0 4px 14px rgba(21,148,93,0.35)',
           marginTop: 6,
         }}
-        onMouseEnter={e => { (e.target as HTMLElement).style.opacity = '0.9'; }}
-        onMouseLeave={e => { (e.target as HTMLElement).style.opacity = '1'; }}
+        onMouseEnter={e => { (e.target as HTMLElement).style.background = '#11784b'; }}
+        onMouseLeave={e => { (e.target as HTMLElement).style.background = '#15945D'; }}
       >
         Send Enquiry →
       </button>
@@ -291,17 +291,17 @@ export default function DoctorDetailPage({ params }: { params: Promise<{ slug: s
               onClick={openNavbarEnquiry}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: 'linear-gradient(135deg, #0e9ab5, #3aaa35)',
+                background: '#15945D',
                 color: '#fff', border: 'none', borderRadius: 8,
                 padding: '11px 26px', fontSize: 14, fontWeight: 700,
                 cursor: 'pointer', fontFamily: "'Poppins',sans-serif",
-                boxShadow: '0 4px 16px rgba(14,154,181,0.25)',
+                boxShadow: '0 4px 16px rgba(21,148,93,0.35)',
                 transition: 'all 0.2s',
                 marginTop: 20,
                 letterSpacing: '0.01em',
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#11784b'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#15945D'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
             >
               Message for Appointment
             </button>

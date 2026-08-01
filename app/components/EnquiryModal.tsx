@@ -165,21 +165,23 @@ export default function EnquiryModal({ onClose }: EnquiryModalProps) {
                 style={{
                   marginTop: 6, padding: '14px',
                   borderRadius: 12, border: 'none',
-                  background: 'linear-gradient(135deg, #0e9ab5, #3aaa35)',
+                  background: '#15945D',
                   color: '#fff', fontWeight: 800,
                   fontSize: 15, cursor: 'pointer',
                   fontFamily: "'Poppins', sans-serif",
                   transition: 'all 0.25s',
-                  boxShadow: '0 6px 20px rgba(14,154,181,0.35)',
+                  boxShadow: '0 6px 20px rgba(21,148,93,0.35)',
                   letterSpacing: '0.02em',
                 }}
                 onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.background = '#11784b';
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-                  (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 28px rgba(14,154,181,0.45)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 28px rgba(21,148,93,0.45)';
                 }}
                 onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.background = '#15945D';
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-                  (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 20px rgba(14,154,181,0.35)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 20px rgba(21,148,93,0.35)';
                 }}
               >
                 Send Enquiry →
@@ -190,12 +192,12 @@ export default function EnquiryModal({ onClose }: EnquiryModalProps) {
               <div style={{
                 width: 72, height: 72, borderRadius: '50%',
                 background: 'linear-gradient(135deg, #ecfdf5, #d1fae5)',
-                border: '3px solid #3aaa35',
-                color: '#3aaa35',
+                border: '3px solid #15945D',
+                color: '#15945D',
                 display: 'flex', alignItems: 'center',
                 justifyContent: 'center', fontSize: 36,
                 margin: '0 auto 20px',
-                boxShadow: '0 8px 24px rgba(58,170,53,0.2)',
+                boxShadow: '0 8px 24px rgba(21,148,93,0.2)',
               }}>✓</div>
 
               <h3 style={{
@@ -212,10 +214,10 @@ export default function EnquiryModal({ onClose }: EnquiryModalProps) {
                 style={{
                   padding: '12px 36px', borderRadius: 12,
                   border: 'none',
-                  background: 'linear-gradient(135deg, #0e9ab5, #3aaa35)',
+                  background: '#15945D',
                   color: '#fff', fontWeight: 700, fontSize: 15,
                   cursor: 'pointer',
-                  boxShadow: '0 4px 16px rgba(14,154,181,0.3)',
+                  boxShadow: '0 4px 16px rgba(21,148,93,0.3)',
                 }}
               >
                 Close

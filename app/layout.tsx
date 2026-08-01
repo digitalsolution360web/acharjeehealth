@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import TopBar from "./components/TopBar";
 import Footer from "./components/Footer";
 import AnimateObserver from "./components/AnimateObserver";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -31,6 +32,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col">
         <AnimateObserver />
+        <TopBar />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

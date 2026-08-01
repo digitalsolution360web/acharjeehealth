@@ -64,7 +64,7 @@ export default function InfoBanner() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  background: TEAL,
+                  background: '#15945D',
                   color: '#ffffff',
                   fontWeight: 700,
                   fontSize: 13.5,
@@ -72,19 +72,19 @@ export default function InfoBanner() {
                   borderRadius: 50,
                   textDecoration: 'none',
                   transition: 'all 0.22s ease-in-out',
-                  boxShadow: '0 6px 20px rgba(14,154,181,0.25)',
+                  boxShadow: '0 6px 20px rgba(21,148,93,0.3)',
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.background = '#0c869d';
+                  el.style.background = '#11784b';
                   el.style.transform = 'translateY(-2px)';
-                  el.style.boxShadow = '0 8px 24px rgba(12,134,157,0.35)';
+                  el.style.boxShadow = '0 8px 24px rgba(21,148,93,0.45)';
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
-                  el.style.background = TEAL;
+                  el.style.background = '#15945D';
                   el.style.transform = 'translateY(0)';
-                  el.style.boxShadow = '0 6px 20px rgba(14,154,181,0.25)';
+                  el.style.boxShadow = '0 6px 20px rgba(21,148,93,0.3)';
                 }}
               >
                 Learn More

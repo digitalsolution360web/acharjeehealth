@@ -5,12 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const slides = [
-  { id: 1, image: '/Banner.jpg', alt: 'Experience Matters – 48 Years of Healthcare' },
-  { id: 2, image: '/banner1.jpg', alt: 'Celebrating 46 Years of Healthcare Excellence' },
-  { id: 3, image: '/Banner2.jpg', alt: '48 Years of Healing' },
+  { id: 1, image: '/hero-2.png', alt: 'Experience Matters – 48 Years of Healthcare' },
+  { id: 2, image: '/hero-3.png', alt: 'Celebrating 46 Years of Healthcare Excellence' },
+  { id: 3, image: '/hero-4.png', alt: '48 Years of Healing' },
 ];
 
-const INTERVAL = 5000;
+const INTERVAL = 3000;
 const TEAL = '#0e9ab5';
 const SLATE_GRAY = '#4a6a78';
 

@@ -159,7 +159,7 @@ export default function WhyChooseCards() {
             onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
             id="wc-cta-card"
             style={{
-              background: NAVY,
+              background: '#15945D',
               borderRadius: 10,
               padding: '16px 40px',
               display: 'inline-flex',
@@ -169,17 +169,17 @@ export default function WhyChooseCards() {
               border: 'none',
               transition: 'all 0.25s ease',
               cursor: 'pointer',
-              boxShadow: '0 8px 24px rgba(26,43,74,0.15)',
+              boxShadow: '0 8px 24px rgba(21,148,93,0.3)',
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.background = '#263a5e';
+              (e.currentTarget as HTMLElement).style.background = '#11784b';
               (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-              (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 30px rgba(26,43,74,0.25)`;
+              (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 30px rgba(21,148,93,0.45)`;
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.background = NAVY;
+              (e.currentTarget as HTMLElement).style.background = '#15945D';
               (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 24px rgba(26,43,74,0.15)';
+              (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 24px rgba(21,148,93,0.3)';
             }}
           >
             <span style={{

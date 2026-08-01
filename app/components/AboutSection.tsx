@@ -246,7 +246,7 @@ export default function AboutSection() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 10,
-                  backgroundColor: RED,
+                  backgroundColor: '#15945D',
                   color: '#ffffff',
                   fontWeight: 800,
                   fontSize: 13.5,
@@ -255,7 +255,7 @@ export default function AboutSection() {
                   padding: '14px 34px',
                   borderRadius: 50,
                   textDecoration: 'none',
-                  boxShadow: '0 6px 18px rgba(224,20,42,0.22)',
+                  boxShadow: '0 6px 18px rgba(21,148,93,0.3)',
                 }}
               >
                 More About Us
@@ -305,9 +305,9 @@ export default function AboutSection() {
           transition: all 0.22s ease-in-out;
         }
         .about-cta-btn:hover {
-          background-color: #c90f23 !important;
+          background-color: #11784b !important;
           transform: translateY(-2px);
-          box-shadow: 0 10px 24px rgba(224,20,42,0.35) !important;
+          box-shadow: 0 10px 24px rgba(21,148,93,0.4) !important;
         }
 
         .stat-micro-card {

@@ -163,22 +163,24 @@ export default function DoctorVideo() {
                 href="/doctors"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
-                  background: `linear-gradient(135deg, ${TEAL}, #0b7a91)`,
+                  background: '#15945D',
                   color: '#fff', fontWeight: 700, fontSize: 14,
                   padding: '13px 26px', borderRadius: 50,
                   textDecoration: 'none',
-                  boxShadow: `0 8px 24px rgba(14,154,181,0.38)`,
+                  boxShadow: `0 8px 24px rgba(21,148,93,0.38)`,
                   transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = 'translateY(-3px)';
-                  el.style.boxShadow = '0 14px 32px rgba(14,154,181,0.50)';
+                  el.style.background = '#11784b';
+                  el.style.boxShadow = '0 14px 32px rgba(21,148,93,0.50)';
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = 'translateY(0)';
-                  el.style.boxShadow = '0 8px 24px rgba(14,154,181,0.38)';
+                  el.style.background = '#15945D';
+                  el.style.boxShadow = '0 8px 24px rgba(21,148,93,0.38)';
                 }}
               >
                 Meet Our Doctors
@@ -190,10 +192,10 @@ export default function DoctorVideo() {
                 onClick={() => window.dispatchEvent(new CustomEvent('open-enquiry-modal'))}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
-                  background: '#fff', color: RED, fontWeight: 700, fontSize: 14,
+                  background: '#15945D', color: '#fff', fontWeight: 700, fontSize: 14,
                   padding: '13px 26px', borderRadius: 50,
-                  border: `2px solid ${RED}30`,
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.07)',
+                  border: 'none',
+                  boxShadow: '0 8px 24px rgba(21,148,93,0.38)',
                   cursor: 'pointer',
                   transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                   fontFamily: 'inherit',
@@ -201,14 +203,12 @@ export default function DoctorVideo() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = 'translateY(-3px)';
-                  el.style.borderColor = RED;
-                  el.style.boxShadow = `0 10px 28px rgba(224,20,42,0.20)`;
+                  el.style.background = '#11784b';
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.transform = 'translateY(0)';
-                  el.style.borderColor = `${RED}30`;
-                  el.style.boxShadow = '0 4px 16px rgba(0,0,0,0.07)';
+                  el.style.background = '#15945D';
                 }}
               >
                 Book Appointment
